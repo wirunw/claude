@@ -323,6 +323,22 @@ button:hover {
     font-weight: 600;
 }
 
+/* Section Headers in Sidebar */
+.nav-section-header {
+    padding: 16px 20px 8px 20px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 16px;
+}
+
+.nav-divider {
+    margin: 12px 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
 /* CONTENT */
 .content {
     margin-left: 280px;
