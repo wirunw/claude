@@ -241,21 +241,50 @@
     </div>
 </div>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🐰 vs 🦉 Fast Mode vs Thinking Mode</h3>
-<p>Claude มี 2 โหมด — เลือกตามประเภทงาน:</p>
-<div class="grid-2" style="margin-top: 16px;">
-    <div class="card" style="border-left: 4px solid #f97316;">
-        <h4 style="color: #f97316; margin-bottom: 16px;">🐰 Fast Mode (Claude 3.5 Sonnet)</h4>
-        <p><strong>ตอบเร็ว ประหยัด Token</strong></p>
-        <p style="margin-top: 12px; font-size: 13px; line-height: 1.8;">✅ ใช้สำหรับ:<br>• งานเขียน ง่าย ๆ<br>• Email, Social Posts<br>• รวบรวมข้อมูล<br>• เขียนหลาย ๆ อันพร้อมกัน</p>
-        <p style="margin-top: 12px; font-size: 13px; color: #f97316;"><strong>Healthcare:</strong> Patient Education Materials, คัดลอกข้อมูล</p>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🤖 เลือก Model ให้เหมาะกับงาน</h3>
+<p>Claude มี 3 รุ่น — แต่ละรุ่นเหมาะกับงานต่างกัน</p>
+
+<div style="margin: 24px 0;">
+    <div class="card" style="border-left: 4px solid #f97316; margin-bottom: 16px;">
+        <h4 style="color: #f97316;">⚡ Haiku 4.5 — รวดเร็ว ประหยัด เหมาะงานเบา</h4>
+        <p><strong>ใช้เมื่อ:</strong> ถามคำถามสั้น ๆ, แปลประโยค, สรุปข้อความสั้น, ตอบ FAQ ซ้ำ ๆ, หรืองานที่ต้องการความเร็วและปริมาณมาก</p>
+        <p style="margin-top: 12px; font-size: 13px;"><strong>จุดเด่น:</strong> ตอบเร็วที่สุด ค่าใช้จ่ายต่ำสุด เหมาะสำหรับ workflow ที่ต้องรัน Claude หลายครั้งต่อวัน</p>
     </div>
-    <div class="card" style="border-left: 4px solid #2563eb;">
-        <h4 style="color: #2563eb; margin-bottom: 16px;">🦉 Thinking Mode (Claude 3.7 Extended)</h4>
-        <p><strong>คิดลึก ผลลัพธ์ที่ดีกว่า</strong></p>
-        <p style="margin-top: 12px; font-size: 13px; line-height: 1.8;">✅ ใช้สำหรับ:<br>• งานวิเคราะห์ซับซ้อน<br>• ตัดสินใจเชิงกลยุทธ์<br>• ป้องกัน Hallucination<br>• งาน High-Risk</p>
-        <p style="margin-top: 12px; font-size: 13px; color: #2563eb;"><strong>Healthcare:</strong> ตัดสินใจด้าน Regulatory, ร่าง Strategic Plan</p>
+
+    <div class="card" style="border-left: 4px solid #2563eb; margin-bottom: 16px; background: linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%);">
+        <h4 style="color: #2563eb;">🌟 Sonnet 4.6 — สมดุล ใช้งานได้จริงทุกวัน (แนะนำสำหรับงาน Healthcare)</h4>
+        <p><strong>ใช้เมื่อ:</strong> เขียนรายงานผู้ป่วย, ร่างเอกสารวิชาการ, วิเคราะห์ข้อมูลเบื้องต้น, สร้าง dashboard, เขียนโปรแกรมทั่วไป, ตอบคำถามทางคลินิก</p>
+        <p style="margin-top: 12px; font-size: 13px;"><strong>จุดเด่น:</strong> ฉลาดในระดับสูง แต่ยังรวดเร็วและใช้งานได้จริง เป็น default ที่แนะนำสำหรับทีม healthcare</p>
     </div>
+
+    <div class="card" style="border-left: 4px solid #7c3aed; margin-bottom: 16px;">
+        <h4 style="color: #7c3aed;">🧠 Opus 4.6 — ทรงพลังที่สุด เหมาะงานซับซ้อน</h4>
+        <p><strong>ใช้เมื่อ:</strong> วิเคราะห์เคสยาก, วางแผนกลยุทธ์องค์กร, วิจัยเชิงลึก, งานที่ต้องการความแม่นยำสูงสุด, หรือเมื่อ Sonnet ให้คำตอบที่ยังไม่พอใจ</p>
+        <p style="margin-top: 12px; font-size: 13px;"><strong>จุดเด่น:</strong> ฉลาดที่สุดในตระกูล Claude แต่ช้ากว่าและมีค่าใช้จ่ายสูงกว่า — ใช้เมื่อ "คุ้มที่จะลงทุน"</p>
+    </div>
+</div>
+
+<div class="card" style="border-left: 4px solid #0891b2; background: #f0f9ff;">
+    <h4 style="color: #0891b2;">💡 Extended Thinking — เปิดเมื่อไหร่?</h4>
+    <p>Extended Thinking คือโหมดที่ให้ Claude "คิดก่อนตอบ" อย่างละเอียด เหมือนให้เวลาหมอคิดวิเคราะห์เคสก่อนสรุป</p>
+    <p style="margin-top: 12px;"><strong>เปิดใช้เมื่อ:</strong></p>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li>โจทย์ซับซ้อน ต้องการเหตุผลหลายขั้นตอน เช่น Differential Diagnosis</li>
+        <li>ต้องการให้ Claude ชั่งน้ำหนักตัวเลือกหลายทาง</li>
+        <li>งานวิเคราะห์เชิงกลยุทธ์ที่ความถูกต้องสำคัญกว่าความเร็ว</li>
+        <li>คณิตศาสตร์หรือ logic ที่ซับซ้อน</li>
+    </ul>
+    <p style="margin-top: 12px;"><strong>ไม่จำเป็นต้องเปิดเมื่อ:</strong></p>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li>งานเขียนหรือสรุปทั่วไป</li>
+        <li>คำถามที่มีคำตอบตรง ๆ</li>
+        <li>ต้องการความเร็วมากกว่าความลึก</li>
+    </ul>
+</div>
+
+<div class="success-box" style="margin-top: 20px;">
+    <strong>💬 สรุปง่าย ๆ:</strong>
+    <p style="margin-top: 8px;">เริ่มต้นด้วย Sonnet 4.6 เสมอ → ถ้างานเบาเปลี่ยนเป็น Haiku → ถ้างานหนักหรือซับซ้อนเปลี่ยนเป็น Opus → ถ้าต้องการให้คิดลึกเปิด Extended Thinking</p>
 </div>
 
 <h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🔍 AI Tool Comparison — ใครดีสำหรับอะไร?</h3>
