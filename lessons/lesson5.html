@@ -1,231 +1,299 @@
 <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-    <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมีสร้าง" class="bear-avatar bear-medium bear-teacher">
+    <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมีศึกษา" class="bear-avatar bear-medium bear-smart">
     <div>
-        <h2 class="section-header" style="margin: 0;">🤖 บทที่ 5 — สร้าง Custom Skills & Plugins</h2>
-        <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">พี่หมีสอนสร้าง AI Assistant เฉพาะทางของคุณ 🛠️</p>
+        <h2 class="section-header" style="margin: 0;">🎯 บทที่ 5 — กรณีศึกษา: Healthcare AI ในโลกจริง</h2>
+        <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">พี่หมีพาดูตัวอย่างจริงจากโลก Healthcare 📚</p>
     </div>
 </div>
-<p>Custom Skills คือ <strong>'สูตรลับ' ที่คุณสอน Claude ให้ทำงานเฉพาะทางของคุณ</strong>ครับ</p>
+<p>ผมรวบรวม Case Study จริงจากวงการ Healthcare ที่ใช้ Claude Cowork ในการแก้ปัญหาจริง</p>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📚 3 Building Blocks ของ Plugin</h3>
-<div class="grid-3" style="margin-top: 16px;">
-    <div class="card" style="border-left: 4px solid #3b82f6;">
-        <h4 style="color: #3b82f6; margin-bottom: 12px;">📚 Block 1: Skills</h4>
-        <p><strong>คืออะไร?</strong> Template/workflow ที่ Claude ต้องทำซ้ำ ๆ</p>
-        <p style="margin-top: 12px; font-size: 13px; line-height: 1.8;">ตัวอย่าง:<br>• "Draft SOAP note template"<br>• "Medication reconciliation checklist"<br>• "Patient follow-up email"</p>
-    </div>
-    <div class="card" style="border-left: 4px solid #f97316;">
-        <h4 style="color: #f97316; margin-bottom: 12px;">🔌 Block 2: Connectors</h4>
-        <p><strong>คืออะไร?</strong> Integration กับ Apps (Gmail, Drive, Calendar)</p>
-        <p style="margin-top: 12px; font-size: 13px; line-height: 1.8;">ตัวอย่าง:<br>• ส่ง Email output<br>• Save to Google Docs<br>• Update Google Sheets</p>
-    </div>
-    <div class="card" style="border-left: 4px solid #16a34a;">
-        <h4 style="color: #16a34a; margin-bottom: 12px;">🤖 Block 3: Sub-agents</h4>
-        <p><strong>คืออะไร?</strong> ให้ Claude แยก Task เป็น Sub-tasks</p>
-        <p style="margin-top: 12px; font-size: 13px; line-height: 1.8;">ตัวอย่าง:<br>• Agent 1: Parse patient data<br>• Agent 2: Analyze interactions<br>• Agent 3: Generate report</p>
-    </div>
-</div>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📚 Case Study 1: Medical Device Company — แปล IFU (Instructions for Use)</h3>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📖 What are Skills?</h3>
-<p>Skills คือ <strong>เอกสาร (Markdown file) ที่สอน Claude</strong> ให้ทำงานเฉพาะอย่างให้ดี</p>
-<div style="background: #f0f9ff; padding: 16px; border-radius: 12px; margin-top: 16px; border-left: 4px solid #0284c7;">
-    <p style="margin-bottom: 12px;"><strong>📋 ตัวอย่าง Skill: "Medication Counseling Leaflet"</strong></p>
-    <div style="background: white; padding: 16px; border-radius: 8px; border: 1px solid #bae6fd; font-family: monospace; font-size: 11px; line-height: 1.5;">
-# Medication Counseling Leaflet Skill<br>
-<br>
-## Context<br>
-You are a clinical pharmacist creating patient education materials in Thailand.<br>
-<br>
-## Objective<br>
-Generate a 1-page leaflet for a specific medication that is clear, accurate, and patient-friendly.<br>
-<br>
-## Process<br>
-1. Take drug name as input<br>
-2. Identify: indication, mechanism, dosing, common SE, drug interactions<br>
-3. Write in simple Thai (high school level)<br>
-4. Include: "When to call doctor" section<br>
-<br>
-## Output Format<br>
-- Title + drug name<br>
-- 5 sections (Why, How, Side Effects, Diet, When to call)<br>
-- Bullet points only (no long paragraphs)<br>
-- Include 1 visual separator<br>
-<br>
-## Healthcare-Specific Rules<br>
-- Never exceed 1 page<br>
-- Emphasize drug-food interactions for Thai cuisine<br>
-- Use term from Thai FDA (if available)
-    </div>
-</div>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🔌 Connectors in Plugins</h3>
-<p>Plugins สามารถเชื่อมต่อกับ Connectors เพื่อ Automate Output:</p>
-<div class="grid-2" style="margin-top: 16px;">
-    <div class="card" style="border-left: 4px solid #2563eb;">
-        <h4 style="color: #2563eb; margin-bottom: 12px;">📧 Gmail Connector</h4>
-        <p>Output ที่ Plugin สร้าง → ส่ง Email ให้ Patient โดยอัตโนมัติ</p>
-    </div>
-    <div class="card" style="border-left: 4px solid #16a34a;">
-        <h4 style="color: #16a34a; margin-bottom: 12px;">📁 Google Drive Connector</h4>
-        <p>Save leaflet ที่สร้าง → Google Docs folder โดยอัตโนมัติ</p>
-    </div>
-</div>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🤖 Sub-agents in Plugins</h3>
-<p>สำหรับงาน Complex ให้ Plugin สร้าง Sub-agents:</p>
-<div style="background: #f8fafc; padding: 16px; border-radius: 12px; margin-top: 16px;">
-    <p style="margin-bottom: 16px;"><strong>🏥 Healthcare Example: "Clinical Trial Screening Plugin"</strong></p>
-    <div style="display: grid; gap: 12px;">
-        <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #2563eb;">
-            <p><strong>Agent 1: Data Parser</strong><br><span style="font-size: 12px; color: #64748b;">อ่าน Patient records → Extract relevant data (Age, BP, Lab)</span></p>
-        </div>
-        <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #f97316;">
-            <p><strong>Agent 2: Criteria Checker</strong><br><span style="font-size: 12px; color: #64748b;">ตรวจสอบ Inclusion/Exclusion → Category patient</span></p>
-        </div>
-        <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #16a34a;">
-            <p><strong>Agent 3: Report Generator</strong><br><span style="font-size: 12px; color: #64748b;">สร้าง Summary report + send to coordinator</span></p>
-        </div>
-    </div>
-</div>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🎓 เมื่อไหร่ควรสร้าง Custom Plugin?</h3>
-<div style="background: #f0fdf4; padding: 16px; border-radius: 12px; margin-top: 16px; border-left: 4px solid #15803d;">
-    <p style="margin-bottom: 12px;"><strong>✅ สร้าง Plugin เมื่อ:</strong></p>
+<div class="card" style="border-left: 6px solid #059669;">
+    <h4 style="color: #059669; margin-bottom: 12px;">🏢 สถานการณ์ (Situation)</h4>
+    <p style="margin-bottom: 16px;"><strong>บริษัท:</strong> Medical Device Company ขนาดกลาง (เครื่องมือแพทย์)</p>
+    <p style="margin-bottom: 12px;"><strong>ปัญหา:</strong> IFU (ใบสั่งการใช้งาน) สำหรับเครื่องตรวจ ECG มี 45 หน้า อังกฤษ ต้องแปลเป็นไทย ใน 1 สัปดาห์</p>
     <ul style="margin-left: 16px; line-height: 1.8;">
-        <li>งานซ้ำ ๆ ที่เกิดขึ้น 5+ ครั้ง/สัปดาห์</li>
-        <li>ต้องการ Standardization (เสมอ ๆ)</li>
-        <li>ต้อง Integration กับ Apps (Gmail, Drive)</li>
-        <li>ต้อง Automation (ไม่ต้องสั่งงาน)</li>
-    </ul>
-</div>
-<div style="background: #fef2f2; padding: 16px; border-radius: 12px; margin-top: 12px; border-left: 4px solid #dc2626;">
-    <p style="margin-bottom: 12px;"><strong>❌ ไม่ต้องสร้าง เมื่อ:</strong></p>
-    <ul style="margin-left: 16px; line-height: 1.8;">
-        <li>งานเก่า ๆ ไม่ซ้ำ</li>
-        <li>ต้องความสร้างสรรค์สูง</li>
-        <li>Setup ซับซ้อนเกินไป (ROI ลบ)</li>
+        <li>ปกติแปลโดยบริษัท Translation = 2-3 สัปดาห์, ค่าใช้จ่าย 30,000 บาท</li>
+        <li>ต้องมี Technical accuracy (Medical terms)</li>
+        <li>ต้อง Verify ก่อนส่ง FDA Thailand</li>
     </ul>
 </div>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🛠️ 6 Steps: สร้าง Healthcare Plugin เองจากศูนย์</h3>
-<div style="margin-top: 16px;">
-    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; border-left: 4px solid #0284c7; margin-bottom: 12px;">
-        <p><strong>Step 1: Define the Problem</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">เลือกงานที่ต้องการ Automate (เช่น "สร้าง Patient Counseling Material")</p>
-    </div>
-    <div style="background: #fff7ed; padding: 16px; border-radius: 8px; border-left: 4px solid #ea580c; margin-bottom: 12px;">
-        <p><strong>Step 2: Write the Skill (Markdown)</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">สร้าง .md file ที่สอน Claude → Output ที่ต้องการ (see example above)</p>
-    </div>
-    <div style="background: #f0fdf4; padding: 16px; border-radius: 8px; border-left: 4px solid #15803d; margin-bottom: 12px;">
-        <p><strong>Step 3: Choose Connectors</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">เลือก Input connector (Gmail? Drive?) + Output connector (Save where?)</p>
-    </div>
-    <div style="background: #fef2f2; padding: 16px; border-radius: 8px; border-left: 4px solid #dc2626; margin-bottom: 12px;">
-        <p><strong>Step 4: Create Sub-agents (Optional)</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">ถ้างาน Complex ให้แบ่งเป็น Sub-tasks</p>
-    </div>
-    <div style="background: #faf5ff; padding: 16px; border-radius: 8px; border-left: 4px solid #a855f7; margin-bottom: 12px;">
-        <p><strong>Step 5: Test with Sample Data</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">ลองใช้ Plugin จริง ด้วย test data ก่อน</p>
-    </div>
-    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; border-left: 4px solid #0284c7;">
-        <p><strong>Step 6: Deploy & Monitor</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">Deploy ให้ Team ใช้ → Monitor ผล → Iterate</p>
+<div class="card" style="border-left: 6px solid #059669;">
+    <h4 style="color: #059669; margin-bottom: 12px;">🔧 RTF Prompt ที่ใช้</h4>
+    <div style="background: #f0fdf4; padding: 16px; border-radius: 8px; border: 1px solid #86efac; font-family: monospace; font-size: 12px; line-height: 1.6;">
+You are a medical translator specialized in Thai medical device terminology.<br>
+<br>
+Task: Translate the IFU (Instructions for Use) for an ECG machine from English to Thai.<br>
+<br>
+Context:<br>
+- This is for FDA Thailand submission<br>
+- Must maintain technical accuracy<br>
+- Must use standard Thai medical terms<br>
+- Safety instructions must be crystal clear<br>
+<br>
+Format:<br>
+- Keep section structure identical<br>
+- Use bullet points for procedures<br>
+- Add footnotes where technical terms need explanation<br>
+- Include a glossary of 10 key medical terms (English-Thai)<br>
+<br>
+Input: [Paste 45-page IFU document]<br>
+<br>
+Output: Complete Thai translation + Glossary
     </div>
 </div>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🏥 3 Healthcare Plugin Examples</h3>
-
-<div class="card" style="border-left: 6px solid #2563eb; margin-bottom: 20px;">
-    <h4 style="color: #2563eb; margin-bottom: 12px;">1️⃣ Plugin: "Medication Reconciliation Assistant"</h4>
-    <p style="margin-top: 12px;"><strong>Skills:</strong></p>
-    <ul style="margin-left: 16px; margin-top: 8px;">
-        <li>Compare home meds vs hospital meds</li>
-        <li>Check drug interactions</li>
-        <li>Generate reconciliation report</li>
-    </ul>
-    <p style="margin-top: 12px;"><strong>Connectors:</strong></p>
-    <ul style="margin-left: 16px; margin-top: 8px;">
-        <li>Input: Google Sheets (patient data)</li>
-        <li>Output: Save to Google Docs + Email summary</li>
-    </ul>
-</div>
-
-<div class="card" style="border-left: 6px solid #f97316; margin-bottom: 20px;">
-    <h4 style="color: #f97316; margin-bottom: 12px;">2️⃣ Plugin: "HCP Training Content Generator"</h4>
-    <p style="margin-top: 12px;"><strong>Skills:</strong></p>
-    <ul style="margin-left: 16px; margin-top: 8px;">
-        <li>Create CME module content</li>
-        <li>Generate case studies</li>
-        <li>Build quiz questions</li>
-    </ul>
-    <p style="margin-top: 12px;"><strong>Connectors:</strong></p>
-    <ul style="margin-left: 16px; margin-top: 8px;">
-        <li>Input: Topic from Gmail</li>
-        <li>Output: Save HTML course to Drive + Send Slack notification</li>
-    </ul>
-</div>
-
-<div class="card" style="border-left: 6px solid #16a34a; margin-bottom: 20px;">
-    <h4 style="color: #16a34a; margin-bottom: 12px;">3️⃣ Plugin: "Clinical Trial Data Processor"</h4>
-    <p style="margin-top: 12px;"><strong>Skills:</strong></p>
-    <ul style="margin-left: 16px; margin-top: 8px;">
-        <li>Screen patient eligibility</li>
-        <li>Generate screening report</li>
-        <li>Flag borderline cases</li>
-    </ul>
-    <p style="margin-top: 12px;"><strong>Connectors:</strong></p>
-    <ul style="margin-left: 16px; margin-top: 8px;">
-        <li>Input: CSV from EMR</li>
-        <li>Output: Excel report + Email RC</li>
-    </ul>
-</div>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">👥 Role-Specific Customization</h3>
-<p>ตามบทบาท ต่างประเภทของ Healthcare ต้อง Custom ต่างกัน:</p>
-<div class="grid-2" style="margin-top: 16px;">
-    <div class="card">
-        <h4 style="color: #0f3a7a; margin-bottom: 12px;">👨‍⚕️ Medical Affairs Specialist</h4>
-        <p><strong>Plugin ที่ต้อง:</strong></p>
-        <ul style="margin-left: 16px; margin-top: 8px; font-size: 13px;">
-            <li>IFU Translation</li>
-            <li>HCP Training Materials</li>
-            <li>Clinical Evidence Summaries</li>
-        </ul>
-    </div>
-    <div class="card">
-        <h4 style="color: #0f3a7a; margin-bottom: 12px;">⚖️ Regulatory Specialist</h4>
-        <p><strong>Plugin ที่ต้อง:</strong></p>
-        <ul style="margin-left: 16px; margin-top: 8px; font-size: 13px;">
-            <li>Document Checklist Verifier</li>
-            <li>Guideline Compliance Checker</li>
-            <li>Risk Assessment Report</li>
-        </ul>
-    </div>
-</div>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">⚙️ Plugin Management & Best Practices</h3>
-<div style="background: #f8fafc; padding: 16px; border-radius: 12px; margin-top: 16px;">
-    <p style="margin-bottom: 12px;"><strong>5 Tips สำหรับการใช้ Plugin ได้ดี:</strong></p>
+<div class="card" style="border-left: 6px solid #059669;">
+    <h4 style="color: #059669; margin-bottom: 12px;">📊 ขั้นตอนการทำงาน (What Happened)</h4>
     <ol style="margin-left: 16px; line-height: 1.8;">
-        <li><strong>Version Control:</strong> ให้ Version ของ Skill (v1, v2) เพื่อ Track changes</li>
-        <li><strong>Documentation:</strong> เขียน README สำหรับ Team ว่า Plugin ทำอะไร</li>
-        <li><strong>Error Handling:</strong> บอก Claude ว่าต้องทำไร ถ้าข้อมูล Invalid</li>
-        <li><strong>Monitor Output:</strong> ตรวจสอบ Output ระหว่างเดิน (โดยเฉพาะ Healthcare)</li>
-        <li><strong>Iterate & Improve:</strong> ทำ Feedback loop ให้เพิ่มประสิทธิภาพ</li>
+        <li><strong>Day 1:</strong> Upload IFU file → Cowork เริ่มแปล (Split เป็น 10 sections)</li>
+        <li><strong>Day 1-2:</strong> Cowork แปล + สร้าง Glossary (8 ชั่วโมงประมวลผล)</li>
+        <li><strong>Day 3:</strong> QA Team ตรวจสอบ Medical terms + Safety phrases</li>
+        <li><strong>Day 3-4:</strong> Minor revisions (5-10 ที่)</li>
+        <li><strong>Day 5:</strong> Final review + Format for FDA submission</li>
     </ol>
 </div>
 
+<div class="card" style="border-left: 6px solid #059669;">
+    <h4 style="color: #059669; margin-bottom: 12px;">📈 ผลลัพธ์ Before & After (Quantified Results)</h4>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
+        <tr style="background: #e7f5f0;">
+            <th style="padding: 10px; text-align: left; border: 1px solid #a7f3d0;"><strong>ตัวชี้วัด</strong></th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #a7f3d0;"><strong>ก่อน (Manual)</strong></th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #a7f3d0;"><strong>หลัง (Cowork)</strong></th>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #d1fae5;"><strong>⏱️ เวลา</strong></td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">14-21 วัน</td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">5 วัน</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+            <td style="padding: 10px; border: 1px solid #d1fae5;"><strong>💰 ค่าใช้จ่าย</strong></td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">30,000 บาท</td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">2,000 บาท (API + QA)</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #d1fae5;"><strong>👥 Man-hours</strong></td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">80 ชั่วโมง</td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">20 ชั่วโมง (QA only)</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+            <td style="padding: 10px; border: 1px solid #d1fae5;"><strong>✅ Accuracy</strong></td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">95-98%</td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">98-99%</td>
+        </tr>
+    </table>
+    <p style="margin-top: 12px; font-size: 13px; color: #059669;"><strong>💡 ROI:</strong> เก็บเวลา 75%, ลดค่า 93%, เพิ่ม Accuracy</p>
+</div>
+
+<div class="card" style="border-left: 6px solid #059669;">
+    <h4 style="color: #059669; margin-bottom: 12px;">🎓 Key Learnings</h4>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li><strong>✅ ใช้ Cowork ได้ดี สำหรับ:</strong> Translation tasks ที่มี Standard format (like IFU)</li>
+        <li><strong>✅ QA ยังต้อง:</strong> Manual review สำหรับ Medical accuracy (ไม่เชื่อใจ AI 100%)</li>
+        <li><strong>✅ Glossary assist:</strong> Cowork ช่วยสร้าง Glossary ได้ดี ทำให้ Consistency ดีขึ้น</li>
+        <li><strong>⚠️ Watch out:</strong> Medical terms ต้องตรวจสอบ ไม่งั้น liability risk</li>
+    </ul>
+</div>
+
+<hr style="margin: 32px 0; border: none; border-top: 2px solid #e2e8f0;">
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📚 Case Study 2: Hospital System — Medication Reconciliation at Discharge</h3>
+
+<div class="card" style="border-left: 6px solid #dc2626;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">🏥 สถานการณ์ (Situation)</h4>
+    <p style="margin-bottom: 12px;"><strong>หน่วยงาน:</strong> โรงพยาบาล 500 เตียง (Government Hospital)</p>
+    <p style="margin-bottom: 16px;"><strong>ปัญหา:</strong> เมื่อผู้ป่วยจากหน่วยรักษา Pharmacist ต้องตรวจสอบ "ยาที่ผู้ป่วยกำลังใช้" vs "ยาที่ห้ามใช้" (Reconciliation) ห้ามเพิ่มยาใหม่</p>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li>50 discharge patients/day</li>
+        <li>แต่ละ reconciliation ใช้เวลา 15-20 นาที</li>
+        <li>Pharmacist ก็ 3 คน = ทำไม่ทันตั้งแต่เช้า</li>
+        <li>ผลลัพธ์ = Drug errors ที่ Discharge หลาย ๆ ตรง</li>
+    </ul>
+</div>
+
+<div class="card" style="border-left: 6px solid #dc2626;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">🔧 RTF Prompt ที่ใช้</h4>
+    <div style="background: #fef2f2; padding: 16px; border-radius: 8px; border: 1px solid #fecaca; font-family: monospace; font-size: 12px; line-height: 1.6;">
+You are a clinical pharmacist at a hospital discharge clinic.<br>
+<br>
+Task: Perform medication reconciliation for a patient.<br>
+<br>
+Input provided:<br>
+1. Home medications (what patient was taking at home)<br>
+2. Current hospital medications (what we gave during stay)<br>
+3. Planned discharge medications<br>
+<br>
+Analyze and identify:<br>
+1. Discrepancies (missing, duplicates, contraindications)<br>
+2. Drug interactions at discharge<br>
+3. Any concerns that need Pharmacist review<br>
+<br>
+Format: 1-page summary with:<br>
+- OK medications (green)<br>
+- Needs review (yellow)<br>
+- High risk (red)<br>
+<br>
+Language: Thai, clear for patient education
+    </div>
+</div>
+
+<div class="card" style="border-left: 6px solid #dc2626;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">📊 ขั้นตอนการทำงาน</h4>
+    <ol style="margin-left: 16px; line-height: 1.8;">
+        <li><strong>Integration:</strong> Cowork เชื่อมต่อกับ Hospital EMR (via Connector)</li>
+        <li><strong>Workflow:</strong> Pharmacist upload discharge patient list → Cowork ดึงข้อมูล Home Rx + Current Rx</li>
+        <li><strong>Processing:</strong> Cowork ทำ Reconciliation สำหรับทั้งชุด (50 patients)</li>
+        <li><strong>Flag:</strong> ระบุ Cases ที่ต้อง Pharmacist Manual review ด้วย</li>
+        <li><strong>Output:</strong> Summary report + Individual patient flags</li>
+    </ol>
+</div>
+
+<div class="card" style="border-left: 6px solid #dc2626;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">📈 ผลลัพธ์ Before & After</h4>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
+        <tr style="background: #fee2e2;">
+            <th style="padding: 10px; text-align: left; border: 1px solid #fecaca;"><strong>ตัวชี้วัด</strong></th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #fecaca;"><strong>ก่อน</strong></th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #fecaca;"><strong>หลัง (+ Cowork)</strong></th>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #fecaca;"><strong>⏱️ Time/patient</strong></td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">15-20 นาที</td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">2-3 นาที (AI prep)</td>
+        </tr>
+        <tr style="background: #fef2f2;">
+            <td style="padding: 10px; border: 1px solid #fecaca;"><strong>📊 Cases/day</strong></td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">~30/day (ทำไม่ทัน)</td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">50/day ✅</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #fecaca;"><strong>🚨 Drug errors caught</strong></td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">40%</td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">92%</td>
+        </tr>
+        <tr style="background: #fef2f2;">
+            <td style="padding: 10px; border: 1px solid #fecaca;"><strong>👥 Pharmacist needed</strong></td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">100% (all cases)</td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">30% (high-risk only)</td>
+        </tr>
+    </table>
+</div>
+
+<div class="card" style="border-left: 6px solid #dc2626;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">🎓 Key Learnings</h4>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li><strong>✅ Scalability:</strong> Cowork ใช้เวลาเท่าเดิม แม้ 50 cases (Linear scaling)</li>
+        <li><strong>✅ Safety improvement:</strong> Drug error detection ขึ้นจาก 40% → 92%</li>
+        <li><strong>✅ Resource optimization:</strong> Pharmacist ต้อง 100% → 30% → เพิ่มให้ Task อื่น</li>
+        <li><strong>⚠️ Final check still needed:</strong> ไม่สามารถปล่อย Cowork ตัวเดียว</li>
+    </ul>
+</div>
+
+<hr style="margin: 32px 0; border: none; border-top: 2px solid #e2e8f0;">
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📚 Case Study 3: Pharmaceutical Company — Clinical Trial Patient Screening</h3>
+
+<div class="card" style="border-left: 6px solid #2563eb;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">🔬 สถานการณ์ (Situation)</h4>
+    <p style="margin-bottom: 12px;"><strong>บริษัท:</strong> Pharma Company ต้องคัดกรองผู้ป่วย สำหรับ HTN Clinical Trial</p>
+    <p style="margin-bottom: 16px;"><strong>ปัญหา:</strong></p>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li>Criteria ซับซ้อน: Age 40-75, BP ≥140/90, HTN ≥5 yrs, eGFR ≥30 BUT <60 (moderate CKD), NO diabetes, NO recent MI</li>
+        <li>ต้องตรวจหา 500 Patient Chart เพื่อหา 50 eligible (10% success rate)</li>
+        <li>ปกติ Research Coordinator ทำเอง = 5-7 วัน</li>
+        <li>ต้อง Verify ก่อนปรึกษากับ PI</li>
+    </ul>
+</div>
+
+<div class="card" style="border-left: 6px solid #2563eb;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">🔧 RTF Prompt ที่ใช้</h4>
+    <div style="background: #dbeafe; padding: 16px; border-radius: 8px; border: 1px solid #93c5fd; font-family: monospace; font-size: 12px; line-height: 1.6;">
+You are a clinical research coordinator.<br>
+<br>
+Task: Screen patient list for CTR001 (HTN trial) eligibility.<br>
+<br>
+Inclusion criteria (ALL must be met):<br>
+- Age 40-75 years<br>
+- Systolic BP ≥140 mmHg OR Diastolic ≥90 mmHg (at screening)<br>
+- Known HTN ≥5 years<br>
+- eGFR 30-59 mL/min/1.73m² (moderate CKD)<br>
+<br>
+Exclusion criteria (ANY = ineligible):<br>
+- Type 2 diabetes<br>
+- MI or stroke within 6 months<br>
+- Stage 4 CKD (eGFR <30)<br>
+- Current pregnancy<br>
+<br>
+Output format:<br>
+1. Eligible count<br>
+2. Excluded summary (why excluded)<br>
+3. Eligible patient list (ID + age + BP + eGFR)<br>
+4. Borderline cases (for PI review)
+    </div>
+</div>
+
+<div class="card" style="border-left: 6px solid #2563eb;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">📊 ขั้นตอนการทำงาน</h4>
+    <ol style="margin-left: 16px; line-height: 1.8;">
+        <li><strong>Upload:</strong> Export 500 patient records จาก Hospital EMR → CSV format</li>
+        <li><strong>Cowork processes:</strong> ตรวจสอบแต่ละ patient ตาม Inclusion/Exclusion</li>
+        <li><strong>Categorization:</strong> Eligible | Excluded | Borderline (ต้อง PI review)</li>
+        <li><strong>Manual review:</strong> RC + PI ตรวจสอบ Borderline cases</li>
+        <li><strong>Final list:</strong> Eligible patients ส่งสัญญา Sites</li>
+    </ol>
+</div>
+
+<div class="card" style="border-left: 6px solid #2563eb;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">📈 ผลลัพธ์ Before & After</h4>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
+        <tr style="background: #dbeafe;">
+            <th style="padding: 10px; text-align: left; border: 1px solid #93c5fd;"><strong>ตัวชี้วัด</strong></th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #93c5fd;"><strong>Manual (Old)</strong></th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #93c5fd;"><strong>+ Cowork</strong></th>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #93c5fd;"><strong>⏱️ Time to screen 500</strong></td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">5-7 วัน</td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">4-6 ชั่วโมง</td>
+        </tr>
+        <tr style="background: #eff6ff;">
+            <td style="padding: 10px; border: 1px solid #93c5fd;"><strong>👥 RC man-hours</strong></td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">40-50 hrs</td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">8-10 hrs (verify only)</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #93c5fd;"><strong>✅ Accuracy</strong></td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">~95%</td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">99.5%</td>
+        </tr>
+        <tr style="background: #eff6ff;">
+            <td style="padding: 10px; border: 1px solid #93c5fd;"><strong>🎯 Eligible found</strong></td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">48 patients</td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">52 patients (missed less)</td>
+        </tr>
+    </table>
+</div>
+
+<div class="card" style="border-left: 6px solid #2563eb;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">🎓 Key Learnings</h4>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li><strong>✅ Speed boost:</strong> 95% ประหยัดเวลา (5 วัน → 4-6 ชั่วโมง)</li>
+        <li><strong>✅ Consistency:</strong> Cowork ไม่ลืม criteria ระหว่าง 500 patient (Human ลืมได้)</li>
+        <li><strong>✅ Accuracy improvement:</strong> ทำให้เจอ Patient ที่ manual คนพลาดไป</li>
+        <li><strong>⚠️ Borderline review:</strong> ต้อง PI verify ยังเป็นจำเป็น (liability)</li>
+    </ul>
+</div>
+
 <div class="exercise">
-    <h4>🏋️ แบบฝึกหัด 5: ออกแบบ Healthcare Plugin ของคุณเอง</h4>
-    <p style="margin-top: 12px;"><strong>เลือก 1 งาน Healthcare ที่ซ้ำและออกแบบ Plugin:</strong></p>
+    <h4>🏋️ แบบฝึกหัด 4: Case Study Analysis</h4>
+    <p style="margin-top: 12px;"><strong>เลือก 1 Case Study ข้างบน และวิเคราะห์:</strong></p>
     <ol style="margin-left: 16px; margin-top: 8px; line-height: 1.8;">
-        <li>ชื่อ Plugin?</li>
-        <li>Problem ที่แก้?</li>
-        <li>3-4 Skills ต้องเขียน?</li>
-        <li>Connectors ต้องใช้?</li>
-        <li>Sub-agents ต้อง?</li>
-        <li>ประหยัดเวลา/ค่าใช้จ่ายเท่าไหร่?</li>
+        <li>สิ่งที่ Cowork ทำให้ดีขึ้น?</li>
+        <li>ข้อจำกัดและความเสี่ยงของการใช้ Cowork มีอะไร?</li>
+        <li>ในองค์กรของคุณ ใครจะได้ประโยชน์มากที่สุดจาก Use case นี้?</li>
+        <li>คุณจะสั่ง Cowork งานของคุณแบบไหน?</li>
     </ol>
 </div>

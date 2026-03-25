@@ -1,178 +1,166 @@
 <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-    <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมีวิเคราะห์" class="bear-avatar bear-medium bear-thinking">
+    <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมีสอนบทที่ 1" class="bear-avatar bear-medium bear-teacher">
     <div>
-        <h2 class="section-header" style="margin: 0;">⚙️ บทที่ 2 — Healthcare Use Cases ที่ใช้ได้จริง</h2>
-        <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">พี่หมีพาดูตัวอย่างจริงที่ใช้ได้เดี๋ยวนี้ 💡</p>
+        <h2 class="section-header" style="margin: 0;">📱 บทที่ 2 — Claude Cowork Basics</h2>
+        <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">พี่หมีพาไปรู้จัก Claude Cowork แบบละเอียด 🔧</p>
     </div>
 </div>
-<p>มาดูตัวอย่างที่ใช้งานได้จริงในวงการ Healthcare กันเลยครับ</p>
+<p>Claude Cowork คือโหมดพิเศษใน Claude Desktop App ที่เปลี่ยน Claude จาก Chatbot ธรรมดาให้กลายเป็น <strong>AI Agent ที่ทำงานอัตโนมัติได้</strong> ครับ</p>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">6 Healthcare Use Cases ที่ทำได้เดี๋ยวนี้</h3>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📊 Cowork vs Chat ปกติ — ความแตกต่างอยู่ที่ไหน?</h3>
+<table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+    <tr style="background: #f1f5f9;">
+        <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;"><strong>ประเด็น</strong></th>
+        <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;"><strong>Chat ปกติ</strong></th>
+        <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;"><strong>Claude Cowork</strong></th>
+    </tr>
+    <tr>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>🔄 วิธีการทำงาน</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">ถามตอบทีละขั้น ต้องรอเรา</td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">ทำงานอัตโนมัติหลายขั้น</td>
+    </tr>
+    <tr style="background: #f8fafc;">
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>🤖 ความเป็น Agent</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">ไม่ใช่ Agent เป็นแค่ Chatbot</td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">✅ Agent จริง ทำงานอย่างอิสระ</td>
+    </tr>
+    <tr>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>📁 Access Files & Apps</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">ไม่สามารถ</td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">✅ ผ่าน Connectors (Gmail, Drive, etc)</td>
+    </tr>
+    <tr style="background: #f8fafc;">
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>⚙️ Automation</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">ไม่มี</td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">✅ ตั้งเวลาให้ทำงานอัตโนมัติ</td>
+    </tr>
+    <tr>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>🛠️ Customizable</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">ไม่ได้</td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">✅ สร้าง Custom Skills & Plugins</td>
+    </tr>
+    <tr style="background: #f8fasc;">
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>💼 ใช้งานที่ดี</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">ตอบ Q&A เขียนเล่น ๆ</td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">🏢 งานเชิงธุรกิจ Healthcare</td>
+    </tr>
+</table>
 
-<div class="card" style="border-left: 6px solid #2563eb; margin-bottom: 20px;">
-    <h4 style="color: #2563eb; margin-bottom: 12px;">💊 Use Case 1: Patient Education Materials</h4>
-    <p><strong>อธิบาย:</strong> สร้างเอกสารสอนผู้ป่วย เช่น "วิธีรับประทานยา" "อาหารที่หลีกเลี่ยง" "Side Effects ที่ต้องระวัง"</p>
-    <p style="margin-top: 12px;">Cowork เขียนหนึ่งสั่ง สามารถสร้างวัสดุให้เหมาะกับผู้ป่วยทุกเพศทุกวัย ใช้ภาษาง่าย ๆ</p>
-    <p style="margin-top: 12px;"><strong>5 Sub-Use Cases:</strong></p>
-    <ul style="margin-left: 16px; margin-top: 8px;">
-        <li>Medication Leaflets (ใบปลิว)</li>
-        <li>Disease Education (โรค HTN, DM, Asthma)</li>
-        <li>Pre/Post-Op Instructions</li>
-        <li>Dietary Guides for Specific Conditions</li>
-        <li>Vaccination & Immunization Guides</li>
-    </ul>
-    <div style="background: #f0f9ff; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 12px; line-height: 1.5;">
-You are a clinical pharmacist education specialist.<br>
-Write a patient leaflet about Metformin side effects and management in Thai.<br>
-Use simple language for high school level patients. Include: 1) Common SE, 2) How to manage, 3) When to call doctor.<br>
-Format: 1 page maximum, bullet points.<br>
-Tone: Reassuring and clear.
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">💻 ระบบที่ต้องการ (System Requirements)</h3>
+<div class="grid-2">
+    <div class="card" style="border-left: 4px solid #2563eb;">
+        <h4 style="color: #2563eb;">🖥️ Computer</h4>
+        <ul style="margin-left: 16px; margin-top: 8px; line-height: 1.8;">
+            <li>macOS 13+ หรือ Windows 10+ หรือ Linux</li>
+            <li>RAM ขั้นต่ำ 8GB (16GB แนะนำ)</li>
+            <li>Internet ต้องมี</li>
+        </ul>
     </div>
-    <p style="margin-top: 12px;"><strong>⏱️ Before/After Time:</strong> Manual writing = 2-3 ชั่วโมง | Cowork = 2-3 นาที (80% ประหยัด)</p>
+    <div class="card" style="border-left: 4px solid #f97316;">
+        <h4 style="color: #f97316;">🔑 Account</h4>
+        <ul style="margin-left: 16px; margin-top: 8px; line-height: 1.8;">
+            <li>Claude Account (paid หรือ free ก็ได้)</li>
+            <li>Claude Desktop App (ดาวน์โหลด claude.ai)</li>
+            <li>Internet ทำงานดี</li>
+        </ul>
+    </div>
 </div>
 
-<div class="card" style="border-left: 6px solid #f97316; margin-bottom: 20px;">
-    <h4 style="color: #f97316; margin-bottom: 12px;">📋 Use Case 2: Clinical Notes & Documentation</h4>
-    <p><strong>อธิบาย:</strong> เขียน SOAP notes, Progress notes, ร่างจดหมายอ้างอิง สำหรับหมอ/เภสัชกร</p>
-    <p style="margin-top: 12px;">แทน copy-paste จากแม่แบบ ให้ Cowork เขียนอย่างมี context ตามสถานการณ์ผู้ป่วยจริง</p>
-    <p style="margin-top: 12px;"><strong>5 Sub-Use Cases:</strong></p>
-    <ul style="margin-left: 16px; margin-top: 8px;">
-        <li>SOAP Notes (Subjective/Objective/Assessment/Plan)</li>
-        <li>Pharmacotherapy Recommendations</li>
-        <li>Follow-up Letters to Doctors</li>
-        <li>Medication Reconciliation Reports</li>
-        <li>Discharge Summaries</li>
-    </ul>
-    <div style="background: #fff7ed; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 12px; line-height: 1.5;">
-You are a clinical pharmacist.<br>
-Write a SOAP note for Mr. Somchai, 65yo, HTN, on Amlodipine 10mg daily.<br>
-Chief complaint: Occasional ankle swelling.<br>
-Create: S (symptoms), O (findings), A (assessment), P (plan).<br>
-Language: Thai, professional tone.
-    </div>
-    <p style="margin-top: 12px;"><strong>⏱️ Before/After Time:</strong> Manual = 30 นาที | Cowork = 3-5 นาที (80% ประหยัด)</p>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🎯 3 วิธีการทำงานกับ Claude Cowork</h3>
+
+<div class="card card-blue" style="margin-top: 16px;">
+    <h4 style="color: #2563eb; margin-bottom: 16px;">1️⃣ Command Mode (ที่ง่ายที่สุด)</h4>
+    <p>ให้คำสั่งไป Claude เอง ทำงาน เสร็จ รายงานผล</p>
+    <p style="margin-top: 12px; font-size: 13px; background: #f0f9ff; padding: 12px; border-radius: 6px; border-left: 3px solid #0284c7;">
+        <strong>📋 ตัวอย่างงาน Healthcare:</strong><br>
+        • "เรียงจดหมายตอบกลับจากเภสัชกรเมื่อวานให้หมอ เป็นภาษาไทยที่สุภาพ"<br>
+        • "สรุปรายงานการศึกษาโครงการ มะเร็งตับ จากไฟล์ PDF นี้ เป็นตาราง 3 คอลัมน์"<br>
+        • "ดูปัญหา Side Effect ของยา ใน 5 เรกคอร์ด และแนะนำ Alternative"
+    </p>
+    <p style="margin-top: 12px;"><strong>⏱️ เวลา:</strong> Instant — ผลลัพธ์ออกมาใน 10-30 วินาที</p>
+    <p style="margin-top: 8px; font-size: 13px; color: #64748b;"><strong>ใช้เมื่อ:</strong> งานเล็ก ๆ กลาง ๆ ต้องการผลลัพธ์เร็ว</p>
 </div>
 
-<div class="card" style="border-left: 6px solid #16a34a; margin-bottom: 20px;">
-    <h4 style="color: #16a34a; margin-bottom: 12px;">🔬 Use Case 3: Drug & Therapeutic Information</h4>
-    <p><strong>อธิบาย:</strong> ค้นหา Drug Interactions, Dosing, Contraindications อย่างรวดเร็ว สำหรับ Clinical Decision Making</p>
-    <p style="margin-top: 12px;">ถามคำถาม ส่ง Lab values Cowork ช่วยตรวจสอบการใช้ยาถูกต้องหรือไม่</p>
-    <p style="margin-top: 12px;"><strong>5 Sub-Use Cases:</strong></p>
-    <ul style="margin-left: 16px; margin-top: 8px;">
-        <li>Drug-Drug Interactions Checking</li>
-        <li>Dosing Calculations (esp. renal impairment)</li>
-        <li>Adverse Event Assessment</li>
-        <li>Contraindication Screening</li>
-        <li>Alternative Therapy Suggestions</li>
-    </ul>
-    <div style="background: #f0fdf4; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 12px; line-height: 1.5;">
-You are a pharmacotherapy expert.<br>
-Check drug interactions: Simvastatin (40mg) + Amlodipine (10mg) + Metoprolol (50mg).<br>
-Patient: 70yo F, CrCl = 45 mL/min.<br>
-Identify: 1) DDI risk, 2) Dosing appropriateness, 3) Recommendations.<br>
-Format: Table with 3 columns (Drug pair, Risk level, Action).
-    </div>
-    <p style="margin-top: 12px;"><strong>⏱️ Before/After Time:</strong> Lookup + Analysis = 15 นาที | Cowork = 1-2 นาที (85% ประหยัด)</p>
+<div class="card card-blue" style="margin-top: 16px;">
+    <h4 style="color: #f97316; margin-bottom: 16px;">2️⃣ Research & Analysis Mode (ลึกขึ้น)</h4>
+    <p>ให้ Claude ไปค้นคว้า วิเคราะห์ หาคำตอบ ไม่ต้องให้อีก</p>
+    <p style="margin-top: 12px; font-size: 13px; background: #fff7ed; padding: 12px; border-radius: 6px; border-left: 3px solid #ea580c;">
+        <strong>📋 ตัวอย่างงาน Healthcare:</strong><br>
+        • "ค้นหา Drug Interactions ระหว่าง Simvastatin + Amlodipine แล้วหาข้อมูล Clinical Evidence"<br>
+        • "ดูรายงานวิจัยเกี่ยวกับ HTN ใน Thailand ปี 2024-2025 แล้วเขียน Summary"<br>
+        • "วิเคราะห์ผลลัพธ์การสอบ OSCE ของเภสัชกรจบใหม่ คัดแบ่งคน strong vs weak"
+    </p>
+    <p style="margin-top: 12px;"><strong>⏱️ เวลา:</strong> 30 วินาที - 2 นาที (ตามความซับซ้อน)</p>
+    <p style="margin-top: 8px; font-size: 13px; color: #64748b;"><strong>ใช้เมื่อ:</strong> ต้องการความลึก ต้อง Research หลายแหล่ง</p>
 </div>
 
-<div class="card" style="border-left: 6px solid #a855f7; margin-bottom: 20px;">
-    <h4 style="color: #a855f7; margin-bottom: 12px;">📊 Use Case 4: Data Analysis & Reporting</h4>
-    <p><strong>อธิบาย:</strong> วิเคราะห์ Survey, จดหมายอาการผู้ป่วย, ข้อมูลคลินิก แล้วสรุปผล</p>
-    <p style="margin-top: 12px;">อัพโหลด 50 แบบฟอร์ม Claude ช่วยจำแนกประเภท สร้างสถิติ ทำรายงาน</p>
-    <p style="margin-top: 12px;"><strong>5 Sub-Use Cases:</strong></p>
-    <ul style="margin-left: 16px; margin-top: 8px;">
-        <li>Patient Satisfaction Surveys</li>
-        <li>Medication Adherence Analysis</li>
-        <li>Adverse Event Reporting & Trending</li>
-        <li>Treatment Outcome Summaries</li>
-        <li>Epidemiology Data Extraction</li>
-    </ul>
-    <div style="background: #faf5ff; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 12px; line-height: 1.5;">
-You are a healthcare data analyst.<br>
-Analyze these 30 patient records [upload CSV/file].<br>
-Extract: 1) Age distribution, 2) Medication categories, 3) Side effect frequency.<br>
-Create: Summary table + Key insights (3 bullets).<br>
-Format: Plain text table.
-    </div>
-    <p style="margin-top: 12px;"><strong>⏱️ Before/After Time:</strong> Manual analysis = 2-3 ชั่วโมง | Cowork = 5-10 นาที (90% ประหยัด)</p>
+<div class="card card-blue" style="margin-top: 16px;">
+    <h4 style="color: #16a34a; margin-bottom: 16px;">3️⃣ File Processing Mode (เหมาะสำหรับ Batch)</h4>
+    <p>ให้ทำงานกับหลายไฟล์พร้อมกัน รวม ตรวจสอบ สร้างรายงาน</p>
+    <p style="margin-top: 12px; font-size: 13px; background: #f0fdf4; padding: 12px; border-radius: 6px; border-left: 3px solid #15803d;">
+        <strong>📋 ตัวอย่างงาน Healthcare:</strong><br>
+        • "อ่าน 50 ไฟล์ Survey จากเภสัชกร แล้วสรุปความคิดเห็น เป็นหมวดหมู่"<br>
+        • "ตรวจสอบ 100 ใบสั่งยา หาคนที่ใช้ยาผิด (Drug Error) แล้วทำรายงาน"<br>
+        • "อ่าน 20 Patient Case files แล้วจำแนกปัญหา ใส่ลงสเปรดชีต"
+    </p>
+    <p style="margin-top: 12px;"><strong>⏱️ เวลา:</strong> 1-5 นาที (ตามจำนวนไฟล์)</p>
+    <p style="margin-top: 8px; font-size: 13px; color: #64748b;"><strong>ใช้เมื่อ:</strong> ต้องการทำงาน Bulk หรือ Batch Processing</p>
 </div>
 
-<div class="card" style="border-left: 6px solid #dc2626; margin-bottom: 20px;">
-    <h4 style="color: #dc2626; margin-bottom: 12px;">🏥 Use Case 5: Clinical Trial & Research Support</h4>
-    <p><strong>อธิบาย:</strong> ร่าง Protocol, ทำ Subject summaries, ตรวจสอบ Inclusion/Exclusion Criteria, วิเคราะห์ผล</p>
-    <p style="margin-top: 12px;">ทำให้ Researcher ไม่ต้อง Manual copy ข้อมูล เพิ่มความแม่นยำ</p>
-    <p style="margin-top: 12px;"><strong>5 Sub-Use Cases:</strong></p>
-    <ul style="margin-left: 16px; margin-top: 8px;">
-        <li>Protocol Draft & Review</li>
-        <li>Patient Enrollment Screening</li>
-        <li>Case Report Form (CRF) Checking</li>
-        <li>Safety & Efficacy Summaries</li>
-        <li>Statistical Summary Tables</li>
-    </ul>
-    <div style="background: #fef2f2; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 12px; line-height: 1.5;">
-You are a clinical research coordinator.<br>
-Review patient list (file attached) against trial criteria:<br>
-Inclusion: Age 40-75, HTN ≥5 years, BP ≥140/90.<br>
-Exclusion: CKD stage 4+, Pregnant.<br>
-Output: 1) Eligible count, 2) Excluded reasons (summary), 3) List of eligible IDs.
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🔗 Sub-Agents Diagram</h3>
+<p style="margin-bottom: 16px;">ใน Cowork คุณสามารถให้ Claude สร้าง "Sub-agents" (ตัวช่วยย่อย) เพื่อทำงานแยกส่วนกัน:</p>
+<div style="background: #f8fafc; padding: 24px; border-radius: 12px; border: 2px solid #e2e8f0; text-align: center;">
+    <div style="font-size: 16px; font-weight: 700; color: #0f3a7a; margin-bottom: 24px;">🎯 Main Task: วิเคราะห์ Patient Database</div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+        <div style="background: white; padding: 16px; border-radius: 8px; border: 2px solid #3b82f6;">
+            <div style="color: #3b82f6; font-weight: 700; margin-bottom: 8px;">Sub-agent 1</div>
+            <p style="font-size: 12px;">จัดเรียง Data</p>
+        </div>
+        <div style="background: white; padding: 16px; border-radius: 8px; border: 2px solid #f97316;">
+            <div style="color: #f97316; font-weight: 700; margin-bottom: 8px;">Sub-agent 2</div>
+            <p style="font-size: 12px;">ตรวจสอบข้อผิด</p>
+        </div>
+        <div style="background: white; padding: 16px; border-radius: 8px; border: 2px solid #16a34a;">
+            <div style="color: #16a34a; font-weight: 700; margin-bottom: 8px;">Sub-agent 3</div>
+            <p style="font-size: 12px;">สร้างรายงาน</p>
+        </div>
     </div>
-    <p style="margin-top: 12px;"><strong>⏱️ Before/After Time:</strong> Manual screening = 30 นาที | Cowork = 2-3 นาที (85% ประหยัด)</p>
 </div>
 
-<div class="card" style="border-left: 6px solid #059669; margin-bottom: 20px;">
-    <h4 style="color: #059669; margin-bottom: 12px;">🎓 Use Case 6: Training & Education for HCPs</h4>
-    <p><strong>อธิบาย:</strong> สร้าง Training modules, Quiz, Case studies สำหรับอบรมหมอ/เภสัชกร</p>
-    <p style="margin-top: 12px;">ระบุ Topic ให้ Cowork สร้าง Interactive learning materials พร้อม Assessment</p>
-    <p style="margin-top: 12px;"><strong>5 Sub-Use Cases:</strong></p>
-    <ul style="margin-left: 16px; margin-top: 8px;">
-        <li>Medical Affairs Training Content</li>
-        <li>Continuing Education (CME) Modules</li>
-        <li>Interactive Case Studies</li>
-        <li>Learning Quizzes & Assessments</li>
-        <li>Clinical Guideline Summaries</li>
-    </ul>
-    <div style="background: #f0fdf4; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 12px; line-height: 1.5;">
-You are a medical educator.<br>
-Create a 30-min training module on "HTN Management in CKD Patients".<br>
-Include: 1) Key learning objectives, 2) 5 clinical scenarios with Q&A, 3) Final quiz (5 questions).<br>
-Language: Thai, target: Pharmacists/Nurses.<br>
-Format: Markdown with sections.
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📦 Installation Steps (ทีละขั้น)</h3>
+<div style="margin-top: 16px;">
+    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; border-left: 4px solid #0284c7; margin-bottom: 12px;">
+        <p><strong>Step 1: ดาวน์โหลด Claude Desktop</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">ไปที่ claude.ai → Download Desktop App → เลือก macOS/Windows/Linux ของคุณ</p>
     </div>
-    <p style="margin-top: 12px;"><strong>⏱️ Before/After Time:</strong> Manual creation = 4-6 ชั่วโมง | Cowork = 10-15 นาที (95% ประหยัด)</p>
-</div>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">💡 เลือกใช้งาน Use Case ไหน?</h3>
-<p>คำถามสำคัญ: "ผมควรใช้ Cowork ตรงไหนก่อน?" ครับ</p>
-<div style="background: #f8fafc; padding: 16px; border-radius: 12px; margin-top: 16px; border-left: 4px solid #0f3a7a;">
-    <p style="margin-bottom: 16px;"><strong>✅ ใช้ Cowork ได้ดี เมื่อ:</strong></p>
-    <ul style="margin-left: 16px; margin-bottom: 16px;">
-        <li>งานซ้ำ ๆ (Repetitive) — เช่น เขียน Leaflet ไปมา</li>
-        <li>งานที่ใช้เวลา นาน — เช่น สรุป 100 ไฟล์</li>
-        <li>งานที่ต้องความเรียบร้อย (Accuracy) — ต่างจากการเขียนสร้างสรรค์</li>
-        <li>งานที่ Standardizable — เช่น SOAP note ที่มีรูปแบบเดียวกัน</li>
-    </ul>
-    <p><strong>❌ ระวังใช้ Cowork:</strong></p>
-    <ul style="margin-left: 16px;">
-        <li>งานที่ต้องการ Creative หรือ Innovation — Cowork ทำ Template ได้ แต่ Creative ต้องโดย</li>
-        <li>งานที่ Risk สูง — ต้อง Verify ผลลัพธ์ก่อนใช้ (โดยเฉพาะ Medical decisions)</li>
-        <li>ข้อมูล Confidential — ต้องระวังไม่ส่ง PII (Patient IDs, names) มาแก้กับ Cowork</li>
-    </ul>
+    <div style="background: #fff7ed; padding: 16px; border-radius: 8px; border-left: 4px solid #ea580c; margin-bottom: 12px;">
+        <p><strong>Step 2: ติดตั้งและสมัครสมาชิก</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">เปิด App → สมัครสมาชิก Claude (ถ้ายังไม่มี) → Login ด้วย Account</p>
+    </div>
+    <div style="background: #f0fdf4; padding: 16px; border-radius: 8px; border-left: 4px solid #15803d; margin-bottom: 12px;">
+        <p><strong>Step 3: เปิด Cowork Mode</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">ใน Settings → Toggle "Enable Cowork" → Restart App</p>
+    </div>
+    <div style="background: #fef2f2; padding: 16px; border-radius: 8px; border-left: 4px solid #dc2626;">
+        <p><strong>Step 4: ลอง command แรก</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">พิมพ์ "Write a hello world script" → สั่ง Claude ทำ → ดูผล</p>
+    </div>
 </div>
 
 <div class="exercise">
     <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
         <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="หมีให้กำลังใจ" class="bear-avatar bear-small bear-happy">
         <div>
-            <h4 style="margin: 0;">🏋️ แบบฝึกหัด 2: เลือก Use Case ของคุณ</h4>
-            <p style="margin: 4px 0 0 0; font-size: 13px; color: #92400e;">พี่หมีเชื่อว่าคุณเลือก Use Case ได้ดีแน่นอนครับ! 💪</p>
+            <h4 style="margin: 0;">🏋️ แบบฝึกหัด 1: ติดตั้ง Cowork และสั่งงาน</h4>
+            <p style="margin: 4px 0 0 0; font-size: 13px; color: #92400e;">พี่หมีเชื่อว่าคุณติดตั้งได้แน่นอนครับ! 💪</p>
         </div>
     </div>
-    <p style="margin-top: 12px;"><strong>ให้คำนวณ ROI (Return on Investment) ของการใช้ Cowork:</strong></p>
+    <p style="margin-top: 12px;"><strong>ที่จะทำ:</strong></p>
     <ol style="margin-left: 16px; margin-top: 8px; line-height: 1.8;">
-        <li>เลือก 1 งานที่คุณทำบ่อย (use case ใดก็ได้จาก 6 ตัวอย่างข้างบน)</li>
-        <li>คำนวณ: ปกติใช้เวลากี่นาที/สัปดาห์?</li>
-        <li>ลอง Cowork ทำ สั่งงานแบบเดียว มันใช้เวลากี่นาที?</li>
-        <li>คำนวณ: ประหยัด % = (เวลาเดิม - เวลา Cowork) / เวลาเดิม × 100</li>
-        <li>ลองนึกว่า ในปีหนึ่ง ประหยัดเวลาได้เท่าไหร่ สามารถทำอะไรแทนได้?</li>
+        <li>ติดตั้ง Claude Desktop App (ถ้ายังไม่มี)</li>
+        <li>เปิด Cowork Mode</li>
+        <li>สั่งงาน: "Create a simple HTML page about [your favorite drug] with 5 key points"</li>
+        <li>รอให้เสร็จและดูผลลัพธ์</li>
+        <li>ลองแก้ไข Prompt อีก 1 ครั้ง ดู Cowork ทำงานต่างกันไหม</li>
     </ol>
 </div>

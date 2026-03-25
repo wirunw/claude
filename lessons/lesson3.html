@@ -1,288 +1,178 @@
 <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-    <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมีเชื่อมต่อ" class="bear-avatar bear-medium bear-hero">
+    <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมีวิเคราะห์" class="bear-avatar bear-medium bear-thinking">
     <div>
-        <h2 class="section-header" style="margin: 0;">🔌 บทที่ 3 — Connectors & MCP เชื่อมต่อ Apps</h2>
-        <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">พี่หมีพาเชื่อมต่อ Claude กับ Apps ของคุณ 🔗</p>
+        <h2 class="section-header" style="margin: 0;">⚙️ บทที่ 3 — Healthcare Use Cases ที่ใช้ได้จริง</h2>
+        <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">พี่หมีพาดูตัวอย่างจริงที่ใช้ได้เดี๋ยวนี้ 💡</p>
     </div>
 </div>
-<p>ถ้า Claude Cowork คือสมอง — <strong>Connectors คือ 'มือและหู' ที่ช่วยให้ Claude เข้าถึง Apps ของคุณได้โดยตรง</strong>ครับ</p>
+<p>มาดูตัวอย่างที่ใช้งานได้จริงในวงการ Healthcare กันเลยครับ</p>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🔌 Connectors คืออะไร?</h3>
-<div class="card card-blue">
-    <p><strong>Connectors เปรียบเหมือน USB hub ครับ</strong> — คุณเสียบ Claude เข้ากับ Google Drive, Gmail, Calendar, Slack, Notion หรือ Apps อื่น ๆ แล้ว Claude สามารถ:</p>
-    <ul style="margin-left: 16px; margin-top: 12px; line-height: 1.8;">
-        <li>✅ อ่านไฟล์/ข้อมูล (Read access)</li>
-        <li>✅ เขียน/แก้ไข (Write access)</li>
-        <li>✅ ค้นหา (Search)</li>
-        <li>✅ สร้าง Task อัตโนมัติ (Automate)</li>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">6 Healthcare Use Cases ที่ทำได้เดี๋ยวนี้</h3>
+
+<div class="card" style="border-left: 6px solid #2563eb; margin-bottom: 20px;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">💊 Use Case 1: Patient Education Materials</h4>
+    <p><strong>อธิบาย:</strong> สร้างเอกสารสอนผู้ป่วย เช่น "วิธีรับประทานยา" "อาหารที่หลีกเลี่ยง" "Side Effects ที่ต้องระวัง"</p>
+    <p style="margin-top: 12px;">Cowork เขียนหนึ่งสั่ง สามารถสร้างวัสดุให้เหมาะกับผู้ป่วยทุกเพศทุกวัย ใช้ภาษาง่าย ๆ</p>
+    <p style="margin-top: 12px;"><strong>5 Sub-Use Cases:</strong></p>
+    <ul style="margin-left: 16px; margin-top: 8px;">
+        <li>Medication Leaflets (ใบปลิว)</li>
+        <li>Disease Education (โรค HTN, DM, Asthma)</li>
+        <li>Pre/Post-Op Instructions</li>
+        <li>Dietary Guides for Specific Conditions</li>
+        <li>Vaccination & Immunization Guides</li>
     </ul>
-    <p style="margin-top: 12px;">ตัวอย่าง: "Claude อ่านเมลจากหมอ จากนั้นเขียน Response ลงใน Google Docs โดยอัตโนมัติ"</p>
+    <div style="background: #f0f9ff; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 12px; line-height: 1.5;">
+You are a clinical pharmacist education specialist.<br>
+Write a patient leaflet about Metformin side effects and management in Thai.<br>
+Use simple language for high school level patients. Include: 1) Common SE, 2) How to manage, 3) When to call doctor.<br>
+Format: 1 page maximum, bullet points.<br>
+Tone: Reassuring and clear.
+    </div>
+    <p style="margin-top: 12px;"><strong>⏱️ Before/After Time:</strong> Manual writing = 2-3 ชั่วโมง | Cowork = 2-3 นาที (80% ประหยัด)</p>
 </div>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📊 Claude สามารถทำอะไรได้กับ Connectors แต่ละตัว?</h3>
-<table style="width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13px;">
-    <tr style="background: #f1f5f9;">
-        <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;"><strong>App/Service</strong></th>
-        <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;"><strong>สามารถทำ (Healthcare Examples)</strong></th>
-    </tr>
-    <tr>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>📧 Gmail</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">อ่านเมล → ตอบกลับอัตโนมัติ | สรุปคำถามจากหมอ | ตรวจสอบ Attachments</td>
-    </tr>
-    <tr style="background: #f8fafc;">
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>📁 Google Drive</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">อ่านเอกสาร → แก้ไข → อัพโหลดผลลัพธ์ใหม่ | ประมวลผล Clinical Notes</td>
-    </tr>
-    <tr>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>📅 Google Calendar</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">อ่าน Meeting schedule → ตั้งเวลา Follow-up อัตโนมัติ | เตือนการตรวจ</td>
-    </tr>
-    <tr style="background: #f8fafc;">
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>📝 Notion</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">อ่าน Database → อัพเดต Status ใน Notion | สร้าง Patient Record</td>
-    </tr>
-    <tr>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>💬 Slack</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">ส่ง Message อัตโนมัติ | ตั้งสิ่งแจ้งเตือน | สรุป Conversation</td>
-    </tr>
-    <tr style="background: #f8fafc;">
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>📊 Google Sheets</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">อ่าน Data → ประมวลผล → อัพเดต Spreadsheet | ดึง Statistics</td>
-    </tr>
-</table>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🔗 MCP (Model Context Protocol) คืออะไร?</h3>
-<p><strong>MCP</strong> คือ "ระบบที่ให้ Claude เข้าถึง Apps ของคุณได้" ครับ มี 2 ส่วน:</p>
-<div class="grid-2" style="margin-top: 16px;">
-    <div class="card" style="border-left: 4px solid #3b82f6;">
-        <h4 style="color: #3b82f6;">🎯 Client (Claude)</h4>
-        <p>Claude Desktop App — "ผู้ขอ" ไปขอข้อมูล</p>
-        <p style="margin-top: 12px; font-size: 13px; color: #64748b;">ถามว่า "อ่านไฟล์จาก Drive หน่อย" "ส่งเมลแจ้งเตือน"</p>
+<div class="card" style="border-left: 6px solid #f97316; margin-bottom: 20px;">
+    <h4 style="color: #f97316; margin-bottom: 12px;">📋 Use Case 2: Clinical Notes & Documentation</h4>
+    <p><strong>อธิบาย:</strong> เขียน SOAP notes, Progress notes, ร่างจดหมายอ้างอิง สำหรับหมอ/เภสัชกร</p>
+    <p style="margin-top: 12px;">แทน copy-paste จากแม่แบบ ให้ Cowork เขียนอย่างมี context ตามสถานการณ์ผู้ป่วยจริง</p>
+    <p style="margin-top: 12px;"><strong>5 Sub-Use Cases:</strong></p>
+    <ul style="margin-left: 16px; margin-top: 8px;">
+        <li>SOAP Notes (Subjective/Objective/Assessment/Plan)</li>
+        <li>Pharmacotherapy Recommendations</li>
+        <li>Follow-up Letters to Doctors</li>
+        <li>Medication Reconciliation Reports</li>
+        <li>Discharge Summaries</li>
+    </ul>
+    <div style="background: #fff7ed; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 12px; line-height: 1.5;">
+You are a clinical pharmacist.<br>
+Write a SOAP note for Mr. Somchai, 65yo, HTN, on Amlodipine 10mg daily.<br>
+Chief complaint: Occasional ankle swelling.<br>
+Create: S (symptoms), O (findings), A (assessment), P (plan).<br>
+Language: Thai, professional tone.
     </div>
-    <div class="card" style="border-left: 4px solid #f97316;">
-        <h4 style="color: #f97316;">🔧 Server (Apps)</h4>
-        <p>Google Drive, Gmail, Calendar, etc — "ผู้ให้" ข้อมูล</p>
-        <p style="margin-top: 12px; font-size: 13px; color: #64748b;">ตอบว่า "ไฟล์นี้ได้" "ส่งเมลแล้ว"</p>
-    </div>
-</div>
-<p style="margin-top: 16px; font-size: 13px; color: #64748b;">MCP ก็คือ "ภาษาที่สื่อสาร" ระหว่าง Claude กับ Apps ให้พูดเข้าใจกัน</p>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🎨 Connector Icons & Availability</h3>
-<p>Connectors ที่มี (ตัวอย่างที่ Recommended for Healthcare):</p>
-<div class="grid-4" style="margin-top: 16px;">
-    <div style="background: white; padding: 16px; border-radius: 8px; border: 2px solid #3b82f6; text-align: center;">
-        <div style="font-size: 32px; margin-bottom: 8px;">📧</div>
-        <p style="font-weight: 700;">Gmail</p>
-        <p style="font-size: 12px; color: #64748b;">Emails & Follow-ups</p>
-    </div>
-    <div style="background: white; padding: 16px; border-radius: 8px; border: 2px solid #16a34a; text-align: center;">
-        <div style="font-size: 32px; margin-bottom: 8px;">📁</div>
-        <p style="font-weight: 700;">Drive</p>
-        <p style="font-size: 12px; color: #64748b;">Files & Documents</p>
-    </div>
-    <div style="background: white; padding: 16px; border-radius: 8px; border: 2px solid #2563eb; text-align: center;">
-        <div style="font-size: 32px; margin-bottom: 8px;">📅</div>
-        <p style="font-weight: 700;">Calendar</p>
-        <p style="font-size: 12px; color: #64748b;">Schedule & Reminders</p>
-    </div>
-    <div style="background: white; padding: 16px; border-radius: 8px; border: 2px solid #f97316; text-align: center;">
-        <div style="font-size: 32px; margin-bottom: 8px;">📝</div>
-        <p style="font-weight: 700;">Notion</p>
-        <p style="font-size: 12px; color: #64748b;">Database & Wiki</p>
-    </div>
+    <p style="margin-top: 12px;"><strong>⏱️ Before/After Time:</strong> Manual = 30 นาที | Cowork = 3-5 นาที (80% ประหยัด)</p>
 </div>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">⚙️ 7 Steps: ตั้งค่า Connector ใน Cowork</h3>
-<div style="margin-top: 16px;">
-    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; border-left: 4px solid #0284c7; margin-bottom: 12px;">
-        <p><strong>Step 1: เปิด Claude Desktop</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">ไป Settings → Connectors</p>
+<div class="card" style="border-left: 6px solid #16a34a; margin-bottom: 20px;">
+    <h4 style="color: #16a34a; margin-bottom: 12px;">🔬 Use Case 3: Drug & Therapeutic Information</h4>
+    <p><strong>อธิบาย:</strong> ค้นหา Drug Interactions, Dosing, Contraindications อย่างรวดเร็ว สำหรับ Clinical Decision Making</p>
+    <p style="margin-top: 12px;">ถามคำถาม ส่ง Lab values Cowork ช่วยตรวจสอบการใช้ยาถูกต้องหรือไม่</p>
+    <p style="margin-top: 12px;"><strong>5 Sub-Use Cases:</strong></p>
+    <ul style="margin-left: 16px; margin-top: 8px;">
+        <li>Drug-Drug Interactions Checking</li>
+        <li>Dosing Calculations (esp. renal impairment)</li>
+        <li>Adverse Event Assessment</li>
+        <li>Contraindication Screening</li>
+        <li>Alternative Therapy Suggestions</li>
+    </ul>
+    <div style="background: #f0fdf4; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 12px; line-height: 1.5;">
+You are a pharmacotherapy expert.<br>
+Check drug interactions: Simvastatin (40mg) + Amlodipine (10mg) + Metoprolol (50mg).<br>
+Patient: 70yo F, CrCl = 45 mL/min.<br>
+Identify: 1) DDI risk, 2) Dosing appropriateness, 3) Recommendations.<br>
+Format: Table with 3 columns (Drug pair, Risk level, Action).
     </div>
-    <div style="background: #fff7ed; padding: 16px; border-radius: 8px; border-left: 4px solid #ea580c; margin-bottom: 12px;">
-        <p><strong>Step 2: เลือก App ที่ต้องการ</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">เช่น "Google Drive" → Click "Connect"</p>
-    </div>
-    <div style="background: #f0fdf4; padding: 16px; border-radius: 8px; border-left: 4px solid #15803d; margin-bottom: 12px;">
-        <p><strong>Step 3: Authorize (ให้สิทธิ์)</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">Google popup ขึ้นมา → Click "Allow" เพื่อให้ Claude เข้าถึง Drive</p>
-    </div>
-    <div style="background: #fef2f2; padding: 16px; border-radius: 8px; border-left: 4px solid #dc2626; margin-bottom: 12px;">
-        <p><strong>Step 4: Verify Connection</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">ดูว่าขึ้น "Connected ✓" หรือไม่</p>
-    </div>
-    <div style="background: #faf5ff; padding: 16px; border-radius: 8px; border-left: 4px solid #a855f7; margin-bottom: 12px;">
-        <p><strong>Step 5: ตั้งค่าสิทธิ์ (Permissions)</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">เลือก "Read only" (ดูแค่) หรือ "Read & Write" (ดู+แก้) ตามต้องการ</p>
-    </div>
-    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; border-left: 4px solid #0284c7; margin-bottom: 12px;">
-        <p><strong>Step 6: เลือก Folder/Scope</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">ถ้า Drive ให้เลือก Folder ไหน เช่น "Healthcare Data" หรือ "Patient Records"</p>
-    </div>
-    <div style="background: #fff7ed; padding: 16px; border-radius: 8px; border-left: 4px solid #ea580c;">
-        <p><strong>Step 7: Save & Test</strong></p>
-        <p style="margin-top: 8px; font-size: 13px;">Save → ลองสั่ง Claude "Read my Drive" เพื่อ Test</p>
-    </div>
+    <p style="margin-top: 12px;"><strong>⏱️ Before/After Time:</strong> Lookup + Analysis = 15 นาที | Cowork = 1-2 นาที (85% ประหยัด)</p>
 </div>
 
-<!-- CLAUDE.md Section -->
-<h3 style="color: #0f3a7a; margin: 40px 0 16px; font-size: 22px;">📝 ไฟล์ CLAUDE.md — ให้ Claude "จำ" คุณได้</h3>
-<p>นี่คือ <strong>เคล็ดลับสำคัญที่สุดในคอร์สนี้</strong>ครับ ไฟล์ <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:monospace;">CLAUDE.md</code> คือ "ใบประวัติส่วนตัว" ที่คุณเขียนบอก Claude ว่าคุณเป็นใคร ทำงานอะไร ชอบ Output แบบไหน — <strong>Claude จะอ่านไฟล์นี้ทุกครั้งที่เปิด Folder นั้น</strong> เหมือนกับที่คุณ Brief น้องฝึกงานทุกเช้าครับ</p>
-
-<div style="background: #fffbeb; border: 2px dashed #f59e0b; border-radius: 12px; padding: 20px; margin: 20px 0;">
-    <p style="color: #92400e; font-weight: 700; margin-bottom: 8px;">💡 ทำไม CLAUDE.md ถึงสำคัญ?</p>
-    <p style="color: #78350f; font-size: 14px;">โดยปกติ Claude ไม่มี "ความทรงจำ" ข้ามการสนทนา แต่ <strong>ถ้าคุณเขียนบริบทไว้ใน .md file และวางในโฟลเดอร์งาน — Claude จะอ่านและเข้าใจบริบทนั้นทุกครั้ง</strong> นี่คือวิธีที่ทำให้ Cowork "รู้จัก" คุณโดยไม่ต้อง Brief ซ้ำทุกครั้งครับ</p>
+<div class="card" style="border-left: 6px solid #a855f7; margin-bottom: 20px;">
+    <h4 style="color: #a855f7; margin-bottom: 12px;">📊 Use Case 4: Data Analysis & Reporting</h4>
+    <p><strong>อธิบาย:</strong> วิเคราะห์ Survey, จดหมายอาการผู้ป่วย, ข้อมูลคลินิก แล้วสรุปผล</p>
+    <p style="margin-top: 12px;">อัพโหลด 50 แบบฟอร์ม Claude ช่วยจำแนกประเภท สร้างสถิติ ทำรายงาน</p>
+    <p style="margin-top: 12px;"><strong>5 Sub-Use Cases:</strong></p>
+    <ul style="margin-left: 16px; margin-top: 8px;">
+        <li>Patient Satisfaction Surveys</li>
+        <li>Medication Adherence Analysis</li>
+        <li>Adverse Event Reporting & Trending</li>
+        <li>Treatment Outcome Summaries</li>
+        <li>Epidemiology Data Extraction</li>
+    </ul>
+    <div style="background: #faf5ff; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 12px; line-height: 1.5;">
+You are a healthcare data analyst.<br>
+Analyze these 30 patient records [upload CSV/file].<br>
+Extract: 1) Age distribution, 2) Medication categories, 3) Side effect frequency.<br>
+Create: Summary table + Key insights (3 bullets).<br>
+Format: Plain text table.
+    </div>
+    <p style="margin-top: 12px;"><strong>⏱️ Before/After Time:</strong> Manual analysis = 2-3 ชั่วโมง | Cowork = 5-10 นาที (90% ประหยัด)</p>
 </div>
 
-<div class="card" style="margin-top: 20px;">
-    <h4 style="color: #0f3a7a; margin-bottom: 16px;">📄 Template: CLAUDE.md สำหรับ Healthcare Professional</h4>
-    <div style="background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 10px; font-family: monospace; font-size: 12.5px; line-height: 1.9; white-space: pre-wrap;">
-<span style="color:#f97316;"># 👤 About Me</span>
-<span style="color:#94a3b8;">**ชื่อ**:</span> ดร. [ชื่อ-นามสกุล]
-<span style="color:#94a3b8;">**ตำแหน่ง**:</span> [เช่น Clinical Pharmacist / Medical Affairs Manager]
-<span style="color:#94a3b8;">**สังกัด**:</span> [บริษัท / โรงพยาบาล / คลินิก]
-<span style="color:#94a3b8;">**ความเชี่ยวชาญ**:</span> [เช่น Oncology Pharmacy / Regulatory Affairs / Medical Device]
-
-<span style="color:#f97316;"># 🎯 วิธีทำงานที่ฉันชอบ</span>
-<span style="color:#94a3b8;">**ภาษา**:</span> ไทยเป็นหลัก ศัพท์เทคนิคเป็นภาษาอังกฤษ
-<span style="color:#94a3b8;">**Tone**:</span> Professional แต่อ่านง่าย ไม่เป็นทางการเกินไป
-<span style="color:#94a3b8;">**Output Format**:</span> ตาราง หรือ Bullet Points พร้อม Headers ชัดเจน
-<span style="color:#94a3b8;">**ความยาว**:</span> กระชับ ถ้าไม่ได้ขอ ไม่ต้องยาวเกิน 1 หน้า A4
-
-<span style="color:#f97316;"># 🏢 บริบทองค์กร</span>
-<span style="color:#94a3b8;">**ประเภทธุรกิจ**:</span> [Pharma / Medical Device / Hospital / Clinic]
-<span style="color:#94a3b8;">**กลุ่มลูกค้า/คนไข้**:</span> [เช่น ผู้สูงอายุ, โรคเรื้อรัง, Specialist]
-<span style="color:#94a3b8;">**มาตรฐานที่ยึด**:</span> [GMP / ISO 13485 / Thai FDA / อย.]
-
-<span style="color:#f97316;"># 📋 งานที่ฉันทำบ่อย (Common Tasks)</span>
-1. สรุปและแปล Clinical Papers (EN→TH)
-2. Draft อีเมลสื่อสารกับ KOL และ HCP
-3. สร้าง Training Material สำหรับทีม Medical
-4. วิเคราะห์และสรุปข้อมูล Market Research
-5. Draft SOP และ Regulatory Documents
-
-<span style="color:#f97316;"># ⚠️ กฎสำคัญ (Important Rules)</span>
-- ห้ามระบุชื่อผู้ป่วยจริง ใช้ "คนไข้ A, B, C" หรือ De-identified ID แทน
-- ข้อมูลยาและ Clinical Data ต้องมีแหล่งอ้างอิงเสมอ
-- Output ทุกอย่างต้องผ่าน Review โดยผู้เชี่ยวชาญก่อนใช้จริง
-- ใช้ Active Voice เสมอ, หลีกเลี่ยงภาษา Passive ที่กำกวม
-
-<span style="color:#f97316;"># 📝 Template ที่ใช้</span>
-- รายงาน: ดูที่ 03_Templates/report_template.md
-- อีเมล: ดูที่ 03_Templates/email_template.md
-- SOP: ดูที่ 03_Templates/sop_template.md
+<div class="card" style="border-left: 6px solid #dc2626; margin-bottom: 20px;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">🏥 Use Case 5: Clinical Trial & Research Support</h4>
+    <p><strong>อธิบาย:</strong> ร่าง Protocol, ทำ Subject summaries, ตรวจสอบ Inclusion/Exclusion Criteria, วิเคราะห์ผล</p>
+    <p style="margin-top: 12px;">ทำให้ Researcher ไม่ต้อง Manual copy ข้อมูล เพิ่มความแม่นยำ</p>
+    <p style="margin-top: 12px;"><strong>5 Sub-Use Cases:</strong></p>
+    <ul style="margin-left: 16px; margin-top: 8px;">
+        <li>Protocol Draft & Review</li>
+        <li>Patient Enrollment Screening</li>
+        <li>Case Report Form (CRF) Checking</li>
+        <li>Safety & Efficacy Summaries</li>
+        <li>Statistical Summary Tables</li>
+    </ul>
+    <div style="background: #fef2f2; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 12px; line-height: 1.5;">
+You are a clinical research coordinator.<br>
+Review patient list (file attached) against trial criteria:<br>
+Inclusion: Age 40-75, HTN ≥5 years, BP ≥140/90.<br>
+Exclusion: CKD stage 4+, Pregnant.<br>
+Output: 1) Eligible count, 2) Excluded reasons (summary), 3) List of eligible IDs.
     </div>
-    <p style="font-size: 13px; color: #64748b; margin-top: 12px;">💾 วิธีสร้าง: เปิด Notepad / TextEdit → พิมพ์เนื้อหาด้านบน → Save as <strong>CLAUDE.md</strong> → วางไว้ใน Root ของ Folder โปรเจกต์</p>
+    <p style="margin-top: 12px;"><strong>⏱️ Before/After Time:</strong> Manual screening = 30 นาที | Cowork = 2-3 นาที (85% ประหยัด)</p>
 </div>
 
-<!-- PROJECT_CONTEXT.md -->
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📋 PROJECT_CONTEXT.md — บริบทเฉพาะโปรเจกต์</h3>
-<p>นอกจาก CLAUDE.md ที่บอก "คุณเป็นใคร" แล้ว ควรมี <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:monospace;">PROJECT_CONTEXT.md</code> ในแต่ละโปรเจกต์ เพื่อบอก "โปรเจกต์นี้เกี่ยวกับอะไร" ครับ</p>
-
-<div class="card" style="background: #f8faff; border-left: 6px solid #7c3aed;">
-    <h4 style="color: #7c3aed; margin-bottom: 16px;">📄 Template: PROJECT_CONTEXT.md</h4>
-    <div style="background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 10px; font-family: monospace; font-size: 12.5px; line-height: 1.9; white-space: pre-wrap;">
-<span style="color:#a78bfa;"># โปรเจกต์: [ชื่อโปรเจกต์]</span>
-
-<span style="color:#a78bfa;">## เป้าหมาย</span>
-[อธิบายสั้นๆ ว่าโปรเจกต์นี้ทำอะไร เช่น:
-"สร้าง Evidence Dossier สำหรับยา X เพื่อเตรียม Launch Q3 2026"]
-
-<span style="color:#a78bfa;">## ขอบเขตงาน (Scope)</span>
-- ✅ ทำ: [สิ่งที่ต้องการ]
-- ❌ ไม่ทำ: [สิ่งที่อยู่นอกขอบเขต]
-
-<span style="color:#a78bfa;">## ผู้รับผลงาน (Audience)</span>
-[เช่น "ทีม Medical Affairs" หรือ "CMO และ Marketing Director"]
-
-<span style="color:#a78bfa;">## Deadline</span>
-[วันที่ต้องส่งงาน]
-
-<span style="color:#a78bfa;">## ไฟล์สำคัญ</span>
-- Input หลัก: 01_Input/papers/clinical_study_X.pdf
-- Template: 03_Templates/report_template.md
-- Output ปลายทาง: 02_Output/final/
-
-<span style="color:#a78bfa;">## บริบทพิเศษ</span>
-[ข้อมูลที่ Claude ต้องรู้สำหรับโปรเจกต์นี้โดยเฉพาะ
-เช่น "ยา X อยู่ในสูตรบัญชียา 1" หรือ "คู่แข่งหลักคือยา Y และ Z"]
+<div class="card" style="border-left: 6px solid #059669; margin-bottom: 20px;">
+    <h4 style="color: #059669; margin-bottom: 12px;">🎓 Use Case 6: Training & Education for HCPs</h4>
+    <p><strong>อธิบาย:</strong> สร้าง Training modules, Quiz, Case studies สำหรับอบรมหมอ/เภสัชกร</p>
+    <p style="margin-top: 12px;">ระบุ Topic ให้ Cowork สร้าง Interactive learning materials พร้อม Assessment</p>
+    <p style="margin-top: 12px;"><strong>5 Sub-Use Cases:</strong></p>
+    <ul style="margin-left: 16px; margin-top: 8px;">
+        <li>Medical Affairs Training Content</li>
+        <li>Continuing Education (CME) Modules</li>
+        <li>Interactive Case Studies</li>
+        <li>Learning Quizzes & Assessments</li>
+        <li>Clinical Guideline Summaries</li>
+    </ul>
+    <div style="background: #f0fdf4; padding: 12px; border-radius: 6px; margin-top: 12px; font-family: monospace; font-size: 12px; line-height: 1.5;">
+You are a medical educator.<br>
+Create a 30-min training module on "HTN Management in CKD Patients".<br>
+Include: 1) Key learning objectives, 2) 5 clinical scenarios with Q&A, 3) Final quiz (5 questions).<br>
+Language: Thai, target: Pharmacists/Nurses.<br>
+Format: Markdown with sections.
     </div>
+    <p style="margin-top: 12px;"><strong>⏱️ Before/After Time:</strong> Manual creation = 4-6 ชั่วโมง | Cowork = 10-15 นาที (95% ประหยัด)</p>
 </div>
 
-<!-- Tips for writing good .md files -->
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🧠 เคล็ดลับเขียน .md ให้ Claude เข้าใจได้ดีที่สุด</h3>
-<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 16px;">
-    <div style="background: #e8f0fc; padding: 16px; border-radius: 10px; text-align: center;">
-        <div style="font-size: 28px; margin-bottom: 8px;">🎯</div>
-        <h4 style="color: #1a56b0; font-size: 14px; margin-bottom: 8px;">ชัดเจน ไม่คลุมเครือ</h4>
-        <p style="font-size: 13px; color: #475569;">เขียนให้ Claude ตีความได้ทางเดียว — "ความยาว 1 หน้า A4" ดีกว่า "ไม่ยาวเกินไป"</p>
-    </div>
-    <div style="background: #fff3e8; padding: 16px; border-radius: 10px; text-align: center;">
-        <div style="font-size: 28px; margin-bottom: 8px;">🔄</div>
-        <h4 style="color: #f97316; font-size: 14px; margin-bottom: 8px;">อัปเดตสม่ำเสมอ</h4>
-        <p style="font-size: 13px; color: #475569;">เมื่อ Role หรือ Preference เปลี่ยน แก้ไขไฟล์ .md ทันที — ข้อมูลล้าสมัยทำให้ Claude ทำงานผิดครับ</p>
-    </div>
-    <div style="background: #f3eeff; padding: 16px; border-radius: 10px; text-align: center;">
-        <div style="font-size: 28px; margin-bottom: 8px;">✅</div>
-        <h4 style="color: #7c3aed; font-size: 14px; margin-bottom: 8px;">Test ด้วยคำถามนี้</h4>
-        <p style="font-size: 13px; color: #475569;">หลังวาง CLAUDE.md แล้ว ลองถาม Claude: <em>"บอกฉันหน่อยว่าคุณรู้อะไรเกี่ยวกับฉันและโปรเจกต์นี้บ้าง?"</em></p>
-    </div>
-    <div style="background: #f0fdf4; padding: 16px; border-radius: 10px; text-align: center;">
-        <div style="font-size: 28px; margin-bottom: 8px;">📏</div>
-        <h4 style="color: #16a34a; font-size: 14px; margin-bottom: 8px;">ความยาวที่เหมาะสม</h4>
-        <p style="font-size: 13px; color: #475569;">CLAUDE.md ควรยาว 200-400 คำ — สั้นเกินไปไม่มีประโยชน์ ยาวเกินไป Claude อาจสับสน</p>
-    </div>
-    <div style="background: #fef9c3; padding: 16px; border-radius: 10px; text-align: center;">
-        <div style="font-size: 28px; margin-bottom: 8px;">🗂️</div>
-        <h4 style="color: #854d0e; font-size: 14px; margin-bottom: 8px;">ใช้ Markdown Headers</h4>
-        <p style="font-size: 13px; color: #475569;">ใช้ # ## ### เพื่อแบ่ง Section — Claude อ่าน Markdown ได้ดีและจะเข้าใจโครงสร้างได้ชัดขึ้น</p>
-    </div>
-    <div style="background: #fff1f2; padding: 16px; border-radius: 10px; text-align: center;">
-        <div style="font-size: 28px; margin-bottom: 8px;">🔒</div>
-        <h4 style="color: #be123c; font-size: 14px; margin-bottom: 8px;">อย่าใส่ข้อมูลลับ</h4>
-        <p style="font-size: 13px; color: #475569;">CLAUDE.md ไม่ควรมี Password, ข้อมูลคนไข้จริง หรือข้อมูลธุรกิจที่ Sensitive — เก็บไว้ใน Secure folder แยกต่างหาก</p>
-    </div>
-</div>
-
-<!-- Real-world example -->
-<div style="background: #f0fdf4; border-radius: 12px; padding: 20px; margin-top: 28px; border-left: 5px solid #16a34a;">
-    <h4 style="color: #15803d; margin-bottom: 12px;">🏥 ตัวอย่างจริง: การตั้งค่า Cowork สำหรับ Medical Affairs Manager</h4>
-    <p style="font-size: 14px; margin-bottom: 12px;">สมมุติว่าคุณเป็น Medical Affairs Manager บริษัท Pharma ต้องสรุป Clinical Papers ทุกสัปดาห์:</p>
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 13px;">
-        <div style="background: white; padding: 14px; border-radius: 8px;">
-            <p style="font-weight: 700; color: #0f3a7a; margin-bottom: 8px;">📁 Folder Structure</p>
-            <code style="font-size: 11px; line-height: 1.8; display: block; color: #334155;">
-Medical_Affairs_Cowork/<br>
-├── CLAUDE.md<br>
-├── 01_Input/papers/ ← upload PDF ที่นี่<br>
-├── 02_Output/weekly/ ← Claude save ผลที่นี่<br>
-└── 03_Templates/evidence_digest.md
-            </code>
-        </div>
-        <div style="background: white; padding: 14px; border-radius: 8px;">
-            <p style="font-weight: 700; color: #0f3a7a; margin-bottom: 8px;">📝 CLAUDE.md บอกว่า</p>
-            <p style="font-size: 12px; color: #334155; line-height: 1.8;">
-                ฉันเป็น Medical Affairs Manager<br>
-                งานหลัก: สรุป Evidence ทุกสัปดาห์<br>
-                ภาษา: ไทย + อังกฤษ (Term เทคนิค)<br>
-                Format: ดู evidence_digest.md<br>
-                Output: บันทึกใน 02_Output/weekly/
-            </p>
-        </div>
-    </div>
-    <p style="font-size: 13px; margin-top: 12px; color: #166534;">
-        <strong>ผลลัพธ์:</strong> แค่บอก Claude ว่า "อ่าน Papers ใน 01_Input/papers/ แล้วสรุปเหมือนทุกสัปดาห์" — Claude จะทำตาม Template, ใช้ภาษาที่ถูกต้อง และ Save ผลไปยัง Output Folder โดยอัตโนมัติ โดยที่คุณไม่ต้อง Brief ซ้ำทุกครั้งเลยครับ
-    </p>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">💡 เลือกใช้งาน Use Case ไหน?</h3>
+<p>คำถามสำคัญ: "ผมควรใช้ Cowork ตรงไหนก่อน?" ครับ</p>
+<div style="background: #f8fafc; padding: 16px; border-radius: 12px; margin-top: 16px; border-left: 4px solid #0f3a7a;">
+    <p style="margin-bottom: 16px;"><strong>✅ ใช้ Cowork ได้ดี เมื่อ:</strong></p>
+    <ul style="margin-left: 16px; margin-bottom: 16px;">
+        <li>งานซ้ำ ๆ (Repetitive) — เช่น เขียน Leaflet ไปมา</li>
+        <li>งานที่ใช้เวลา นาน — เช่น สรุป 100 ไฟล์</li>
+        <li>งานที่ต้องความเรียบร้อย (Accuracy) — ต่างจากการเขียนสร้างสรรค์</li>
+        <li>งานที่ Standardizable — เช่น SOAP note ที่มีรูปแบบเดียวกัน</li>
+    </ul>
+    <p><strong>❌ ระวังใช้ Cowork:</strong></p>
+    <ul style="margin-left: 16px;">
+        <li>งานที่ต้องการ Creative หรือ Innovation — Cowork ทำ Template ได้ แต่ Creative ต้องโดย</li>
+        <li>งานที่ Risk สูง — ต้อง Verify ผลลัพธ์ก่อนใช้ (โดยเฉพาะ Medical decisions)</li>
+        <li>ข้อมูล Confidential — ต้องระวังไม่ส่ง PII (Patient IDs, names) มาแก้กับ Cowork</li>
+    </ul>
 </div>
 
 <div class="exercise">
-    <h4>🏋️ แบบฝึกหัด 3: ตั้งค่า Connector & ทดลอง</h4>
-    <p style="margin-top: 12px;"><strong>ให้ทำ:</strong></p>
+    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
+        <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="หมีให้กำลังใจ" class="bear-avatar bear-small bear-happy">
+        <div>
+            <h4 style="margin: 0;">🏋️ แบบฝึกหัด 2: เลือก Use Case ของคุณ</h4>
+            <p style="margin: 4px 0 0 0; font-size: 13px; color: #92400e;">พี่หมีเชื่อว่าคุณเลือก Use Case ได้ดีแน่นอนครับ! 💪</p>
+        </div>
+    </div>
+    <p style="margin-top: 12px;"><strong>ให้คำนวณ ROI (Return on Investment) ของการใช้ Cowork:</strong></p>
     <ol style="margin-left: 16px; margin-top: 8px; line-height: 1.8;">
-        <li>ไปที่ Claude Desktop → Settings → Connectors</li>
-        <li>เลือก 1 Connector ว่าใช้งาน (Gmail, Drive, หรือ Sheets)</li>
-        <li>กด Connect และ Authorize</li>
-        <li>เมื่อเชื่อมต่อแล้ว เปิด Cowork และสั่ง:<br>
-"Using the [Connector name] connector, show me the [X] most recent items and summarize them"</li>
-        <li>สังเกต ว่า Cowork ทำงานยังไง และผลลัพธ์ถูกต้องไหม</li>
+        <li>เลือก 1 งานที่คุณทำบ่อย (use case ใดก็ได้จาก 6 ตัวอย่างข้างบน)</li>
+        <li>คำนวณ: ปกติใช้เวลากี่นาที/สัปดาห์?</li>
+        <li>ลอง Cowork ทำ สั่งงานแบบเดียว มันใช้เวลากี่นาที?</li>
+        <li>คำนวณ: ประหยัด % = (เวลาเดิม - เวลา Cowork) / เวลาเดิม × 100</li>
+        <li>ลองนึกว่า ในปีหนึ่ง ประหยัดเวลาได้เท่าไหร่ สามารถทำอะไรแทนได้?</li>
     </ol>
 </div>

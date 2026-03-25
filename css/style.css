@@ -212,13 +212,115 @@ button:hover {
 
 /* LOGIN */
 #login {
-    display: none;
+    display: block;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    padding: 0;
+    overflow-y: auto;
 }
+
+/* Login Hero Section */
+.login-hero {
+    padding: 60px 20px 40px;
+    text-align: center;
+}
+.login-hero-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+.login-hero-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #0284c7, #0ea5e9);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    letter-spacing: 0.5px;
+}
+.login-hero-title {
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+.login-hero-title .highlight {
+    background: linear-gradient(135deg, #2563eb, #0891b2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+.login-hero-desc {
+    font-size: 16px;
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.login-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 32px;
+}
+.stat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+}
+.stat-icon {
+    font-size: 32px;
+}
+.stat-info {
+    flex: 1;
+}
+.stat-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+}
+.stat-label {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.4;
+}
+.login-hero-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+}
+.feature-item {
+    background: rgba(255,255,255,0.6);
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.feature-icon {
+    color: #16a34a;
+    font-weight: bold;
+}
+.login-hero-cta {
+    font-size: 14px;
+    color: #64748b;
+    margin-top: 16px;
+}
+
+/* Login Card */
 .login-card {
     background: white;
     padding: 48px;
@@ -614,4 +716,9 @@ tr:hover {
     .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
     .hero-banner { grid-template-columns: 1fr; padding: 32px; }
     .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .login-hero { padding: 40px 16px 24px; }
+    .login-hero-stats { grid-template-columns: 1fr; }
+    .login-hero-features { grid-template-columns: 1fr; }
+    .login-hero-title { font-size: 24px; }
+    .login-card { margin: 0 auto; padding: 32px 24px; }
 }

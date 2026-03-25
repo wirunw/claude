@@ -1,202 +1,231 @@
 <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-    <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมีขั้นสูง" class="bear-avatar bear-medium bear-badge">
+    <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมีสร้าง" class="bear-avatar bear-medium bear-teacher">
     <div>
-        <h2 class="section-header" style="margin: 0;">🚀 บทที่ 6 — Automation & Advanced Workflows</h2>
-        <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">พี่หมีพาไปสู่ขั้น Advanced — Automation เต็มรูปแบบ 🎓</p>
+        <h2 class="section-header" style="margin: 0;">🤖 บทที่ 6 — สร้าง Custom Skills & Plugins</h2>
+        <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">พี่หมีสอนสร้าง AI Assistant เฉพาะทางของคุณ 🛠️</p>
     </div>
 </div>
-<p>พอเราเข้าใจ Basics แล้ว มาดูการใช้งาน Cowork ในระดับ Advanced กันครับ</p>
+<p>Custom Skills คือ <strong>'สูตรลับ' ที่คุณสอน Claude ให้ทำงานเฉพาะทางของคุณ</strong>ครับ</p>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">⏰ Scheduled Tasks (Automation)</h3>
-<p>Scheduled Tasks = ให้ Cowork ทำงานอัตโนมัติ แม้เรา offline</p>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📚 3 Building Blocks ของ Plugin</h3>
+<div class="grid-3" style="margin-top: 16px;">
+    <div class="card" style="border-left: 4px solid #3b82f6;">
+        <h4 style="color: #3b82f6; margin-bottom: 12px;">📚 Block 1: Skills</h4>
+        <p><strong>คืออะไร?</strong> Template/workflow ที่ Claude ต้องทำซ้ำ ๆ</p>
+        <p style="margin-top: 12px; font-size: 13px; line-height: 1.8;">ตัวอย่าง:<br>• "Draft SOAP note template"<br>• "Medication reconciliation checklist"<br>• "Patient follow-up email"</p>
+    </div>
+    <div class="card" style="border-left: 4px solid #f97316;">
+        <h4 style="color: #f97316; margin-bottom: 12px;">🔌 Block 2: Connectors</h4>
+        <p><strong>คืออะไร?</strong> Integration กับ Apps (Gmail, Drive, Calendar)</p>
+        <p style="margin-top: 12px; font-size: 13px; line-height: 1.8;">ตัวอย่าง:<br>• ส่ง Email output<br>• Save to Google Docs<br>• Update Google Sheets</p>
+    </div>
+    <div class="card" style="border-left: 4px solid #16a34a;">
+        <h4 style="color: #16a34a; margin-bottom: 12px;">🤖 Block 3: Sub-agents</h4>
+        <p><strong>คืออะไร?</strong> ให้ Claude แยก Task เป็น Sub-tasks</p>
+        <p style="margin-top: 12px; font-size: 13px; line-height: 1.8;">ตัวอย่าง:<br>• Agent 1: Parse patient data<br>• Agent 2: Analyze interactions<br>• Agent 3: Generate report</p>
+    </div>
+</div>
 
-<div class="card card-blue">
-    <h4 style="color: #2563eb; margin-bottom: 12px;">ตั้งเวลางานอัตโนมัติ</h4>
-    <p>ตัวอย่างที่ใช้ได้จริง:</p>
-    <ul style="margin-left: 16px; margin-top: 8px; line-height: 1.8;">
-        <li>🕐 <strong>Every Monday 9 AM:</strong> "สรุป Week reports จากเมล ส่ง Summary"</li>
-        <li>🕐 <strong>Daily 5 PM:</strong> "ตรวจสอบ Patient follow-up ที่ยังไม่ตอบกลับ ส่ง reminder"</li>
-        <li>🕐 <strong>Every 1st of month:</strong> "ดึง Statistics จากทั้งเดือน สร้าง Report"</li>
-        <li>🕐 <strong>Every 4 hours:</strong> "ตรวจสอบ Trial patient data ที่ upload มาใหม่"</li>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📖 What are Skills?</h3>
+<p>Skills คือ <strong>เอกสาร (Markdown file) ที่สอน Claude</strong> ให้ทำงานเฉพาะอย่างให้ดี</p>
+<div style="background: #f0f9ff; padding: 16px; border-radius: 12px; margin-top: 16px; border-left: 4px solid #0284c7;">
+    <p style="margin-bottom: 12px;"><strong>📋 ตัวอย่าง Skill: "Medication Counseling Leaflet"</strong></p>
+    <div style="background: white; padding: 16px; border-radius: 8px; border: 1px solid #bae6fd; font-family: monospace; font-size: 11px; line-height: 1.5;">
+# Medication Counseling Leaflet Skill<br>
+<br>
+## Context<br>
+You are a clinical pharmacist creating patient education materials in Thailand.<br>
+<br>
+## Objective<br>
+Generate a 1-page leaflet for a specific medication that is clear, accurate, and patient-friendly.<br>
+<br>
+## Process<br>
+1. Take drug name as input<br>
+2. Identify: indication, mechanism, dosing, common SE, drug interactions<br>
+3. Write in simple Thai (high school level)<br>
+4. Include: "When to call doctor" section<br>
+<br>
+## Output Format<br>
+- Title + drug name<br>
+- 5 sections (Why, How, Side Effects, Diet, When to call)<br>
+- Bullet points only (no long paragraphs)<br>
+- Include 1 visual separator<br>
+<br>
+## Healthcare-Specific Rules<br>
+- Never exceed 1 page<br>
+- Emphasize drug-food interactions for Thai cuisine<br>
+- Use term from Thai FDA (if available)
+    </div>
+</div>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🔌 Connectors in Plugins</h3>
+<p>Plugins สามารถเชื่อมต่อกับ Connectors เพื่อ Automate Output:</p>
+<div class="grid-2" style="margin-top: 16px;">
+    <div class="card" style="border-left: 4px solid #2563eb;">
+        <h4 style="color: #2563eb; margin-bottom: 12px;">📧 Gmail Connector</h4>
+        <p>Output ที่ Plugin สร้าง → ส่ง Email ให้ Patient โดยอัตโนมัติ</p>
+    </div>
+    <div class="card" style="border-left: 4px solid #16a34a;">
+        <h4 style="color: #16a34a; margin-bottom: 12px;">📁 Google Drive Connector</h4>
+        <p>Save leaflet ที่สร้าง → Google Docs folder โดยอัตโนมัติ</p>
+    </div>
+</div>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🤖 Sub-agents in Plugins</h3>
+<p>สำหรับงาน Complex ให้ Plugin สร้าง Sub-agents:</p>
+<div style="background: #f8fafc; padding: 16px; border-radius: 12px; margin-top: 16px;">
+    <p style="margin-bottom: 16px;"><strong>🏥 Healthcare Example: "Clinical Trial Screening Plugin"</strong></p>
+    <div style="display: grid; gap: 12px;">
+        <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #2563eb;">
+            <p><strong>Agent 1: Data Parser</strong><br><span style="font-size: 12px; color: #64748b;">อ่าน Patient records → Extract relevant data (Age, BP, Lab)</span></p>
+        </div>
+        <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #f97316;">
+            <p><strong>Agent 2: Criteria Checker</strong><br><span style="font-size: 12px; color: #64748b;">ตรวจสอบ Inclusion/Exclusion → Category patient</span></p>
+        </div>
+        <div style="background: white; padding: 12px; border-radius: 6px; border-left: 4px solid #16a34a;">
+            <p><strong>Agent 3: Report Generator</strong><br><span style="font-size: 12px; color: #64748b;">สร้าง Summary report + send to coordinator</span></p>
+        </div>
+    </div>
+</div>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🎓 เมื่อไหร่ควรสร้าง Custom Plugin?</h3>
+<div style="background: #f0fdf4; padding: 16px; border-radius: 12px; margin-top: 16px; border-left: 4px solid #15803d;">
+    <p style="margin-bottom: 12px;"><strong>✅ สร้าง Plugin เมื่อ:</strong></p>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li>งานซ้ำ ๆ ที่เกิดขึ้น 5+ ครั้ง/สัปดาห์</li>
+        <li>ต้องการ Standardization (เสมอ ๆ)</li>
+        <li>ต้อง Integration กับ Apps (Gmail, Drive)</li>
+        <li>ต้อง Automation (ไม่ต้องสั่งงาน)</li>
+    </ul>
+</div>
+<div style="background: #fef2f2; padding: 16px; border-radius: 12px; margin-top: 12px; border-left: 4px solid #dc2626;">
+    <p style="margin-bottom: 12px;"><strong>❌ ไม่ต้องสร้าง เมื่อ:</strong></p>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li>งานเก่า ๆ ไม่ซ้ำ</li>
+        <li>ต้องความสร้างสรรค์สูง</li>
+        <li>Setup ซับซ้อนเกินไป (ROI ลบ)</li>
     </ul>
 </div>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🔄 Multi-Agent Workflow Diagram</h3>
-<p>Advanced workflows มี Agent หลายตัว ทำงานพร้อมกัน:</p>
-<div style="background: #f8fafc; padding: 24px; border-radius: 12px; border: 2px solid #e2e8f0; margin-top: 16px;">
-    <div style="text-align: center;">
-        <div style="font-size: 14px; font-weight: 700; color: #0f3a7a; margin-bottom: 24px; padding: 16px; background: white; border-radius: 8px; border: 2px solid #0284c7;">
-            📨 Trigger: Clinical Trial Patient Data Upload
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px;">
-            <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #3b82f6;">
-                <div style="font-weight: 700; color: #3b82f6; margin-bottom: 8px;">Agent 1</div>
-                <p style="font-size: 13px;">Parse CSV<br>Extract data fields</p>
-            </div>
-            <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #f97316;">
-                <div style="font-weight: 700; color: #f97316; margin-bottom: 8px;">Agent 2</div>
-                <p style="font-size: 13px;">Validate Data<br>Check anomalies</p>
-            </div>
-            <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #16a34a;">
-                <div style="font-weight: 700; color: #16a34a; margin-bottom: 8px;">Agent 3</div>
-                <p style="font-size: 13px;">Generate Report<br>Email coordinator</p>
-            </div>
-        </div>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
-            <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #a855f7;">
-                <div style="font-weight: 700; color: #a855f7; margin-bottom: 8px;">Agent 4</div>
-                <p style="font-size: 13px;">Check Eligibility<br>Flag alerts</p>
-            </div>
-            <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #dc2626;">
-                <div style="font-weight: 700; color: #dc2626; margin-bottom: 8px;">Agent 5</div>
-                <p style="font-size: 13px;">Update Database<br>Log audit trail</p>
-            </div>
-        </div>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🛠️ 6 Steps: สร้าง Healthcare Plugin เองจากศูนย์</h3>
+<div style="margin-top: 16px;">
+    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; border-left: 4px solid #0284c7; margin-bottom: 12px;">
+        <p><strong>Step 1: Define the Problem</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">เลือกงานที่ต้องการ Automate (เช่น "สร้าง Patient Counseling Material")</p>
+    </div>
+    <div style="background: #fff7ed; padding: 16px; border-radius: 8px; border-left: 4px solid #ea580c; margin-bottom: 12px;">
+        <p><strong>Step 2: Write the Skill (Markdown)</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">สร้าง .md file ที่สอน Claude → Output ที่ต้องการ (see example above)</p>
+    </div>
+    <div style="background: #f0fdf4; padding: 16px; border-radius: 8px; border-left: 4px solid #15803d; margin-bottom: 12px;">
+        <p><strong>Step 3: Choose Connectors</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">เลือก Input connector (Gmail? Drive?) + Output connector (Save where?)</p>
+    </div>
+    <div style="background: #fef2f2; padding: 16px; border-radius: 8px; border-left: 4px solid #dc2626; margin-bottom: 12px;">
+        <p><strong>Step 4: Create Sub-agents (Optional)</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">ถ้างาน Complex ให้แบ่งเป็น Sub-tasks</p>
+    </div>
+    <div style="background: #faf5ff; padding: 16px; border-radius: 8px; border-left: 4px solid #a855f7; margin-bottom: 12px;">
+        <p><strong>Step 5: Test with Sample Data</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">ลองใช้ Plugin จริง ด้วย test data ก่อน</p>
+    </div>
+    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; border-left: 4px solid #0284c7;">
+        <p><strong>Step 6: Deploy & Monitor</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">Deploy ให้ Team ใช้ → Monitor ผล → Iterate</p>
     </div>
 </div>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">💡 5 Advanced Tips</h3>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🏥 3 Healthcare Plugin Examples</h3>
 
-<div class="card" style="border-left: 4px solid #2563eb; margin-bottom: 16px;">
-    <h4 style="color: #2563eb; margin-bottom: 12px;">💡 Tip 1: Chaining (สั่งงานแบบเรียงลำดับ)</h4>
-    <p><strong>คืออะไร?</strong> ให้ Agent 1 ทำเสร็จ → ส่งผลให้ Agent 2 → เป็นไปเรื่อย ๆ</p>
-    <p style="margin-top: 12px; font-size: 13px; background: #f0f9ff; padding: 12px; border-radius: 6px;">
-        ตัวอย่าง: Download patient file → Parse → Validate → Store → Notify → Done
-    </p>
+<div class="card" style="border-left: 6px solid #2563eb; margin-bottom: 20px;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">1️⃣ Plugin: "Medication Reconciliation Assistant"</h4>
+    <p style="margin-top: 12px;"><strong>Skills:</strong></p>
+    <ul style="margin-left: 16px; margin-top: 8px;">
+        <li>Compare home meds vs hospital meds</li>
+        <li>Check drug interactions</li>
+        <li>Generate reconciliation report</li>
+    </ul>
+    <p style="margin-top: 12px;"><strong>Connectors:</strong></p>
+    <ul style="margin-left: 16px; margin-top: 8px;">
+        <li>Input: Google Sheets (patient data)</li>
+        <li>Output: Save to Google Docs + Email summary</li>
+    </ul>
 </div>
 
-<div class="card" style="border-left: 4px solid #f97316; margin-bottom: 16px;">
-    <h4 style="color: #f97316; margin-bottom: 12px;">💡 Tip 2: Parallel Processing (ทำหลาย ๆ อันพร้อม)</h4>
-    <p><strong>คืออะไร?</strong> แทนการทำ Sequential ให้ทำพร้อมกัน ประหยัดเวลา</p>
-    <p style="margin-top: 12px; font-size: 13px; background: #fff7ed; padding: 12px; border-radius: 6px;">
-        ตัวอย่าง: 100 patient records → split to 5 agents (20 each) → process in parallel → merge results
-    </p>
+<div class="card" style="border-left: 6px solid #f97316; margin-bottom: 20px;">
+    <h4 style="color: #f97316; margin-bottom: 12px;">2️⃣ Plugin: "HCP Training Content Generator"</h4>
+    <p style="margin-top: 12px;"><strong>Skills:</strong></p>
+    <ul style="margin-left: 16px; margin-top: 8px;">
+        <li>Create CME module content</li>
+        <li>Generate case studies</li>
+        <li>Build quiz questions</li>
+    </ul>
+    <p style="margin-top: 12px;"><strong>Connectors:</strong></p>
+    <ul style="margin-left: 16px; margin-top: 8px;">
+        <li>Input: Topic from Gmail</li>
+        <li>Output: Save HTML course to Drive + Send Slack notification</li>
+    </ul>
 </div>
 
-<div class="card" style="border-left: 4px solid #16a34a; margin-bottom: 16px;">
-    <h4 style="color: #16a34a; margin-bottom: 12px;">💡 Tip 3: Error Handling & Retries</h4>
-    <p><strong>คืออะไร?</strong> ถ้า Task fail บอก Claude ว่าต้องทำไร (retry, skip, alert)</p>
-    <p style="margin-top: 12px; font-size: 13px; background: #f0fdf4; padding: 12px; border-radius: 6px;">
-        ตัวอย่าง: "If data parse fails → retry 2 times → if still fail → send alert to manager"
-    </p>
+<div class="card" style="border-left: 6px solid #16a34a; margin-bottom: 20px;">
+    <h4 style="color: #16a34a; margin-bottom: 12px;">3️⃣ Plugin: "Clinical Trial Data Processor"</h4>
+    <p style="margin-top: 12px;"><strong>Skills:</strong></p>
+    <ul style="margin-left: 16px; margin-top: 8px;">
+        <li>Screen patient eligibility</li>
+        <li>Generate screening report</li>
+        <li>Flag borderline cases</li>
+    </ul>
+    <p style="margin-top: 12px;"><strong>Connectors:</strong></p>
+    <ul style="margin-left: 16px; margin-top: 8px;">
+        <li>Input: CSV from EMR</li>
+        <li>Output: Excel report + Email RC</li>
+    </ul>
 </div>
 
-<div class="card" style="border-left: 4px solid #a855f7; margin-bottom: 16px;">
-    <h4 style="color: #a855f7; margin-bottom: 12px;">💡 Tip 4: Audit & Logging</h4>
-    <p><strong>คืออะไร?</strong> ให้ Cowork บันทึก "ใครทำอะไร ตอนไหน" ไว้</p>
-    <p style="margin-top: 12px; font-size: 13px; background: #faf5ff; padding: 12px; border-radius: 6px;">
-        สำคัญสำหรับ Healthcare (compliance): "User X ran workflow Y on [date] → 50 records processed → 2 errors"
-    </p>
-</div>
-
-<div class="card" style="border-left: 4px solid #dc2626; margin-bottom: 16px;">
-    <h4 style="color: #dc2626; margin-bottom: 12px;">💡 Tip 5: Cost Optimization</h4>
-    <p><strong>คืออะไร?</strong> ลด API calls ลด processing time ด้วยการ Batch processing</p>
-    <p style="margin-top: 12px; font-size: 13px; background: #fef2f2; padding: 12px; border-radius: 6px;">
-        ตัวอย่าง: จาก "100 calls × 1 req/call" → "10 batches × 10 req/batch" = ประหยัด 70-80%
-    </p>
-</div>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🔒 Security & Compliance for Healthcare</h3>
-<div style="background: #fef2f2; padding: 20px; border-radius: 12px; border-left: 4px solid #dc2626;">
-    <h4 style="color: #dc2626; margin-bottom: 12px;">⚠️ Healthcare-Specific ต้องระวัง:</h4>
-    <ol style="margin-left: 16px; line-height: 1.8;">
-        <li><strong>HIPAA/PDPA Compliance:</strong> ไม่ส่ง PII (Patient ID, Name) ไปที่ Third-party</li>
-        <li><strong>Data Encryption:</strong> Connectors ต้อง SSL/TLS encrypted</li>
-        <li><strong>Access Control:</strong> ให้ Least Privilege — Cowork เข้าถึง เฉพาะ Folder ที่ต้อง</li>
-        <li><strong>Audit Trail:</strong> บันทึก "WHO accessed WHAT data WHEN" เพื่อ compliance</li>
-        <li><strong>Data Retention:</strong> ลบข้อมูล Temp หลังใช้ (ไม่เก็บ redundant data)</li>
-        <li><strong>Manual Review:</strong> สำหรับการตัดสินใจด้าน Medical ต้องมี QA by human</li>
-    </ol>
-</div>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🎯 Final Capstone Workshop</h3>
-<div style="background: #f0f9ff; padding: 20px; border-radius: 12px; border-left: 4px solid #0284c7;">
-    <p style="margin-bottom: 16px;"><strong>🏆 Capstone Project: "Design an End-to-End Healthcare Automation"</strong></p>
-    <p style="margin-bottom: 16px;">ให้ทำ Project ที่รวม ทั้งหมด ที่เรียนมา:</p>
-    <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #0284c7;">
-        <p style="margin-bottom: 12px;"><strong>📋 Project Scope:</strong></p>
-        <ol style="margin-left: 16px; line-height: 1.8; margin-top: 8px;">
-            <li>เลือก 1 Healthcare workflow ในสถานที่งานของคุณ (ปัญหาที่อยากแก้)</li>
-            <li>ออกแบบ Cowork solution ที่รวม:
-                <ul style="margin-left: 16px; margin-top: 8px;">
-                    <li>Prompt templates (RTF/ROSES/CTF)</li>
-                    <li>Connectors ที่ต้องใช้</li>
-                    <li>Skills ที่ต้องสร้าง (2-3 skills)</li>
-                    <li>Sub-agents (ถ้าต้อง)</li>
-                    <li>Automation/Scheduling</li>
-                </ul>
-            </li>
-            <li>สร้าง Proof of Concept (POC) — ทดลองทำจริง</li>
-            <li>วัดผล: Time saved, Cost saved, Error reduction, Safety improvement</li>
-            <li>สรุป ROI + Key learnings</li>
-        </ol>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">👥 Role-Specific Customization</h3>
+<p>ตามบทบาท ต่างประเภทของ Healthcare ต้อง Custom ต่างกัน:</p>
+<div class="grid-2" style="margin-top: 16px;">
+    <div class="card">
+        <h4 style="color: #0f3a7a; margin-bottom: 12px;">👨‍⚕️ Medical Affairs Specialist</h4>
+        <p><strong>Plugin ที่ต้อง:</strong></p>
+        <ul style="margin-left: 16px; margin-top: 8px; font-size: 13px;">
+            <li>IFU Translation</li>
+            <li>HCP Training Materials</li>
+            <li>Clinical Evidence Summaries</li>
+        </ul>
+    </div>
+    <div class="card">
+        <h4 style="color: #0f3a7a; margin-bottom: 12px;">⚖️ Regulatory Specialist</h4>
+        <p><strong>Plugin ที่ต้อง:</strong></p>
+        <ul style="margin-left: 16px; margin-top: 8px; font-size: 13px;">
+            <li>Document Checklist Verifier</li>
+            <li>Guideline Compliance Checker</li>
+            <li>Risk Assessment Report</li>
+        </ul>
     </div>
 </div>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🎓 Summary & Next Steps</h3>
-<table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
-    <tr style="background: #f1f5f9;">
-        <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;"><strong>เรียนมา</strong></th>
-        <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;"><strong>ใช้เมื่อไหร่</strong></th>
-    </tr>
-    <tr>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 0: AI Basics</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">เข้าใจว่า AI ทำงานยังไง ก่อนสั่งงาน</td>
-    </tr>
-    <tr style="background: #f8fafc;">
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 1: Cowork Basics</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">สั่งงาน one-off ทีละงาน</td>
-    </tr>
-    <tr>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 2: Use Cases</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">หา use case ของคุณเองจาก 6 ตัวอย่าง</td>
-    </tr>
-    <tr style="background: #f8fafc;">
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 3: Connectors</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">เชื่อม Claude กับ Apps ของคุณ</td>
-    </tr>
-    <tr>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 4: Case Studies</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">เรียนจาก Real-world implementation</td>
-    </tr>
-    <tr style="background: #f8fafc;">
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 5: Custom Plugins</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">สร้าง Reusable workflow ของคุณเองให้ Team</td>
-    </tr>
-    <tr>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 6: Advanced</strong></td>
-        <td style="padding: 12px; border: 1px solid #e2e8f0;">Automation + Multi-agent + Enterprise setup</td>
-    </tr>
-</table>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🚀 ก้าวต่อไป (หลังเรียนจบ)</h3>
-<div style="background: #f0fdf4; padding: 16px; border-radius: 12px; margin-top: 16px;">
-    <p style="margin-bottom: 12px;"><strong>✅ ต่อไปควรทำ:</strong></p>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">⚙️ Plugin Management & Best Practices</h3>
+<div style="background: #f8fafc; padding: 16px; border-radius: 12px; margin-top: 16px;">
+    <p style="margin-bottom: 12px;"><strong>5 Tips สำหรับการใช้ Plugin ได้ดี:</strong></p>
     <ol style="margin-left: 16px; line-height: 1.8;">
-        <li>ลองใช้ Cowork ในงานจริง ขึ้น 3 งาน ที่ต่างกัน (Skill building)</li>
-        <li>สร้าง 1 Custom Plugin สำหรับ Team ของคุณ (Collaboration)</li>
-        <li>Setup Scheduled Task 1 อันสำหรับงานที่ซ้ำ (Automation)</li>
-        <li>Join Claude Community Forum — แชร์ learning กับ others</li>
-        <li>Keep updated with Claude releases — มี feature ใหม่ตลอด</li>
+        <li><strong>Version Control:</strong> ให้ Version ของ Skill (v1, v2) เพื่อ Track changes</li>
+        <li><strong>Documentation:</strong> เขียน README สำหรับ Team ว่า Plugin ทำอะไร</li>
+        <li><strong>Error Handling:</strong> บอก Claude ว่าต้องทำไร ถ้าข้อมูล Invalid</li>
+        <li><strong>Monitor Output:</strong> ตรวจสอบ Output ระหว่างเดิน (โดยเฉพาะ Healthcare)</li>
+        <li><strong>Iterate & Improve:</strong> ทำ Feedback loop ให้เพิ่มประสิทธิภาพ</li>
     </ol>
-</div>
-
-<div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-top: 20px; border: 2px solid #0f3a7a; text-align: center;">
-    <p style="font-size: 18px; font-weight: 700; color: #0f3a7a; margin-bottom: 16px;">🎉 สำเร็จแล้ว!</p>
-    <p style="font-size: 14px; line-height: 1.8; color: #64748b;">เรียนจบ 6 บท พร้อมปฏิบัติจริง หวังว่า Claude Cowork จะช่วยให้ Healthcare workflow ของคุณ<br>เรียบง่ายขึ้น เร็วขึ้น และปลอดภัยขึ้น</p>
-    <p style="font-size: 14px; margin-top: 16px; color: #0f3a7a;"><strong>ติดต่อผม (พี่หมี) ถ้าต้องการอะไรเพิ่มเติม ครับ! 💊🤖</strong></p>
 </div>
 
 <div class="exercise">
-    <h4>🏋️ แบบฝึกหัด 6: Capstone Project</h4>
-    <p style="margin-top: 12px;"><strong>สร้าง End-to-End Healthcare Automation Project:</strong></p>
+    <h4>🏋️ แบบฝึกหัด 5: ออกแบบ Healthcare Plugin ของคุณเอง</h4>
+    <p style="margin-top: 12px;"><strong>เลือก 1 งาน Healthcare ที่ซ้ำและออกแบบ Plugin:</strong></p>
     <ol style="margin-left: 16px; margin-top: 8px; line-height: 1.8;">
-        <li>เลือก 1 Workflow ปกติของคุณ ที่ต้องการปรับปรุง</li>
-        <li>วาด Diagram ว่า Current state vs Future state with Cowork</li>
-        <li>เขียน RTF/ROSES Prompt ที่ใช้</li>
-        <li>ลองทำ POC (Proof of Concept) — ทดลองจริง 1-2 cases</li>
-        <li>ประเมินผล: Time saved, Cost, Error reduction</li>
-        <li>เตรียม Presentation สำหรับ Team (5-10 slides)</li>
+        <li>ชื่อ Plugin?</li>
+        <li>Problem ที่แก้?</li>
+        <li>3-4 Skills ต้องเขียน?</li>
+        <li>Connectors ต้องใช้?</li>
+        <li>Sub-agents ต้อง?</li>
+        <li>ประหยัดเวลา/ค่าใช้จ่ายเท่าไหร่?</li>
     </ol>
 </div>

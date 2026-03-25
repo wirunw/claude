@@ -49,6 +49,61 @@
 
 <!-- LOGIN SCREEN -->
 <div id="login">
+    <!-- Hero Section -->
+    <div class="login-hero">
+        <div class="login-hero-content">
+            <div class="login-hero-badge">🐻 AI สำหรับ Healthcare Professional</div>
+            <h1 class="login-hero-title">เปลี่ยนเกม AI ให้เป็น<br><span class="highlight">ผู้ช่วยงานอันลับมืออาชีพ</span></h1>
+            <p class="login-hero-desc">คอร์สแรก 7+ บท สอนใช้ใช้งาน Claude AI ให้เป็นประโยชน์จริงในวงการสุขภาพ — สำหรับเภสัชกร แพทย์และบุคลาการการแพทย์</p>
+
+            <div class="login-hero-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-info">
+                        <div class="stat-value">7+ บทเรียน</div>
+                        <div class="stat-label">จากพื้นฐานถึงขั้นสูง</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🏥</div>
+                    <div class="stat-info">
+                        <div class="stat-value">Healthcare Focus</div>
+                        <div class="stat-label">ตัวอย่างเฉพาะทางการแพทย์</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🛠️</div>
+                    <div class="stat-info">
+                        <div class="stat-value">ใช้งานได้จริง</div>
+                        <div class="stat-label">Workshop + Templates พร้อมใช้</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="login-hero-features">
+                <div class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <span>สร้างเอกสารสอนผู้ป่วย ใน 2 นาที</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <span>เชื่อมต่อ Google Drive, Gmail อัตโนมัติ</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <span>ไม่ต้องเขียนโค้ด ใช้งานได้เลย</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">✅</span>
+                    <span>เหมาะสำหรับเภสัชกรและงาน Medical Affairs</span>
+                </div>
+            </div>
+
+            <p class="login-hero-cta">👇 ล็อกอินเพื่อเริ่มเรียนฟรี</p>
+        </div>
+    </div>
+
+    <!-- Login Card -->
     <div class="login-card">
         <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมี" class="login-bear">
         <h2 class="login-title">ล็อกอินเข้าสู่คอร์ส</h2>
@@ -71,23 +126,23 @@
             <!-- กลุ่ม 1: พื้นฐาน -->
             <div class="nav-section-header">📚 พื้นฐาน (Foundations)</div>
             <a class="nav-link active" data-section="intro" onclick="showSection('intro')">🏠 บทนำ</a>
-            <a class="nav-link" data-section="ai-basics" onclick="showSection('ai-basics')">🧠 AI Basics</a>
+            <a class="nav-link" data-section="lesson1" onclick="showSection('lesson1')">🧠 บทที่ 1: AI Basics</a>
 
             <!-- กลุ่ม 2: เทคนิค -->
             <div class="nav-section-header">🔧 เทคนิค (Technical Skills)</div>
-            <a class="nav-link" data-section="lesson1" onclick="showSection('lesson1')">📱 บทที่ 1: Cowork Basics</a>
-            <a class="nav-link" data-section="lesson3" onclick="showSection('lesson3')">🔌 บทที่ 3: Connectors & MCP</a>
-            <a class="nav-link" data-section="lesson5" onclick="showSection('lesson5')">🤖 บทที่ 5: Custom Skills</a>
+            <a class="nav-link" data-section="lesson2" onclick="showSection('lesson2')">📱 บทที่ 2: Cowork Basics</a>
+            <a class="nav-link" data-section="lesson4" onclick="showSection('lesson4')">🔌 บทที่ 4: Connectors & MCP</a>
+            <a class="nav-link" data-section="lesson6" onclick="showSection('lesson6')">🤖 บทที่ 6: Custom Skills</a>
 
             <!-- กลุ่ม 3: การประยุกต์ -->
             <div class="nav-section-header">💡 การประยุกต์ (Application)</div>
-            <a class="nav-link" data-section="lesson2" onclick="showSection('lesson2')">⚙️ บทที่ 2: Use Cases</a>
-            <a class="nav-link" data-section="lesson4" onclick="showSection('lesson4')">🎯 บทที่ 4: กรณีศึกษา</a>
+            <a class="nav-link" data-section="lesson3" onclick="showSection('lesson3')">⚙️ บทที่ 3: Use Cases</a>
+            <a class="nav-link" data-section="lesson5" onclick="showSection('lesson5')">🎯 บทที่ 5: กรณีศึกษา</a>
 
             <!-- กลุ่ม 4: ขั้นสูง -->
             <div class="nav-section-header">🚀 ขั้นสูง (Advanced)</div>
-            <a class="nav-link" data-section="lesson6" onclick="showSection('lesson6')">🚀 บทที่ 6: Automation</a>
-            <a class="nav-link" data-section="lesson7" onclick="showSection('lesson7')">📈 บทที่ 7: Predictive Analytics</a>
+            <a class="nav-link" data-section="lesson7" onclick="showSection('lesson7')">🚀 บทที่ 7: Automation</a>
+            <a class="nav-link" data-section="lesson8" onclick="showSection('lesson8')">📈 บทที่ 8: Predictive Analytics</a>
 
             <div class="nav-divider"></div>
             <a class="nav-link" data-section="coming-soon" onclick="showSection('coming-soon')">🔜 Coming Soon</a>
@@ -98,7 +153,6 @@
         <div class="content">
             <!-- Sections will be loaded dynamically -->
             <div id="intro" class="section"></div>
-            <div id="ai-basics" class="section"></div>
             <div id="lesson1" class="section"></div>
             <div id="lesson2" class="section"></div>
             <div id="lesson3" class="section"></div>
@@ -106,6 +160,7 @@
             <div id="lesson5" class="section"></div>
             <div id="lesson6" class="section"></div>
             <div id="lesson7" class="section"></div>
+            <div id="lesson8" class="section"></div>
             <div id="coming-soon" class="section"></div>
             <div id="signature" class="section"></div>
         </div>
@@ -117,7 +172,6 @@
     // Dynamically load lesson content
     const lessonFiles = {
         'intro': 'lessons/intro.html',
-        'ai-basics': 'lessons/ai-basics.html',
         'lesson1': 'lessons/lesson1.html',
         'lesson2': 'lessons/lesson2.html',
         'lesson3': 'lessons/lesson3.html',
@@ -125,6 +179,7 @@
         'lesson5': 'lessons/lesson5.html',
         'lesson6': 'lessons/lesson6.html',
         'lesson7': 'lessons/lesson7.html',
+        'lesson8': 'lessons/lesson8.html',
         'coming-soon': 'lessons/coming-soon.html',
         'signature': 'lessons/signature.html'
     };
