@@ -710,15 +710,73 @@ tr:hover {
     .content { margin-left: 240px; padding: 32px 24px 80px 24px; }
 }
 @media (max-width: 768px) {
+    /* Topbar */
+    .topbar { padding: 0 16px; height: 56px; }
+    .topbar-left { font-size: 16px; }
+    .badge { font-size: 11px; padding: 4px 8px; }
+    button { padding: 6px 12px; font-size: 13px; }
+
+    /* Sidebar */
     .sidebar { position: relative; width: 100%; height: auto; border-bottom: 1px solid #e2e8f0; padding: 10px 0; display: flex; overflow-x: auto; top: 0; z-index: 40; }
-    .nav-link { padding: 8px 12px; white-space: nowrap; }
-    .content { margin-left: 0; padding: 24px 16px 80px 16px; }
+    .nav-link { padding: 8px 12px; white-space: nowrap; font-size: 13px; }
+    .nav-section-header { padding: 8px 12px 4px 12px; font-size: 10px; }
+    .nav-divider { margin: 8px 12px; }
+
+    /* Content */
+    .content { margin-left: 0; margin-top: 56px; padding: 20px 16px 80px 16px; }
+    .section-header { font-size: 22px; }
+    .hero-h1 { font-size: 24px; }
+
+    /* Bear avatars */
+    .bear-hero { width: 100px; height: 100px; }
+    .bear-medium { width: 70px; height: 70px; }
+    .bear-small { width: 45px; height: 45px; }
+
+    /* Table */
+    table { font-size: 13px; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    th, td { padding: 8px; }
+
+    /* Signature */
+    .signature-card { padding: 32px 20px; }
+    .signature-name { font-size: 22px; }
+    .signature-bear { width: 80px; height: 80px; }
+
+    /* Grid layouts */
     .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
-    .hero-banner { grid-template-columns: 1fr; padding: 32px; }
+    .hero-banner { grid-template-columns: 1fr; padding: 24px 16px; }
     .stats-row { grid-template-columns: repeat(2, 1fr); }
-    .login-hero { padding: 40px 16px 24px; }
+    .login-hero { padding: 32px 16px 20px; }
     .login-hero-stats { grid-template-columns: 1fr; }
     .login-hero-features { grid-template-columns: 1fr; }
-    .login-hero-title { font-size: 24px; }
-    .login-card { margin: 0 auto; padding: 32px 24px; }
+    .login-hero-title { font-size: 22px; }
+    .login-card { margin: 0 auto; padding: 24px 20px; }
+
+    /* Cards */
+    .card { padding: 16px; }
+}
+
+/* Extra small devices (phones under 480px) */
+@media (max-width: 480px) {
+    .topbar { padding: 0 12px; height: 52px; }
+    .topbar-left { font-size: 14px; }
+    .badge { font-size: 10px; padding: 3px 6px; }
+    button { padding: 5px 10px; font-size: 12px; }
+
+    .content { padding: 16px 12px 80px 12px; }
+    .section-header { font-size: 20px; }
+    .hero-h1 { font-size: 20px; }
+
+    .bear-hero { width: 80px; height: 80px; }
+    .bear-medium { width: 60px; height: 60px; }
+    .bear-small { width: 40px; height: 40px; }
+
+    table { font-size: 12px; }
+    th, td { padding: 6px; }
+
+    .signature-card { padding: 24px 16px; }
+    .signature-name { font-size: 18px; }
+    .signature-bear { width: 60px; height: 60px; }
+
+    .stats-row { grid-template-columns: 1fr; }
+    .card { padding: 12px; }
 }
