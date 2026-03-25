@@ -11,6 +11,11 @@
 <!-- TOPBAR -->
 <div class="topbar">
     <div class="topbar-left">
+        <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
         <span>🐻</span>
         <span>Claude Cowork Course</span>
     </div>
@@ -212,6 +217,36 @@
 
     // Load lessons when DOM is ready
     document.addEventListener('DOMContentLoaded', loadLessons);
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+        const sidebar = document.querySelector('.sidebar');
+        const hamburger = document.getElementById('hamburgerBtn');
+        sidebar.classList.toggle('mobile-open');
+        hamburger.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(e) {
+        const sidebar = document.querySelector('.sidebar');
+        const hamburger = document.getElementById('hamburgerBtn');
+        if (sidebar && sidebar.classList.contains('mobile-open') &&
+            !sidebar.contains(e.target) &&
+            !hamburger.contains(e.target)) {
+            toggleMobileMenu();
+        }
+    });
+
+    // Close mobile menu when clicking a nav link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+            const sidebar = document.querySelector('.sidebar');
+            const hamburger = document.getElementById('hamburgerBtn');
+            if (sidebar && sidebar.classList.contains('mobile-open')) {
+                toggleMobileMenu();
+            }
+        });
+    });
 </script>
 
 </body>
