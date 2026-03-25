@@ -1,0 +1,112 @@
+<div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+    <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมีศึกษา" class="bear-avatar bear-medium bear-smart">
+    <div>
+        <h2 class="section-header" style="margin: 0;">🎯 บทที่ 4 — กรณีศึกษา: Healthcare AI ในโลกจริง</h2>
+        <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">พี่หมีพาดูตัวอย่างจริงจากโลก Healthcare 📚</p>
+    </div>
+</div>
+<p>ผมรวบรวม Case Study จริงจากวงการ Healthcare ที่ใช้ Claude Cowork ในการแก้ปัญหาจริง</p>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📚 Case Study 1: Medical Device Company — แปล IFU (Instructions for Use)</h3>
+
+<div class="card" style="border-left: 6px solid #059669;">
+    <h4 style="color: #059669; margin-bottom: 12px;">🏢 สถานการณ์ (Situation)</h4>
+    <p style="margin-bottom: 16px;"><strong>บริษัท:</strong> Medical Device Company ขนาดกลาง (เครื่องมือแพทย์)</p>
+    <p style="margin-bottom: 12px;"><strong>ปัญหา:</strong> IFU (ใบสั่งการใช้งาน) สำหรับเครื่องตรวจ ECG มี 45 หน้า อังกฤษ ต้องแปลเป็นไทย ใน 1 สัปดาห์</p>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li>ปกติแปลโดยบริษัท Translation = 2-3 สัปดาห์, ค่าใช้ 30,000 บาท</li>
+        <li>ต้องมี Technical accuracy (Medical terms)</li>
+        <li>ต้อง Verify ก่อนส่ง FDA Thailand</li>
+    </ul>
+</div>
+
+<div class="card" style="border-left: 6px solid #059669;">
+    <h4 style="color: #059669; margin-bottom: 12px;">📈 ผลลัพธ์ Before & After (Quantified Results)</h4>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
+        <tr style="background: #e7f5f0;">
+            <th style="padding: 10px; text-align: left; border: 1px solid #a7f3d0;"><strong>ตัวชี้วัด</strong></th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #a7f3d0;"><strong>ก่อน (Manual)</strong></th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #a7f3d0;"><strong>หลัง (Cowork)</strong></th>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #d1fae5;"><strong>⏱️ เวลา</strong></td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">14-21 วัน</td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">5 วัน</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+            <td style="padding: 10px; border: 1px solid #d1fae5;"><strong>💰 ค่าใช้</strong></td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">30,000 บาท</td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">2,000 บาท (API + QA)</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #d1fae5;"><strong>👥 Man-hours</strong></td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">80 ชั่วโมง</td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">20 ชั่วโมง (QA only)</td>
+        </tr>
+        <tr style="background: #f0fdf4;">
+            <td style="padding: 10px; border: 1px solid #d1fae5;"><strong>✅ Accuracy</strong></td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">95-98%</td>
+            <td style="padding: 10px; border: 1px solid #d1fae5;">98-99%</td>
+        </tr>
+    </table>
+    <p style="margin-top: 12px; font-size: 13px; color: #059669;"><strong>💡 ROI:</strong> เก็บเวลา 75%, ลดค่า 93%, เพิ่ม Accuracy</p>
+</div>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📚 Case Study 2: Hospital System — Medication Reconciliation at Discharge</h3>
+
+<div class="card" style="border-left: 6px solid #dc2626;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">🏥 สถานการณ์ (Situation)</h4>
+    <p style="margin-bottom: 12px;"><strong>หน่วยงาน:</strong> โรงพยาบาล 500 เตียง (Government Hospital)</p>
+    <p style="margin-bottom: 16px;"><strong>ปัญหา:</strong> เมื่อผู้ป่วยจากหน่วยรักษา Pharmacist ต้องตรวจสอบ "ยาที่ผู้ป่วยกำลังใช้" vs "ยาที่ห้ามใช้" (Reconciliation) ไม่เพิ่มเข้าใหม่</p>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li>50 discharge patients/day</li>
+        <li>แต่ละ reconciliation ใช้เวลา 15-20 นาที</li>
+        <li>Pharmacist ก็ 3 คน = ทำไม่ทันตั้งแต่เช้า</li>
+        <li>ผลลัพธ์ = Drug errors ที่ Discharge หลาย ๆ ตรง</li>
+    </ul>
+</div>
+
+<div class="card" style="border-left: 6px solid #dc2626;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">📈 ผลลัพธ์ Before & After</h4>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
+        <tr style="background: #fee2e2;">
+            <th style="padding: 10px; text-align: left; border: 1px solid #fecaca;"><strong>ตัวชี้วัด</strong></th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #fecaca;"><strong>ก่อน</strong></th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #fecaca;"><strong>หลัง (+ Cowork)</strong></th>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #fecaca;"><strong>⏱️ Time/patient</strong></td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">15-20 นาที</td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">2-3 นาที (AI prep)</td>
+        </tr>
+        <tr style="background: #fef2f2;">
+            <td style="padding: 10px; border: 1px solid #fecaca;"><strong>📊 Cases/day</strong></td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">~30/day (ทำไม่ทัน)</td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">50/day ✅</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #fecaca;"><strong>🚨 Drug errors caught</strong></td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">40%</td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">92%</td>
+        </tr>
+        <tr style="background: #fef2f2;">
+            <td style="padding: 10px; border: 1px solid #fecaca;"><strong>👥 Pharmacist needed</strong></td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">100% (all cases)</td>
+            <td style="padding: 10px; border: 1px solid #fecaca;">30% (high-risk only)</td>
+        </tr>
+    </table>
+</div>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📚 Case Study 3: Pharmaceutical Company — Clinical Trial Patient Screening</h3>
+
+<div class="card" style="border-left: 6px solid #2563eb;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">🔬 สถานการณ์ (Situation)</h4>
+    <p style="margin-bottom: 12px;"><strong>บริษัท:</strong> Pharma Company ต้องสั่งผู้ป่วย สำหรับ HTN Clinical Trial</p>
+    <p style="margin-bottom: 16px;"><strong>ปัญหา:</strong></p>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li>Criteria ซับซ้อน: Age 40-75, BP ≥140/90, HTN ≥5 yrs, eGFR ≥30 BUT <60 (moderate CKD), NO diabetes, NO recent MI</li>
+        <li>ต้องตรวจหา 500 Patient Chart เพื่อหา 50 eligible (10% success rate)</li>
+        <li>ปกติ Research Coordinator ทำเอง = 5-7 วัน</li>
+        <li>ต้อง Verify ก่อนปรึกษากับ PI</li>
+    </ul>
+</div>

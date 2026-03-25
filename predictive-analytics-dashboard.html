@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Predictive Analytics & Dashboard ด้วย Claude Cowork | พี่หมี</title>
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Sarabun', sans-serif; background: #f8faff; color: #1e293b; line-height: 1.8; font-size: 16px; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, #0f3a7a 0%, #1a56b0 55%, #2563eb 100%);
+    color: white; padding: 56px 64px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -80px; right: -60px;
+    width: 360px; height: 360px; background: rgba(255,255,255,0.05); border-radius: 50%;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: -100px; right: 200px;
+    width: 240px; height: 240px; background: rgba(255,255,255,0.04); border-radius: 50%;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 99px; padding: 6px 16px; font-size: 13px; font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .hero h1 { font-size: 38px; font-weight: 800; line-height: 1.3; margin-bottom: 16px; }
+  .hero p { font-size: 17px; opacity: 0.9; max-width: 680px; margin-bottom: 28px; line-height: 1.7; }
+  .hero-meta { font-size: 13px; opacity: 0.65; }
+  .hero-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+  .hero-chip {
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 99px; padding: 5px 14px; font-size: 13px;
+  }
+
+  /* LAYOUT */
+  .container { max-width: 900px; margin: 0 auto; padding: 48px 40px 80px; }
+
+  /* SECTION HEADERS */
+  .section { margin-bottom: 56px; }
+  .section-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; background: #1a56b0; color: white;
+    border-radius: 10px; font-size: 16px; font-weight: 800; margin-right: 12px; flex-shrink: 0;
+  }
+  .section-title {
+    display: flex; align-items: center; margin-bottom: 8px; margin-top: 48px;
+    padding-bottom: 16px; border-bottom: 2px solid #e2e8f0;
+  }
+  .section-title h2 { font-size: 24px; font-weight: 800; color: #0f3a7a; }
+  .section-intro { color: #475569; margin-bottom: 24px; font-size: 15px; line-height: 1.8; }
+
+  /* CARDS */
+  .card {
+    background: white; border-radius: 14px; padding: 24px;
+    box-shadow: 0 2px 16px rgba(26,86,176,0.07); margin-bottom: 20px;
+    border-left: 5px solid #1a56b0;
+  }
+  .card-orange { border-left-color: #f97316; }
+  .card-green { border-left-color: #16a34a; }
+  .card-purple { border-left-color: #7c3aed; }
+  .card-red { border-left-color: #dc2626; }
+  .card-teal { border-left-color: #0891b2; }
+  .card h3 { font-size: 17px; font-weight: 700; color: #0f3a7a; margin-bottom: 12px; }
+  .card-orange h3 { color: #c2410c; }
+  .card-green h3 { color: #15803d; }
+  .card-purple h3 { color: #6d28d9; }
+  .card-red h3 { color: #b91c1c; }
+  .card-teal h3 { color: #0e7490; }
+
+  /* GRID */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  /* CODE BLOCK */
+  .code-block {
+    background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 10px;
+    font-family: monospace; font-size: 13px; line-height: 1.8;
+    white-space: pre-wrap; margin: 16px 0;
+  }
+  .code-comment { color: #64748b; }
+  .code-key { color: #f97316; }
+  .code-val { color: #34d399; }
+  .code-str { color: #a78bfa; }
+
+  /* HIGHLIGHT BOXES */
+  .box-blue { background: #e8f0fc; border-left: 4px solid #1a56b0; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 16px 0; }
+  .box-orange { background: #fff3e8; border-left: 4px solid #f97316; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 16px 0; }
+  .box-green { background: #f0fdf4; border-left: 4px solid #16a34a; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 16px 0; }
+  .box-red { background: #fef2f2; border-left: 4px solid #dc2626; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 16px 0; }
+  .box-purple { background: #f3eeff; border-left: 4px solid #7c3aed; padding: 16px 20px; border-radius: 0 10px 10px 0; margin: 16px 0; }
+  .box-yellow { background: #fffbeb; border: 2px dashed #f59e0b; padding: 16px 20px; border-radius: 10px; margin: 16px 0; }
+
+  /* STEP */
+  .steps { margin: 16px 0; }
+  .step {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 14px 0; border-bottom: 1px solid #f1f5f9;
+  }
+  .step:last-child { border-bottom: none; }
+  .step-num {
+    min-width: 32px; height: 32px; background: #1a56b0; color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 14px; flex-shrink: 0; margin-top: 2px;
+  }
+  .step-content h4 { font-size: 15px; font-weight: 700; color: #0f3a7a; margin-bottom: 4px; }
+  .step-content p { font-size: 14px; color: #475569; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 14px; }
+  th { background: #f1f5f9; padding: 12px 14px; text-align: left; border: 1px solid #e2e8f0; font-weight: 700; color: #0f3a7a; }
+  td { padding: 12px 14px; border: 1px solid #e2e8f0; vertical-align: top; }
+  tr:nth-child(even) { background: #f8fafc; }
+  tr:hover { background: #f0f9ff; }
+
+  /* BADGE */
+  .badge { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: 12px; font-weight: 700; }
+  .badge-blue { background: #dbeafe; color: #1d4ed8; }
+  .badge-green { background: #dcfce7; color: #166534; }
+  .badge-orange { background: #ffedd5; color: #c2410c; }
+  .badge-red { background: #fee2e2; color: #b91c1c; }
+  .badge-purple { background: #ede9fe; color: #6d28d9; }
+
+  /* COMPARISON */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.08); margin: 20px 0; }
+  .compare-left { background: #fef2f2; padding: 20px; border-right: 2px solid #fca5a5; }
+  .compare-right { background: #f0fdf4; padding: 20px; }
+  .compare-header { font-weight: 800; font-size: 15px; margin-bottom: 12px; }
+  .compare-left .compare-header { color: #b91c1c; }
+  .compare-right .compare-header { color: #15803d; }
+
+  /* FLOW DIAGRAM */
+  .flow { display: flex; align-items: center; gap: 0; margin: 20px 0; flex-wrap: wrap; }
+  .flow-box {
+    background: white; border: 2px solid #1a56b0; border-radius: 10px;
+    padding: 12px 16px; text-align: center; min-width: 120px;
+    font-size: 13px; font-weight: 600; color: #0f3a7a;
+  }
+  .flow-arrow { color: #1a56b0; font-size: 22px; padding: 0 8px; font-weight: 800; }
+
+  /* MINI DASHBOARD MOCKUP */
+  .dashboard-mockup {
+    background: #0f172a; border-radius: 12px; padding: 20px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px;
+    margin: 16px 0;
+  }
+  .dash-card {
+    background: #1e293b; border-radius: 8px; padding: 14px;
+    border-top: 3px solid #1a56b0;
+  }
+  .dash-card.green-top { border-top-color: #16a34a; }
+  .dash-card.orange-top { border-top-color: #f97316; }
+  .dash-label { color: #94a3b8; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .dash-value { color: white; font-size: 22px; font-weight: 800; }
+  .dash-sub { color: #34d399; font-size: 11px; margin-top: 4px; }
+  .dash-sub.red { color: #f87171; }
+
+  /* SIGNATURE */
+  .signature {
+    background: linear-gradient(135deg, #0f3a7a, #1a56b0);
+    color: white; padding: 32px 40px; border-radius: 14px;
+    text-align: center; margin-top: 48px;
+  }
+  .signature p { opacity: 0.8; font-size: 14px; margin-top: 8px; }
+
+  /* PRINT / A4 hint */
+  @media print {
+    .hero { padding: 32px 40px; }
+    .container { padding: 24px 32px 40px; }
+    .section { margin-bottom: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">📊 Reference Sheet | Claude Cowork</div>
+  <h1>Predictive Analytics & Dashboard<br>ด้วย Claude และ Claude Cowork</h1>
+  <p>วัตถุดิบสำหรับองค์กรที่ต้องการนำข้อมูล Sales / Stock CSV มาทำ Prediction และ Dashboard — รวมวิธีแก้ปัญหา Dashboard ที่ไม่มีระเบียบในทีม</p>
+  <div class="hero-chips">
+    <span class="hero-chip">📈 Sales Forecasting</span>
+    <span class="hero-chip">📦 Stock Prediction</span>
+    <span class="hero-chip">📊 Dashboard</span>
+    <span class="hero-chip">🗂️ Standardization</span>
+  </div>
+  <p class="hero-meta" style="margin-top: 24px;">ดร.ภก.วิรุณ เวชศิริ | B.Sc.Pharm, MBA, Ph.D. | wirun.wetsiri@gmail.com</p>
+</div>
+
+<div class="container">
+
+  <!-- ======= SECTION 1: PREDICTIVE ANALYTICS ======= -->
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">1</span>
+      <h2>Predictive Analytics ด้วย Claude คืออะไร?</h2>
+    </div>
+    <p class="section-intro">
+      หลายองค์กรมีข้อมูล CSV จากยอดขาย stock และการสั่งซื้ออยู่แล้ว — แต่ขาดเครื่องมือที่ใช้ง่ายในการ "ถามอนาคต" จากข้อมูลเหล่านั้น Claude และ Claude Cowork เปลี่ยนสิ่งนี้ได้ โดยไม่ต้องเขียนโค้ด Python หรือจ้าง Data Scientist ครับ
+    </p>
+
+    <div class="compare">
+      <div class="compare-left">
+        <p class="compare-header">❌ วิธีเดิม (ก่อน AI)</p>
+        <ul style="margin-left: 16px; font-size: 14px; line-height: 2;">
+          <li>รวม CSV ด้วย Excel ด้วยมือ</li>
+          <li>ต้องรู้ Python / R จึงทำ Forecast ได้</li>
+          <li>ใช้เวลา 2–3 วันต่อ Report</li>
+          <li>Forecast แม่นยำน้อยเพราะทำแบบ Manual</li>
+          <li>Dashboard ทำครั้งเดียว ไม่อัปเดต</li>
+          <li>ทีม 10 คน ได้ Dashboard 10 แบบ</li>
+        </ul>
+      </div>
+      <div class="compare-right">
+        <p class="compare-header">✅ ด้วย Claude Cowork</p>
+        <ul style="margin-left: 16px; font-size: 14px; line-height: 2;">
+          <li>วาง CSV → Claude อ่านและวิเคราะห์เอง</li>
+          <li>พิมพ์ภาษาธรรมดา ไม่ต้องเขียนโค้ด</li>
+          <li>Report พร้อมภายใน 10–30 นาที</li>
+          <li>Claude วิเคราะห์ Pattern ในข้อมูลได้ลึก</li>
+          <li>ตั้ง Scheduled Task — อัปเดตอัตโนมัติ</li>
+          <li>ใช้ Master Template — Dashboard เหมือนกันทุกคน</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box-yellow">
+      <strong>⚠️ ข้อจำกัดสำคัญที่ต้องเข้าใจ</strong><br>
+      <span style="font-size: 14px;">Claude ไม่ใช่ Statistical Model ที่ Train บนข้อมูลของคุณโดยตรง แต่ Claude สามารถ <strong>วิเคราะห์ Trend, Pattern, Seasonality</strong> จาก CSV และสร้าง <strong>Projection ตามหลักสถิติ</strong> ได้ — ซึ่งสำหรับงาน Business Planning ระดับ SME ถือว่าเพียงพอและแม่นยำในระดับที่ใช้งานได้จริงครับ ถ้าต้องการ Statistical Model ที่แม่นยำสูง ควรใช้ร่วมกับ Python/R Tool ผ่าน MCP</span>
+    </div>
+  </div>
+
+  <!-- ======= SECTION 2: WORKFLOW ======= -->
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">2</span>
+      <h2>Workflow: จาก CSV → Prediction → Dashboard</h2>
+    </div>
+    <p class="section-intro">ขั้นตอนการทำ Predictive Analytics ด้วย Claude Cowork แบบ End-to-End:</p>
+
+    <!-- Flow -->
+    <div class="flow">
+      <div class="flow-box">📂<br>เตรียม CSV</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:#f97316; color:#c2410c;">📤<br>วางใน Folder</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:#7c3aed; color:#6d28d9;">🧠<br>Claude วิเคราะห์</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:#16a34a; color:#15803d;">📊<br>Prediction</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-box" style="border-color:#0891b2; color:#0e7490;">🖥️<br>Dashboard</div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h4>เตรียม CSV ให้พร้อม</h4>
+          <p>ตรวจสอบว่า CSV มี Header Row ชัดเจน, วันที่ Format เดียวกัน (YYYY-MM-DD แนะนำ), ไม่มีแถวว่างหรือข้อมูลซ้ำซ้อน — Claude อ่าน CSV ได้ดีมาก แต่ข้อมูลที่สะอาด = ผลลัพธ์ที่แม่นยำกว่าครับ</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h4>วาง CSV ใน Folder โปรเจกต์ + เขียน CLAUDE.md</h4>
+          <p>วาง CSV ใน <code>01_Input/data/</code> และเขียน <code>CLAUDE.md</code> บอก Context เช่น "ข้อมูลนี้คือยอดขายรายวัน แยกตาม Product SKU และ Region, เป้าหมายคือ Forecast ยอดขาย 3 เดือนข้างหน้า"</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h4>สั่ง Claude วิเคราะห์ข้อมูลเบื้องต้น (EDA)</h4>
+          <p>ให้ Claude สำรวจข้อมูลก่อน: ดู Distribution, Trend, Outliers, Seasonality — ก่อนทำ Prediction ควรเข้าใจข้อมูลก่อนเสมอครับ</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h4>ขอ Prediction พร้อม Confidence Range</h4>
+          <p>ขอให้ Claude ทำ Forecast พร้อม Low/Mid/High Scenario และระบุ Assumptions ที่ใช้ — อย่าขอแค่ตัวเลขเดียว เพราะ Business ต้องการ Scenario Planning ครับ</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h4>สร้าง Dashboard จากผลลัพธ์</h4>
+          <p>ให้ Claude สร้าง Dashboard เป็น HTML File หรือ Excel — กำหนด Format ตาม Master Template ที่ทีมตกลงกันไว้ล่วงหน้า (ดู Section 4)</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h4>ตั้ง Scheduled Task (ถ้าต้องการ Auto-update)</h4>
+          <p>ถ้าข้อมูล CSV อัปเดตทุกสัปดาห์ ให้ตั้ง Scheduled Task ใน Cowork ให้รัน Workflow นี้อัตโนมัติทุกวันจันทร์เช้า และส่ง Report ผ่าน Gmail</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======= SECTION 3: PROMPT EXAMPLES ======= -->
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">3</span>
+      <h2>Prompt ตัวอย่าง: Sales & Stock Prediction</h2>
+    </div>
+
+    <div class="card">
+      <h3>📈 Prompt 1: Sales Forecasting (ยอดขาย 3 เดือนข้างหน้า)</h3>
+      <div class="code-block"><span class="code-key">(R)</span> คุณคือ Business Analyst ผู้เชี่ยวชาญ Sales Forecasting สำหรับธุรกิจ Healthcare/Pharma ในประเทศไทย
+
+<span class="code-key">(T)</span> วิเคราะห์ไฟล์ sales_data_2024.csv ที่อยู่ใน 01_Input/data/ และทำ Forecast ยอดขายล่วงหน้า 3 เดือน (เมษา–มิถุนา 2026) โดย:
+1. สรุป Trend ที่พบในข้อมูลย้อนหลัง 12 เดือน
+2. ระบุ Seasonality Pattern (ถ้ามี)
+3. ระบุ Top 5 SKU ที่มียอดขายสูงสุดและ Forecast แยกต่างหาก
+4. สร้าง 3 Scenarios: Conservative (ต่ำ), Base (กลาง), Optimistic (สูง)
+5. ระบุ Key Assumptions ที่ใช้ในการ Forecast
+
+<span class="code-key">(F)</span> ตาราง Forecast แยกตาม SKU และ Scenario / สรุป Executive เป็น Bullet Points 5 ข้อ / บันทึกผลใน 02_Output/forecast_Q2_2026.md</div>
+    </div>
+
+    <div class="card card-orange">
+      <h3>📦 Prompt 2: Stock / Inventory Prediction (ป้องกัน Stockout)</h3>
+      <div class="code-block"><span class="code-key">(R)</span> คุณคือ Supply Chain Analyst ที่เชี่ยวชาญ Inventory Management สำหรับบริษัทยาและ Medical Device
+
+<span class="code-key">(T)</span> อ่านไฟล์ stock_movement_2024.csv ใน 01_Input/data/ แล้ว:
+1. คำนวณ Average Daily Usage (ADU) แยกตาม Product
+2. ระบุ Products ที่มีความเสี่ยง Stockout ภายใน 30, 60, 90 วัน
+3. คำนวณ Reorder Point = (ADU × Lead Time) + Safety Stock
+4. แนะนำ Optimal Order Quantity สำหรับแต่ละ Product
+5. Flag สินค้า Slow-moving ที่ Stock อาจเกินความต้องการ
+
+<span class="code-key">(F)</span> ตาราง 2 ส่วน:
+- ส่วนที่ 1: ⚠️ Alert — Products ที่ต้องสั่งทันที (Stock < 30 วัน)
+- ส่วนที่ 2: 📊 Full Inventory Report พร้อม Reorder Recommendation
+บันทึกใน 02_Output/stock_alert_[วันที่].xlsx</div>
+    </div>
+
+    <div class="card card-green">
+      <h3>🔄 Prompt 3: Combined Analysis (Sales + Stock Together)</h3>
+      <div class="code-block"><span class="code-key">(R)</span> คุณคือ Operations Manager ที่มองภาพรวมทั้ง Demand และ Supply
+
+<span class="code-key">(T)</span> อ่านทั้ง sales_forecast.csv และ current_stock.csv แล้ว:
+1. เปรียบเทียบ Forecasted Demand vs Current Stock ในแต่ละ Product
+2. คำนวณ Gap = Demand Forecast – Current Stock
+3. จัดลำดับความเร่งด่วนในการสั่งซื้อ (Priority 1–3)
+4. ประมาณมูลค่า Purchase Order ที่ต้องทำภายใน 2 สัปดาห์
+5. สรุปเป็น Purchasing Recommendation สำหรับ Management
+
+<span class="code-key">(F)</span> Executive Summary 1 หน้า + ตาราง Purchase Order Recommendation พร้อมมูลค่า (บาท) — บันทึกใน 02_Output/purchase_plan_[เดือน].md</div>
+    </div>
+
+    <div class="box-blue">
+      <strong>💡 เทคนิคเพิ่มเติม: ถามเป็น Follow-up</strong><br>
+      <span style="font-size: 14px;">หลังจาก Claude ให้ผล Forecast แล้ว ลองถามต่อว่า:<br>
+      • "ถ้า Demand สูงกว่า Base Case 20% จะเกิดอะไรกับ Stock?"<br>
+      • "Product ไหนที่ Margin สูงที่สุดและ Forecast เป็นบวก — ควร Focus ตรงไหน?"<br>
+      • "สร้าง Action Plan สำหรับ Sales Team จากข้อมูลนี้"</span>
+    </div>
+  </div>
+
+  <!-- ======= SECTION 4: DASHBOARD ======= -->
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">4</span>
+      <h2>Dashboard ด้วย Claude Cowork</h2>
+    </div>
+    <p class="section-intro">Claude สามารถสร้าง Dashboard ได้หลายรูปแบบ — เลือกตามความต้องการของทีมครับ</p>
+
+    <!-- Dashboard mockup -->
+    <p style="font-size: 13px; color: #64748b; margin-bottom: 8px;">ตัวอย่าง: Dashboard ที่ Claude สร้างให้อัตโนมัติ</p>
+    <div class="dashboard-mockup">
+      <div class="dash-card">
+        <div class="dash-label">ยอดขายเดือนนี้</div>
+        <div class="dash-value">฿4.2M</div>
+        <div class="dash-sub">▲ +12% vs เดือนก่อน</div>
+      </div>
+      <div class="dash-card green-top">
+        <div class="dash-label">Stock Coverage</div>
+        <div class="dash-value">67 วัน</div>
+        <div class="dash-sub">✅ เพียงพอ</div>
+      </div>
+      <div class="dash-card orange-top">
+        <div class="dash-label">⚠️ Stockout Risk</div>
+        <div class="dash-value">3 SKU</div>
+        <div class="dash-sub red">▼ ต้องสั่งซื้อด่วน</div>
+      </div>
+      <div class="dash-card" style="border-top-color:#7c3aed;">
+        <div class="dash-label">Top Seller</div>
+        <div class="dash-value" style="font-size: 16px;">Product A</div>
+        <div class="dash-sub">฿890K / เดือน</div>
+      </div>
+      <div class="dash-card" style="border-top-color:#0891b2;">
+        <div class="dash-label">Forecast Q2</div>
+        <div class="dash-value">฿13.1M</div>
+        <div class="dash-sub">Base Scenario</div>
+      </div>
+      <div class="dash-card" style="border-top-color:#dc2626;">
+        <div class="dash-label">Gap vs Target</div>
+        <div class="dash-value">-8.3%</div>
+        <div class="dash-sub red">▼ ต่ำกว่าเป้า</div>
+      </div>
+    </div>
+
+    <table>
+      <tr>
+        <th>ประเภท Dashboard</th>
+        <th>Format ที่ Claude สร้างได้</th>
+        <th>เหมาะสำหรับ</th>
+      </tr>
+      <tr>
+        <td><strong>📊 Interactive HTML</strong></td>
+        <td>Single HTML file, Chart.js/Plotly, กด Filter ได้</td>
+        <td>Share ทั่วทีม เปิดด้วย Browser ได้เลย</td>
+      </tr>
+      <tr>
+        <td><strong>📈 Excel Dashboard</strong></td>
+        <td>.xlsx พร้อม Pivot Table, Chart, Conditional Format</td>
+        <td>ทีมที่คุ้นเคย Excel, แก้ไขข้อมูลต่อได้</td>
+      </tr>
+      <tr>
+        <td><strong>📄 PDF Report</strong></td>
+        <td>PDF สวยงาม พร้อม Chart และ Narrative</td>
+        <td>ส่งผู้บริหาร, Print ได้, Archive</td>
+      </tr>
+      <tr>
+        <td><strong>📝 Markdown Report</strong></td>
+        <td>.md ที่มีตาราง Charts (text-based)</td>
+        <td>Technical team, GitHub, Notion</td>
+      </tr>
+    </table>
+
+    <div class="card card-purple">
+      <h3>🖥️ Prompt: สร้าง Interactive HTML Dashboard</h3>
+      <div class="code-block"><span class="code-key">(R)</span> คุณคือ Data Visualization Expert ที่เชี่ยวชาญการสร้าง Business Dashboard
+
+<span class="code-key">(T)</span> อ่านข้อมูลจาก 02_Output/forecast_Q2_2026.md และ current_stock.csv แล้วสร้าง Interactive Dashboard HTML ที่ประกอบด้วย:
+1. KPI Cards แถวบน: ยอดขายเดือนนี้, Forecast Q2, Stock Coverage, Stockout Risk Count
+2. Line Chart: Trend ยอดขาย 12 เดือนย้อนหลัง + Forecast 3 เดือนข้างหน้า
+3. Bar Chart: Top 10 SKU ตามยอดขาย
+4. Table: Stockout Alert พร้อม Priority และ Recommended Action
+5. ส่วน Scenario Comparison: Conservative vs Base vs Optimistic
+
+<span class="code-key">(F)</span> Single HTML file, ใช้ Chart.js library, สีหลักตาม Brand: #1a56b0 (น้ำเงิน), #f97316 (ส้ม), Responsive layout บันทึกใน 02_Output/dashboard_[เดือน].html</div>
+    </div>
+  </div>
+
+  <!-- ======= SECTION 5: DASHBOARD STANDARDIZATION ======= -->
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">5</span>
+      <h2>ปัญหา Dashboard ไม่มีระเบียบ — และวิธีแก้</h2>
+    </div>
+
+    <div class="box-red">
+      <strong>🔴 ปัญหาที่พบบ่อย: "Dashboard Clutter"</strong><br>
+      <span style="font-size: 14px;">Sales Manager ต้องดู Dashboard จากลูกน้อง 8 คน — แต่ละคนทำออกมาแตกต่างกันหมด: สีต่างกัน, KPI ต่างกัน, Format ต่างกัน, Scale ต่างกัน ทำให้เปรียบเทียบข้ามทีมไม่ได้ และเสียเวลา Interpret ข้อมูลมากกว่าใช้ข้อมูล</span>
+    </div>
+
+    <h3 style="color: #0f3a7a; font-size: 19px; margin: 28px 0 16px;">🔑 แนวทางแก้: Master Dashboard Template System</h3>
+    <p style="color: #475569; margin-bottom: 20px; font-size: 15px;">วิธีที่ได้ผลที่สุดคือ กำหนด "กฎกลาง" ของ Dashboard ไว้ในไฟล์เดียว แล้วให้ทุกคนในทีมใช้ไฟล์เดียวกันเป็น Template — Claude จะสร้าง Dashboard ตาม Standard นั้นทุกครั้งครับ</p>
+
+    <div class="card card-teal">
+      <h3>📋 ขั้นตอนสร้างระบบ Dashboard ที่มีระเบียบ</h3>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num" style="background: #0891b2;">1</div>
+          <div class="step-content">
+            <h4>สร้าง DASHBOARD_STANDARD.md — กฎกลางของทีม</h4>
+            <p>กำหนดไว้ในไฟล์เดียวว่า: KPI ไหนต้องมี, สีอะไร, Layout แบบไหน, Scale ช่วงไหน — ทุกคนต้องใช้ตามนี้</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background: #0891b2;">2</div>
+          <div class="step-content">
+            <h4>วาง DASHBOARD_STANDARD.md ใน Shared Folder (Google Drive)</h4>
+            <p>ทุกคนในทีม Access ไฟล์เดียวกันผ่าน Google Drive Connector — ถ้า Standard เปลี่ยน แก้ไฟล์ที่นี่ที่เดียว ทุกคนได้รับ Version ใหม่ทันที</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background: #0891b2;">3</div>
+          <div class="step-content">
+            <h4>ระบุใน CLAUDE.md ของแต่ละคนว่า "ดู Standard ที่ไหน"</h4>
+            <p>เขียนใน CLAUDE.md ว่า "Dashboard ทุกชิ้นต้องทำตาม 03_Templates/DASHBOARD_STANDARD.md" — Claude จะอ่านและปฏิบัติตามทุกครั้ง</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background: #0891b2;">4</div>
+          <div class="step-content">
+            <h4>สร้าง Slash Command: /dashboard</h4>
+            <p>สร้าง Skill ใน Cowork ชื่อ <code>/dashboard</code> ที่อ่าน Standard → รับ CSV → สร้าง Dashboard โดยอัตโนมัติตาม Template — ทุกคนแค่พิมพ์ /dashboard แล้วได้ผลลัพธ์เหมือนกันครับ</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num" style="background: #0891b2;">5</div>
+          <div class="step-content">
+            <h4>Manager Review ผ่าน Shared Output Folder</h4>
+            <p>ทุกคนบันทึก Dashboard ลง Google Drive Folder กลาง — Manager เปิด Folder เดียวเห็น Dashboard ของทุกคน ใน Format เดียวกัน เปรียบเทียบได้ทันที</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD_STANDARD.md Template -->
+    <div class="card card-purple">
+      <h3>📄 Template: DASHBOARD_STANDARD.md (สำหรับทีม)</h3>
+      <div class="code-block"><span class="code-key"># 📊 Dashboard Standard — [ชื่อทีม/บริษัท]</span>
+<span class="code-comment">## เวอร์ชัน: 1.0 | อัปเดตล่าสุด: มีนาคม 2026 | Owner: [Sales Manager]</span>
+
+<span class="code-key">## KPI ที่ต้องมีทุก Dashboard (บังคับ)</span>
+<span class="code-val">1. ยอดขายเดือนนี้ (THB) — เปรียบเทียบกับเดือนก่อนเสมอ</span>
+<span class="code-val">2. % Achievement vs Target (เป้าหมายรายเดือน)</span>
+<span class="code-val">3. Forecast เดือนหน้า (Base Scenario)</span>
+<span class="code-val">4. Top 5 Product/SKU ตามยอดขาย</span>
+<span class="code-val">5. จำนวน Active Customers/Accounts</span>
+
+<span class="code-key">## สีมาตรฐาน (ห้ามเปลี่ยน)</span>
+<span class="code-val">- Primary: #1a56b0 (น้ำเงิน) — ใช้กับ KPI หลักและ Chart หลัก</span>
+<span class="code-val">- Positive/Growth: #16a34a (เขียว)</span>
+<span class="code-val">- Negative/Alert: #dc2626 (แดง)</span>
+<span class="code-val">- Neutral/Target: #f97316 (ส้ม)</span>
+<span class="code-val">- Background: #f8faff — Font: Sarabun</span>
+
+<span class="code-key">## Layout มาตรฐาน</span>
+<span class="code-val">- Row 1: KPI Cards (5 ตัว) ขนาด 1fr 1fr 1fr 1fr 1fr</span>
+<span class="code-val">- Row 2: Line Chart (Trend) | Bar Chart (Top Products)</span>
+<span class="code-val">- Row 3: Data Table พร้อม Sort และ Filter</span>
+<span class="code-val">- Footer: วันที่อัปเดต | ชื่อผู้จัดทำ | หน่วย: พันบาท (K THB)</span>
+
+<span class="code-key">## Scale และหน่วย</span>
+<span class="code-val">- ยอดขาย: แสดงหน่วย K THB (หาร 1,000) ถ้าน้อยกว่า 1M</span>
+<span class="code-val">- ยอดขาย: แสดงหน่วย M THB (หาร 1,000,000) ถ้ามากกว่า 1M</span>
+<span class="code-val">- % Growth: ทศนิยม 1 ตำแหน่ง พร้อมลูกศร ▲ (บวก) ▼ (ลบ)</span>
+<span class="code-val">- วันที่: DD/MM/YYYY (ไทย) หรือ YYYY-MM-DD (ข้อมูล)</span>
+
+<span class="code-key">## กฎที่ห้ามละเมิด</span>
+<span class="code-comment">- ห้ามตัดข้อมูล Outlier โดยไม่ระบุเหตุผล</span>
+<span class="code-comment">- ห้ามเปลี่ยน Target ที่บันทึกไว้</span>
+<span class="code-comment">- ต้องระบุวันที่อัปเดตข้อมูลเสมอ</span>
+<span class="code-comment">- ต้องบันทึก Dashboard ใน Google Drive/Shared/Sales_Dashboard/[ชื่อ]/</span></div>
+    </div>
+
+    <!-- Role-based Dashboard -->
+    <h3 style="color: #0f3a7a; font-size: 19px; margin: 32px 0 16px;">👥 Dashboard แยกตาม Role (แต่ยังคง Standard เดิม)</h3>
+    <p style="color: #475569; margin-bottom: 16px; font-size: 15px;">การ Standardize ไม่ได้หมายถึงทุกคนเห็นข้อมูลเดียวกัน — แต่หมายถึง Format เดียวกัน ครับ เนื้อหาปรับตาม Role ได้:</p>
+
+    <div class="grid-3">
+      <div style="background: white; border-radius: 12px; padding: 18px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); border-top: 4px solid #1a56b0;">
+        <div style="font-size: 24px; margin-bottom: 8px;">👔</div>
+        <h4 style="color: #0f3a7a; font-size: 15px; margin-bottom: 10px;">Sales Manager</h4>
+        <ul style="font-size: 13px; color: #475569; margin-left: 16px; line-height: 2;">
+          <li>ภาพรวมทีมทั้งหมด</li>
+          <li>Rank ของแต่ละ Rep</li>
+          <li>Team vs Target</li>
+          <li>Forecast รวม</li>
+          <li>Territory Comparison</li>
+        </ul>
+      </div>
+      <div style="background: white; border-radius: 12px; padding: 18px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); border-top: 4px solid #f97316;">
+        <div style="font-size: 24px; margin-bottom: 8px;">🧑‍💼</div>
+        <h4 style="color: #c2410c; font-size: 15px; margin-bottom: 10px;">Sales Representative</h4>
+        <ul style="font-size: 13px; color: #475569; margin-left: 16px; line-height: 2;">
+          <li>ยอดขายของตัวเอง</li>
+          <li>ลูกค้าในพื้นที่</li>
+          <li>เป้าหมายส่วนตัว</li>
+          <li>Top Products ของตน</li>
+          <li>Visit Plan vs Actual</li>
+        </ul>
+      </div>
+      <div style="background: white; border-radius: 12px; padding: 18px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); border-top: 4px solid #7c3aed;">
+        <div style="font-size: 24px; margin-bottom: 8px;">📦</div>
+        <h4 style="color: #6d28d9; font-size: 15px; margin-bottom: 10px;">Supply Chain / Stock</h4>
+        <ul style="font-size: 13px; color: #475569; margin-left: 16px; line-height: 2;">
+          <li>Stock Level ทุก SKU</li>
+          <li>Stockout Alert</li>
+          <li>Reorder Point</li>
+          <li>Lead Time Monitor</li>
+          <li>Demand vs Supply Gap</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box-green" style="margin-top: 24px;">
+      <strong>✅ วิธีสร้าง Role-based Dashboard ด้วย Cowork</strong><br>
+      <span style="font-size: 14px;">สร้าง Skill แยกตาม Role เช่น <code>/dashboard-manager</code>, <code>/dashboard-rep</code>, <code>/dashboard-stock</code> — แต่ทุก Skill อ่าน <code>DASHBOARD_STANDARD.md</code> ไฟล์เดียวกัน ทำให้ Format, สี และ Layout เหมือนกัน แต่ข้อมูลที่แสดงต่างกันตาม Role ครับ</span>
+    </div>
+  </div>
+
+  <!-- ======= SECTION 6: IMPLEMENTATION ROADMAP ======= -->
+  <div class="section">
+    <div class="section-title">
+      <span class="section-num">6</span>
+      <h2>แผนการนำไปใช้จริง (Quick Start Roadmap)</h2>
+    </div>
+
+    <table>
+      <tr>
+        <th>ช่วงเวลา</th>
+        <th>สิ่งที่ต้องทำ</th>
+        <th>ผลลัพธ์ที่ได้</th>
+        <th>ความยาก</th>
+      </tr>
+      <tr>
+        <td><strong>วันที่ 1</strong></td>
+        <td>ติดตั้ง Claude Desktop + เปิด Cowork, เตรียม CSV ข้อมูลย้อนหลัง 12 เดือน</td>
+        <td>พร้อมใช้งาน</td>
+        <td><span class="badge badge-green">ง่าย</span></td>
+      </tr>
+      <tr>
+        <td><strong>วันที่ 2–3</strong></td>
+        <td>สร้าง CLAUDE.md + DASHBOARD_STANDARD.md, ทดลอง Prompt 1–2 ครั้ง</td>
+        <td>Forecast แรก + Dashboard แรก</td>
+        <td><span class="badge badge-green">ง่าย</span></td>
+      </tr>
+      <tr>
+        <td><strong>สัปดาห์ที่ 2</strong></td>
+        <td>เชื่อม Google Drive Connector, วาง Standard ใน Shared Folder, ฝึก Sales Team</td>
+        <td>ทีมใช้ได้ทั้งหมด, Format เหมือนกัน</td>
+        <td><span class="badge badge-orange">ปานกลาง</span></td>
+      </tr>
+      <tr>
+        <td><strong>สัปดาห์ที่ 3–4</strong></td>
+        <td>สร้าง Skill /dashboard, ตั้ง Scheduled Task สรุปรายสัปดาห์</td>
+        <td>Automation เต็มรูปแบบ</td>
+        <td><span class="badge badge-orange">ปานกลาง</span></td>
+      </tr>
+      <tr>
+        <td><strong>เดือนที่ 2</strong></td>
+        <td>สร้าง Role-based Dashboard, ปรับ DASHBOARD_STANDARD ตาม Feedback</td>
+        <td>ระบบ Dashboard ที่สมบูรณ์</td>
+        <td><span class="badge badge-red">ต้องวางแผน</span></td>
+      </tr>
+    </table>
+
+    <div class="box-yellow" style="margin-top: 24px;">
+      <strong>🎯 สิ่งที่ต้องทำก่อนเริ่ม (Prerequisite)</strong>
+      <ul style="margin-left: 20px; margin-top: 10px; font-size: 14px; line-height: 2;">
+        <li>✅ CSV ต้องสะอาด: มี Header, Format วันที่เดียวกัน, ไม่มีแถวว่าง</li>
+        <li>✅ ทีมต้องตกลงกัน: KPI อะไรสำคัญ, Target คืออะไร, ใครดู Dashboard ไหน</li>
+        <li>✅ มี Google Drive Account ที่ใช้ร่วมกันในทีม</li>
+        <li>✅ Claude Pro/Max Plan (Cowork ต้องการ)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SIGNATURE -->
+  <div class="signature">
+    <svg width="60" height="60" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto 16px; display: block;">
+      <circle cx="24" cy="28" r="15" fill="#C8955C"/><circle cx="76" cy="28" r="15" fill="#C8955C"/>
+      <circle cx="24" cy="28" r="9" fill="#E8B88A"/><circle cx="76" cy="28" r="9" fill="#E8B88A"/>
+      <circle cx="50" cy="52" r="32" fill="#C8955C"/>
+      <ellipse cx="50" cy="60" rx="16" ry="12" fill="#E8B88A"/>
+      <circle cx="40" cy="48" r="7" fill="white"/><circle cx="60" cy="48" r="7" fill="white"/>
+      <circle cx="40" cy="48" r="4" fill="#1a1a1a"/><circle cx="60" cy="48" r="4" fill="#1a1a1a"/>
+      <rect x="32" y="41" width="15" height="12" rx="4" fill="none" stroke="#555" stroke-width="2"/>
+      <rect x="53" y="41" width="15" height="12" rx="4" fill="none" stroke="#555" stroke-width="2"/>
+      <line x1="47" y1="47" x2="53" y2="47" stroke="#555" stroke-width="2"/>
+      <ellipse cx="50" cy="57" rx="4" ry="3" fill="#8B4513"/>
+      <path d="M43 63 Q50 69 57 63" stroke="#8B4513" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M22 82 L32 74 L50 85 L68 74 L78 82 L85 100 L15 100 Z" fill="white"/>
+    </svg>
+    <div style="font-size: 20px; font-weight: 800;">ดร.ภก.วิรุณ เวชศิริ</div>
+    <div style="font-size: 14px; opacity: 0.8; margin-top: 4px;">B.Sc.Pharm | MBA | Ph.D.</div>
+    <p>Healthcare AI Educator & Consultant | wirun.wetsiri@gmail.com</p>
+    <p style="margin-top: 8px; font-size: 13px; opacity: 0.6;">เอกสารนี้เป็นวัตถุดิบสำหรับคอร์ส Claude Cowork ภาษาไทย | มีนาคม 2026</p>
+  </div>
+
+</div>
+</body>
+</html>

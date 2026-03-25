@@ -1,0 +1,138 @@
+<div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+    <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมีเชื่อมต่อ" class="bear-avatar bear-medium bear-hero">
+    <div>
+        <h2 class="section-header" style="margin: 0;">🔌 บทที่ 3 — Connectors, MCP และ Plugins</h2>
+        <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">พี่หมีพาเชื่อมต่อ Claude กับ Apps ของคุณ 🔗</p>
+    </div>
+</div>
+<p>ถ้า Claude Cowork คือสมอง — <strong>Connectors คือ 'มือและหู' ที่ช่วยให้ Claude เข้าถึง Apps ของคุณได้โดยตรง</strong>ครับ</p>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🔌 Connectors คืออะไร?</h3>
+<div class="card card-blue">
+    <p><strong>Connectors เปรียบเหมือน USB hub ครับ</strong> — คุณเสียบ Claude เข้ากับ Google Drive, Gmail, Calendar, Slack, Notion หรือ Apps อื่น ๆ แล้ว Claude สามารถ:</p>
+    <ul style="margin-left: 16px; margin-top: 12px; line-height: 1.8;">
+        <li>✅ อ่านไฟล์/ข้อมูล (Read access)</li>
+        <li>✅ เขียน/แก้ไข (Write access)</li>
+        <li>✅ ค้นหา (Search)</li>
+        <li>✅ สร้าง Task อัตโนมัติ (Automate)</li>
+    </ul>
+    <p style="margin-top: 12px;">ตัวอย่าง: "Claude อ่านเมลจากหมอ จากนั้นเขียน Response ลงใน Google Docs โดยอัตโนมัติ"</p>
+</div>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📊 Claude สามารถทำอะไรได้กับ Connectors แต่ละตัว?</h3>
+<table style="width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13px;">
+    <tr style="background: #f1f5f9;">
+        <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;"><strong>App/Service</strong></th>
+        <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;"><strong>สามารถทำ (Healthcare Examples)</strong></th>
+    </tr>
+    <tr>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>📧 Gmail</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">อ่านเมล → ตอบกลับอัตโนมัติ | สรุปคำถามจากหมอ | ตรวจสอบ Attachments</td>
+    </tr>
+    <tr style="background: #f8fafc;">
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>📁 Google Drive</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">อ่านเอกสาร → แก้ไข → อัพโหลดผลลัพธ์ใหม่ | ประมวลผล Clinical Notes</td>
+    </tr>
+    <tr>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>📅 Google Calendar</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">อ่าน Meeting schedule → ตั้งเวลา Follow-up อัตโนมัติ | เตือนการตรวจ</td>
+    </tr>
+    <tr style="background: #f8fafc;">
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>📝 Notion</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">อ่าน Database → อัพเดต Status ใน Notion | สร้าง Patient Record</td>
+    </tr>
+    <tr>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>💬 Slack</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">ส่ง Message อัตโนมัติ | ตั้งสิ่งแจ้งเตือน | สรุป Conversation</td>
+    </tr>
+    <tr style="background: #f8fafc;">
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>📊 Google Sheets</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">อ่าน Data → ประมวลผล → อัพเดต Spreadsheet | ดึง Statistics</td>
+    </tr>
+</table>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🔗 MCP (Model Context Protocol) คืออะไร?</h3>
+<p><strong>MCP</strong> คือ "ระบบที่ให้ Claude เข้าถึง Apps ของคุณได้" ครับ มี 2 ส่วน:</p>
+<div class="grid-2" style="margin-top: 16px;">
+    <div class="card" style="border-left: 4px solid #3b82f6;">
+        <h4 style="color: #3b82f6;">🎯 Client (Claude)</h4>
+        <p>Claude Desktop App — "ผู้ขอ" ไปขอข้อมูล</p>
+        <p style="margin-top: 12px; font-size: 13px; color: #64748b;">ถามว่า "อ่านไฟล์จาก Drive หน่อย" "ส่งเมลแจ้งเตือน"</p>
+    </div>
+    <div class="card" style="border-left: 4px solid #f97316;">
+        <h4 style="color: #f97316;">🔧 Server (Apps)</h4>
+        <p>Google Drive, Gmail, Calendar, etc — "ผู้ให้" ข้อมูล</p>
+        <p style="margin-top: 12px; font-size: 13px; color: #64748b;">ตอบว่า "ไฟล์นี้ได้" "ส่งเมลแล้ว"</p>
+    </div>
+</div>
+<p style="margin-top: 16px; font-size: 13px; color: #64748b;">MCP ก็คือ "ภาษาที่สื่อสาร" ระหว่าง Claude กับ Apps ให้พูดเข้าใจกัน</p>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🎨 Connector Icons & Availability</h3>
+<p>Connectors ที่มี (ตัวอย่างที่ Recommended for Healthcare):</p>
+<div class="grid-4" style="margin-top: 16px;">
+    <div style="background: white; padding: 16px; border-radius: 8px; border: 2px solid #3b82f6; text-align: center;">
+        <div style="font-size: 32px; margin-bottom: 8px;">📧</div>
+        <p style="font-weight: 700;">Gmail</p>
+        <p style="font-size: 12px; color: #64748b;">Emails & Follow-ups</p>
+    </div>
+    <div style="background: white; padding: 16px; border-radius: 8px; border: 2px solid #16a34a; text-align: center;">
+        <div style="font-size: 32px; margin-bottom: 8px;">📁</div>
+        <p style="font-weight: 700;">Drive</p>
+        <p style="font-size: 12px; color: #64748b;">Files & Documents</p>
+    </div>
+    <div style="background: white; padding: 16px; border-radius: 8px; border: 2px solid #2563eb; text-align: center;">
+        <div style="font-size: 32px; margin-bottom: 8px;">📅</div>
+        <p style="font-weight: 700;">Calendar</p>
+        <p style="font-size: 12px; color: #64748b;">Schedule & Reminders</p>
+    </div>
+    <div style="background: white; padding: 16px; border-radius: 8px; border: 2px solid #f97316; text-align: center;">
+        <div style="font-size: 32px; margin-bottom: 8px;">📝</div>
+        <p style="font-weight: 700;">Notion</p>
+        <p style="font-size: 12px; color: #64748b;">Database & Wiki</p>
+    </div>
+</div>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">⚙️ 7 Steps: ตั้งค่า Connector ใน Cowork</h3>
+<div style="margin-top: 16px;">
+    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; border-left: 4px solid #0284c7; margin-bottom: 12px;">
+        <p><strong>Step 1: เปิด Claude Desktop</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">ไป Settings → Connectors</p>
+    </div>
+    <div style="background: #fff7ed; padding: 16px; border-radius: 8px; border-left: 4px solid #ea580c; margin-bottom: 12px;">
+        <p><strong>Step 2: เลือก App ที่ต้องการ</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">เช่น "Google Drive" → Click "Connect"</p>
+    </div>
+    <div style="background: #f0fdf4; padding: 16px; border-radius: 8px; border-left: 4px solid #15803d; margin-bottom: 12px;">
+        <p><strong>Step 3: Authorize (ให้สิทธิ์)</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">Google popup ขึ้นมา → Click "Allow" เพื่อให้ Claude เข้าถึง Drive</p>
+    </div>
+    <div style="background: #fef2f2; padding: 16px; border-radius: 8px; border-left: 4px solid #dc2626; margin-bottom: 12px;">
+        <p><strong>Step 4: Verify Connection</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">ดูว่าขึ้น "Connected ✓" หรือไม่</p>
+    </div>
+    <div style="background: #faf5ff; padding: 16px; border-radius: 8px; border-left: 4px solid #a855f7; margin-bottom: 12px;">
+        <p><strong>Step 5: ตั้งค่าสิทธิ์ (Permissions)</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">เลือก "Read only" (ดูแค่) หรือ "Read & Write" (ดู+แก้) ตามต้องการ</p>
+    </div>
+    <div style="background: #f0f9ff; padding: 16px; border-radius: 8px; border-left: 4px solid #0284c7; margin-bottom: 12px;">
+        <p><strong>Step 6: เลือก Folder/Scope</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">ถ้า Drive ให้เลือก Folder ไหน เช่น "Healthcare Data" หรือ "Patient Records"</p>
+    </div>
+    <div style="background: #fff7ed; padding: 16px; border-radius: 8px; border-left: 4px solid #ea580c;">
+        <p><strong>Step 7: Save & Test</strong></p>
+        <p style="margin-top: 8px; font-size: 13px;">Save → ลองสั่ง Claude "Read my Drive" เพื่อ Test</p>
+    </div>
+</div>
+
+<div class="exercise">
+    <h4>🏋️ แบบฝึกหัด 3: ตั้งค่า Connector & ทดลอง</h4>
+    <p style="margin-top: 12px;"><strong>ให้ทำ:</strong></p>
+    <ol style="margin-left: 16px; margin-top: 8px; line-height: 1.8;">
+        <li>ไปที่ Claude Desktop → Settings → Connectors</li>
+        <li>เลือก 1 Connector ว่าใช้งาน (Gmail, Drive, หรือ Sheets)</li>
+        <li>กด Connect และ Authorize</li>
+        <li>เมื่อเชื่อมต่อแล้ว เปิด Cowork และสั่ง:<br>
+"Using the [Connector name] connector, show me the [X] most recent items and summarize them"</li>
+        <li>สังเกต ว่า Cowork ทำงานยังไง และผลลัพธ์ถูกต้องไหม</li>
+    </ol>
+</div>
