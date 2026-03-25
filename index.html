@@ -128,6 +128,9 @@
     <div class="app-body">
         <!-- SIDEBAR -->
         <div class="sidebar">
+            <!-- Mobile menu header (shown only on mobile) -->
+            <div class="mobile-menu-header">เมนูบทเรียน</div>
+
             <!-- กลุ่ม 1: พื้นฐาน -->
             <div class="nav-section-header">📚 พื้นฐาน (Foundations)</div>
             <a class="nav-link active" data-section="intro" onclick="showSection('intro')">🏠 บทนำ</a>
@@ -153,6 +156,9 @@
             <a class="nav-link" data-section="coming-soon" onclick="showSection('coming-soon')">🔜 Coming Soon</a>
             <a class="nav-link" data-section="signature" onclick="showSection('signature')">✍️ ผู้สอน</a>
         </div>
+
+        <!-- Mobile overlay -->
+        <div class="mobile-overlay" id="mobileOverlay" onclick="toggleMobileMenu()"></div>
 
         <!-- CONTENT AREA -->
         <div class="content">
@@ -222,26 +228,16 @@
     function toggleMobileMenu() {
         const sidebar = document.querySelector('.sidebar');
         const hamburger = document.getElementById('hamburgerBtn');
+        const overlay = document.getElementById('mobileOverlay');
         sidebar.classList.toggle('mobile-open');
         hamburger.classList.toggle('active');
+        overlay.classList.toggle('active');
     }
-
-    // Close mobile menu when clicking outside
-    document.addEventListener('click', function(e) {
-        const sidebar = document.querySelector('.sidebar');
-        const hamburger = document.getElementById('hamburgerBtn');
-        if (sidebar && sidebar.classList.contains('mobile-open') &&
-            !sidebar.contains(e.target) &&
-            !hamburger.contains(e.target)) {
-            toggleMobileMenu();
-        }
-    });
 
     // Close mobile menu when clicking a nav link
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function() {
             const sidebar = document.querySelector('.sidebar');
-            const hamburger = document.getElementById('hamburgerBtn');
             if (sidebar && sidebar.classList.contains('mobile-open')) {
                 toggleMobileMenu();
             }
