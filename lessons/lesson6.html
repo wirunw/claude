@@ -1,52 +1,202 @@
 <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
-    <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมีขั้นสูง" class="bear-avatar bear-medium bear-smart">
+    <img src="https://i.postimg.cc/JzR5Q2M3/Teddy-bear.png" alt="พี่หมีขั้นสูง" class="bear-avatar bear-medium bear-badge">
     <div>
-        <h2 class="section-header" style="margin: 0;">🚀 บทที่ 6 — Advanced: Automation & Best Practices</h2>
-        <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">พี่หมีพาไปขั้น Advanced! 🔥</p>
+        <h2 class="section-header" style="margin: 0;">🚀 บทที่ 6 — Advanced: Automation & Workflows</h2>
+        <p style="margin: 4px 0 0 0; color: #64748b; font-size: 14px;">พี่หมีพาไปสู่ขั้น Advanced — Automation เต็มรูปแบบ 🎓</p>
     </div>
 </div>
-<p>บทนี้จะพาไปดูเทคนิคขั้นสูง และ Best Practices ที่จะทำให้ใช้ Cowork ได้อย่างมืออาชีพ</p>
+<p>พอเราเข้าใจ Basics แล้ว มาดูการใช้งาน Cowork ในระดับ Advanced กันครับ</p>
 
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">⚙️ Automation คืออะไร?</h3>
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">⏰ Scheduled Tasks (Automation)</h3>
+<p>Scheduled Tasks = ให้ Cowork ทำงานอัตโนมัติ แม้เรา offline</p>
+
 <div class="card card-blue">
-    <p><strong>Automation = ให้ AI ทำงานอัตโนมัติเมื่อเวลาที่กำหนด</strong></p>
-    <p style="margin-top: 12px;">เช่น: ทุกวันจันทร์ เวลา 9 โมง → Claude อ่าน Papers ใหม่ → สรุป → ส่งเมลถึงคุณ</p>
-</div>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🎯 3 ระดับ Automation</h3>
-<div class="grid-3">
-    <div class="card" style="border-left: 4px solid #3b82f6;">
-        <h4 style="color: #3b82f6;">Level 1: Manual</h4>
-        <p>คุณสั่งเองทุกครั้ง</p>
-    </div>
-    <div class="card" style="border-left: 4px solid #f97316;">
-        <h4 style="color: #f97316;">Level 2: Trigger</h4>
-        <p>เมื่อเกิด Event → ทำงาน</p>
-    </div>
-    <div class="card" style="border-left: 4px solid #16a34a;">
-        <h4 style="color: #16a34a;">Level 3: Scheduled</h4>
-        <p>ทำงานตามเวลาที่กำหนด</p>
-    </div>
-</div>
-
-<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">💡 Best Practices</h3>
-<div class="card" style="background: #f0fdf4; padding: 16px; border-radius: 12px; border-left: 4px solid #16a34a;">
-    <p style="margin-bottom: 12px;"><strong>✅ ทำ:</strong></p>
-    <ul style="margin-left: 16px;">
-        <li>เริ่มจากงานเล็ก ๆ ก่อน</li>
-        <li>ทดสอบกับข้อมูลจำลอง</li>
-        <li>ตรวจสอบผลเสมอ</li>
-        <li>เก็บ Log การทำงาน</li>
+    <h4 style="color: #2563eb; margin-bottom: 12px;">ตั้งเวลางานอัตโนมัติ</h4>
+    <p>ตัวอย่างที่ใช้ได้จริง:</p>
+    <ul style="margin-left: 16px; margin-top: 8px; line-height: 1.8;">
+        <li>🕐 <strong>Every Monday 9 AM:</strong> "สรุป Week reports จากเมล ส่ง Summary"</li>
+        <li>🕐 <strong>Daily 5 PM:</strong> "ตรวจสอบ Patient follow-up ที่ยังไม่ตอบกลับ ส่ง reminder"</li>
+        <li>🕐 <strong>Every 1st of month:</strong> "ดึง Statistics จากทั้งเดือน สร้าง Report"</li>
+        <li>🕐 <strong>Every 4 hours:</strong> "ตรวจสอบ Trial patient data ที่ upload มาใหม่"</li>
     </ul>
 </div>
 
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🔄 Multi-Agent Workflow Diagram</h3>
+<p>Advanced workflows มี Agent หลายตัว ทำงานพร้อมกัน:</p>
+<div style="background: #f8fafc; padding: 24px; border-radius: 12px; border: 2px solid #e2e8f0; margin-top: 16px;">
+    <div style="text-align: center;">
+        <div style="font-size: 14px; font-weight: 700; color: #0f3a7a; margin-bottom: 24px; padding: 16px; background: white; border-radius: 8px; border: 2px solid #0284c7;">
+            📨 Trigger: Clinical Trial Patient Data Upload
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px;">
+            <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #3b82f6;">
+                <div style="font-weight: 700; color: #3b82f6; margin-bottom: 8px;">Agent 1</div>
+                <p style="font-size: 13px;">Parse CSV<br>Extract data fields</p>
+            </div>
+            <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #f97316;">
+                <div style="font-weight: 700; color: #f97316; margin-bottom: 8px;">Agent 2</div>
+                <p style="font-size: 13px;">Validate Data<br>Check anomalies</p>
+            </div>
+            <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #16a34a;">
+                <div style="font-weight: 700; color: #16a34a; margin-bottom: 8px;">Agent 3</div>
+                <p style="font-size: 13px;">Generate Report<br>Email coordinator</p>
+            </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
+            <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #a855f7;">
+                <div style="font-weight: 700; color: #a855f7; margin-bottom: 8px;">Agent 4</div>
+                <p style="font-size: 13px;">Check Eligibility<br>Flag alerts</p>
+            </div>
+            <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #dc2626;">
+                <div style="font-weight: 700; color: #dc2626; margin-bottom: 8px;">Agent 5</div>
+                <p style="font-size: 13px;">Update Database<br>Log audit trail</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">💡 5 Advanced Tips</h3>
+
+<div class="card" style="border-left: 4px solid #2563eb; margin-bottom: 16px;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">💡 Tip 1: Chaining (สั่งงานแบบเรียงลำดับ)</h4>
+    <p><strong>คืออะไร?</strong> ให้ Agent 1 ทำเสร็จ → ส่งผลให้ Agent 2 → เป็นไปเรื่อย ๆ</p>
+    <p style="margin-top: 12px; font-size: 13px; background: #f0f9ff; padding: 12px; border-radius: 6px;">
+        ตัวอย่าง: Download patient file → Parse → Validate → Store → Notify → Done
+    </p>
+</div>
+
+<div class="card" style="border-left: 4px solid #f97316; margin-bottom: 16px;">
+    <h4 style="color: #f97316; margin-bottom: 12px;">💡 Tip 2: Parallel Processing (ทำหลาย ๆ อันพร้อม)</h4>
+    <p><strong>คืออะไร?</strong> แทนการทำ Sequential ให้ทำพร้อมกัน ประหยัดเวลา</p>
+    <p style="margin-top: 12px; font-size: 13px; background: #fff7ed; padding: 12px; border-radius: 6px;">
+        ตัวอย่าง: 100 patient records → split to 5 agents (20 each) → process in parallel → merge results
+    </p>
+</div>
+
+<div class="card" style="border-left: 4px solid #16a34a; margin-bottom: 16px;">
+    <h4 style="color: #16a34a; margin-bottom: 12px;">💡 Tip 3: Error Handling & Retries</h4>
+    <p><strong>คืออะไร?</strong> ถ้า Task fail บอก Claude ว่าต้องทำไร (retry, skip, alert)</p>
+    <p style="margin-top: 12px; font-size: 13px; background: #f0fdf4; padding: 12px; border-radius: 6px;">
+        ตัวอย่าง: "If data parse fails → retry 2 times → if still fail → send alert to manager"
+    </p>
+</div>
+
+<div class="card" style="border-left: 4px solid #a855f7; margin-bottom: 16px;">
+    <h4 style="color: #a855f7; margin-bottom: 12px;">💡 Tip 4: Audit & Logging</h4>
+    <p><strong>คืออะไร?</strong> ให้ Cowork บันทึก "ใครทำอะไร ตอนไหน" ไว้</p>
+    <p style="margin-top: 12px; font-size: 13px; background: #faf5ff; padding: 12px; border-radius: 6px;">
+        สำคัญสำหรับ Healthcare (compliance): "User X ran workflow Y on [date] → 50 records processed → 2 errors"
+    </p>
+</div>
+
+<div class="card" style="border-left: 4px solid #dc2626; margin-bottom: 16px;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">💡 Tip 5: Cost Optimization</h4>
+    <p><strong>คืออะไร?</strong> ลด API calls ลด processing time ด้วยการ Batch processing</p>
+    <p style="margin-top: 12px; font-size: 13px; background: #fef2f2; padding: 12px; border-radius: 6px;">
+        ตัวอย่าง: จาก "100 calls × 1 req/call" → "10 batches × 10 req/batch" = ประหยัด 70-80%
+    </p>
+</div>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🔒 Security & Compliance for Healthcare</h3>
+<div style="background: #fef2f2; padding: 20px; border-radius: 12px; border-left: 4px solid #dc2626;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">⚠️ Healthcare-Specific ต้องระวัง:</h4>
+    <ol style="margin-left: 16px; line-height: 1.8;">
+        <li><strong>HIPAA/PDPA Compliance:</strong> ไม่ส่ง PII (Patient ID, Name) ไปที่ Third-party</li>
+        <li><strong>Data Encryption:</strong> Connectors ต้อง SSL/TLS encrypted</li>
+        <li><strong>Access Control:</strong> ให้ Least Privilege — Cowork เข้าถึง เฉพาะ Folder ที่ต้อง</li>
+        <li><strong>Audit Trail:</strong> บันทึก "WHO accessed WHAT data WHEN" เพื่อ compliance</li>
+        <li><strong>Data Retention:</strong> ลบข้อมูล Temp หลังใช้ (ไม่เก็บ redundant data)</li>
+        <li><strong>Manual Review:</strong> สำหรับการตัดสินใจด้าน Medical ต้องมี QA by human</li>
+    </ol>
+</div>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🎯 Final Capstone Workshop</h3>
+<div style="background: #f0f9ff; padding: 20px; border-radius: 12px; border-left: 4px solid #0284c7;">
+    <p style="margin-bottom: 16px;"><strong>🏆 Capstone Project: "Design an End-to-End Healthcare Automation"</strong></p>
+    <p style="margin-bottom: 16px;">ให้ทำ Project ที่รวม ทั้งหมด ที่เรียนมา:</p>
+    <div style="background: white; padding: 16px; border-radius: 8px; border-left: 4px solid #0284c7;">
+        <p style="margin-bottom: 12px;"><strong>📋 Project Scope:</strong></p>
+        <ol style="margin-left: 16px; line-height: 1.8; margin-top: 8px;">
+            <li>เลือก 1 Healthcare workflow ในสถานที่งานของคุณ (ปัญหาที่อยากแก้)</li>
+            <li>ออกแบบ Cowork solution ที่รวม:
+                <ul style="margin-left: 16px; margin-top: 8px;">
+                    <li>Prompt templates (RTF/ROSES/CTF)</li>
+                    <li>Connectors ที่ต้องใช้</li>
+                    <li>Skills ที่ต้องสร้าง (2-3 skills)</li>
+                    <li>Sub-agents (ถ้าต้อง)</li>
+                    <li>Automation/Scheduling</li>
+                </ul>
+            </li>
+            <li>สร้าง Proof of Concept (POC) — ทดลองทำจริง</li>
+            <li>วัดผล: Time saved, Cost saved, Error reduction, Safety improvement</li>
+            <li>สรุป ROI + Key learnings</li>
+        </ol>
+    </div>
+</div>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🎓 Summary & Next Steps</h3>
+<table style="width: 100%; border-collapse: collapse; margin-top: 16px;">
+    <tr style="background: #f1f5f9;">
+        <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;"><strong>เรียนมา</strong></th>
+        <th style="padding: 12px; text-align: left; border: 1px solid #e2e8f0;"><strong>ใช้เมื่อไหร่</strong></th>
+    </tr>
+    <tr>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 0: AI Basics</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">เข้าใจว่า AI ทำงานยังไง ก่อนสั่งงาน</td>
+    </tr>
+    <tr style="background: #f8fafc;">
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 1: Cowork Basics</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">สั่งงาน one-off ทีละงาน</td>
+    </tr>
+    <tr>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 2: Use Cases</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">หา use case ของคุณเองจาก 6 ตัวอย่าง</td>
+    </tr>
+    <tr style="background: #f8fafc;">
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 3: Connectors</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">เชื่อม Claude กับ Apps ของคุณ</td>
+    </tr>
+    <tr>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 4: Case Studies</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">เรียนจาก Real-world implementation</td>
+    </tr>
+    <tr style="background: #f8fafc;">
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 5: Custom Plugins</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">สร้าง Reusable workflow ของคุณเองให้ Team</td>
+    </tr>
+    <tr>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;"><strong>Lesson 6: Advanced</strong></td>
+        <td style="padding: 12px; border: 1px solid #e2e8f0;">Automation + Multi-agent + Enterprise setup</td>
+    </tr>
+</table>
+
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🚀 ก้าวต่อไป (After Course)</h3>
+<div style="background: #f0fdf4; padding: 16px; border-radius: 12px; margin-top: 16px;">
+    <p style="margin-bottom: 12px;"><strong>✅ ต่อไปควรทำ:</strong></p>
+    <ol style="margin-left: 16px; line-height: 1.8;">
+        <li>ลองใช้ Cowork ในงานจริง ขึ้น 3 งาน ที่ต่างกัน (Skill building)</li>
+        <li>สร้าง 1 Custom Plugin สำหรับ Team ของคุณ (Collaboration)</li>
+        <li>Setup Scheduled Task 1 อันสำหรับงานที่ซ้ำ (Automation)</li>
+        <li>Join Claude Community Forum — แชร์ learning กับ others</li>
+        <li>Keep updated with Claude releases — มี feature ใหม่ตลอด</li>
+    </ol>
+</div>
+
+<div style="background: #f8fafc; padding: 20px; border-radius: 12px; margin-top: 20px; border: 2px solid #0f3a7a; text-align: center;">
+    <p style="font-size: 18px; font-weight: 700; color: #0f3a7a; margin-bottom: 16px;">🎉 สำเร็จแล้ว!</p>
+    <p style="font-size: 14px; line-height: 1.8; color: #64748b;">เรียนจบ 6 บท พร้อมปฏิบัติจริง หวังว่า Claude Cowork จะช่วยให้ Healthcare workflow ของคุณ<br>เรียบง่ายขึ้น เร็วขึ้น และปลอดภัยขึ้น</p>
+    <p style="font-size: 14px; margin-top: 16px; color: #0f3a7a;"><strong>ติดต่อผม (พี่หมี) ถ้าต้องการอะไรเพิ่มเติม ครับ! 💊🤖</strong></p>
+</div>
+
 <div class="exercise">
-    <h4>🏋️ แบบฝึกหัด 6: สร้าง Automation แรก</h4>
-    <p style="margin-top: 12px;"><strong>ให้ทำ:</strong></p>
+    <h4>🏋️ แบบฝึกหัด 6: Capstone Project</h4>
+    <p style="margin-top: 12px;"><strong>สร้าง End-to-End Healthcare Automation Project:</strong></p>
     <ol style="margin-left: 16px; margin-top: 8px; line-height: 1.8;">
-        <li>เลือกงานที่ทำซ้ำ ๆ ทุกสัปดาห์</li>
-        <li>ออกแบบ Workflow</li>
-        <li>ตั้งเวลา Automation</li>
-        <li>ลองรันและดูผล</li>
+        <li>เลือก 1 Workflow ปกติของคุณ ที่ต้องการปรับปรุง</li>
+        <li>วาด Diagram ว่า Current state vs Future state with Cowork</li>
+        <li>เขียน RTF/ROSES Prompt ที่ใช้</li>
+        <li>ลองทำ POC (Proof of Concept) — ทดลองจริง 1-2 cases</li>
+        <li>ประเมินผล: Time saved, Cost, Error reduction</li>
+        <li>เตรียม Presentation สำหรับ Team (5-10 slides)</li>
     </ol>
 </div>

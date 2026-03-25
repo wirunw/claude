@@ -21,6 +21,42 @@
 </div>
 
 <div class="card" style="border-left: 6px solid #059669;">
+    <h4 style="color: #059669; margin-bottom: 12px;">🔧 RTF Prompt ที่ใช้</h4>
+    <div style="background: #f0fdf4; padding: 16px; border-radius: 8px; border: 1px solid #86efac; font-family: monospace; font-size: 12px; line-height: 1.6;">
+You are a medical translator specialized in Thai medical device terminology.<br>
+<br>
+Task: Translate the IFU (Instructions for Use) for an ECG machine from English to Thai.<br>
+<br>
+Context:<br>
+- This is for FDA Thailand submission<br>
+- Must maintain technical accuracy<br>
+- Must use standard Thai medical terms<br>
+- Safety instructions must be crystal clear<br>
+<br>
+Format:<br>
+- Keep section structure identical<br>
+- Use bullet points for procedures<br>
+- Add footnotes where technical terms need explanation<br>
+- Include a glossary of 10 key medical terms (English-Thai)<br>
+<br>
+Input: [Paste 45-page IFU document]<br>
+<br>
+Output: Complete Thai translation + Glossary
+    </div>
+</div>
+
+<div class="card" style="border-left: 6px solid #059669;">
+    <h4 style="color: #059669; margin-bottom: 12px;">📊 ขั้นตอนการทำงาน (What Happened)</h4>
+    <ol style="margin-left: 16px; line-height: 1.8;">
+        <li><strong>Day 1:</strong> Upload IFU file → Cowork เริ่มแปล (Split เป็น 10 sections)</li>
+        <li><strong>Day 1-2:</strong> Cowork แปล + สร้าง Glossary (8 ชั่วโมงประมวลผล)</li>
+        <li><strong>Day 3:</strong> QA Team ตรวจสอบ Medical terms + Safety phrases</li>
+        <li><strong>Day 3-4:</strong> Minor revisions (5-10 ที่)</li>
+        <li><strong>Day 5:</strong> Final review + Format for FDA submission</li>
+    </ol>
+</div>
+
+<div class="card" style="border-left: 6px solid #059669;">
     <h4 style="color: #059669; margin-bottom: 12px;">📈 ผลลัพธ์ Before & After (Quantified Results)</h4>
     <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
         <tr style="background: #e7f5f0;">
@@ -52,6 +88,18 @@
     <p style="margin-top: 12px; font-size: 13px; color: #059669;"><strong>💡 ROI:</strong> เก็บเวลา 75%, ลดค่า 93%, เพิ่ม Accuracy</p>
 </div>
 
+<div class="card" style="border-left: 6px solid #059669;">
+    <h4 style="color: #059669; margin-bottom: 12px;">🎓 Key Learnings</h4>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li><strong>✅ ใช้ Cowork ได้ดี สำหรับ:</strong> Translation tasks ที่มี Standard format (like IFU)</li>
+        <li><strong>✅ QA ยังต้อง:</strong> Manual review สำหรับ Medical accuracy (ไม่เชื่อใจ AI 100%)</li>
+        <li><strong>✅ Glossary assist:</strong> Cowork ช่วยสร้าง Glossary ได้ดี ทำให้ Consistency ดีขึ้น</li>
+        <li><strong>⚠️ Watch out:</strong> Medical terms ต้องตรวจสอบ ไม่งั้น liability risk</li>
+    </ul>
+</div>
+
+<hr style="margin: 32px 0; border: none; border-top: 2px solid #e2e8f0;">
+
 <h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📚 Case Study 2: Hospital System — Medication Reconciliation at Discharge</h3>
 
 <div class="card" style="border-left: 6px solid #dc2626;">
@@ -64,6 +112,43 @@
         <li>Pharmacist ก็ 3 คน = ทำไม่ทันตั้งแต่เช้า</li>
         <li>ผลลัพธ์ = Drug errors ที่ Discharge หลาย ๆ ตรง</li>
     </ul>
+</div>
+
+<div class="card" style="border-left: 6px solid #dc2626;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">🔧 RTF Prompt ที่ใช้</h4>
+    <div style="background: #fef2f2; padding: 16px; border-radius: 8px; border: 1px solid #fecaca; font-family: monospace; font-size: 12px; line-height: 1.6;">
+You are a clinical pharmacist at a hospital discharge clinic.<br>
+<br>
+Task: Perform medication reconciliation for a patient.<br>
+<br>
+Input provided:<br>
+1. Home medications (what patient was taking at home)<br>
+2. Current hospital medications (what we gave during stay)<br>
+3. Planned discharge medications<br>
+<br>
+Analyze and identify:<br>
+1. Discrepancies (missing, duplicates, contraindications)<br>
+2. Drug interactions at discharge<br>
+3. Any concerns that need Pharmacist review<br>
+<br>
+Format: 1-page summary with:<br>
+- OK medications (green)<br>
+- Needs review (yellow)<br>
+- High risk (red)<br>
+<br>
+Language: Thai, clear for patient education
+    </div>
+</div>
+
+<div class="card" style="border-left: 6px solid #dc2626;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">📊 ขั้นตอนการทำงาน</h4>
+    <ol style="margin-left: 16px; line-height: 1.8;">
+        <li><strong>Integration:</strong> Cowork เชื่อมต่อกับ Hospital EMR (via Connector)</li>
+        <li><strong>Workflow:</strong> Pharmacist upload discharge patient list → Cowork เก็บ Home Rx + Current Rx</li>
+        <li><strong>Processing:</strong> Cowork ทำ Reconciliation สำหรับทั้งชุด (50 patients)</li>
+        <li><strong>Flag:</strong> ระบุ Cases ที่ต้อง Pharmacist Manual review ด้วย</li>
+        <li><strong>Output:</strong> Summary report + Individual patient flags</li>
+    </ol>
 </div>
 
 <div class="card" style="border-left: 6px solid #dc2626;">
@@ -97,6 +182,18 @@
     </table>
 </div>
 
+<div class="card" style="border-left: 6px solid #dc2626;">
+    <h4 style="color: #dc2626; margin-bottom: 12px;">🎓 Key Learnings</h4>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li><strong>✅ Scalability:</strong> Cowork ใช้เวลาเท่าเดิม แม้ 50 cases (Linear scaling)</li>
+        <li><strong>✅ Safety improvement:</strong> Drug error detection ขึ้นจาก 40% → 92%</li>
+        <li><strong>✅ Resource optimization:</strong> Pharmacist ต้อง 100% → 30% → เพิ่มให้ Task อื่น</li>
+        <li><strong>⚠️ Final check still needed:</strong> ไม่สามารถปล่อย Cowork ตัวเดียว</li>
+    </ul>
+</div>
+
+<hr style="margin: 32px 0; border: none; border-top: 2px solid #e2e8f0;">
+
 <h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📚 Case Study 3: Pharmaceutical Company — Clinical Trial Patient Screening</h3>
 
 <div class="card" style="border-left: 6px solid #2563eb;">
@@ -109,4 +206,94 @@
         <li>ปกติ Research Coordinator ทำเอง = 5-7 วัน</li>
         <li>ต้อง Verify ก่อนปรึกษากับ PI</li>
     </ul>
+</div>
+
+<div class="card" style="border-left: 6px solid #2563eb;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">🔧 RTF Prompt ที่ใช้</h4>
+    <div style="background: #dbeafe; padding: 16px; border-radius: 8px; border: 1px solid #93c5fd; font-family: monospace; font-size: 12px; line-height: 1.6;">
+You are a clinical research coordinator.<br>
+<br>
+Task: Screen patient list for CTR001 (HTN trial) eligibility.<br>
+<br>
+Inclusion criteria (ALL must be met):<br>
+- Age 40-75 years<br>
+- Systolic BP ≥140 mmHg OR Diastolic ≥90 mmHg (at screening)<br>
+- Known HTN ≥5 years<br>
+- eGFR 30-59 mL/min/1.73m² (moderate CKD)<br>
+<br>
+Exclusion criteria (ANY = ineligible):<br>
+- Type 2 diabetes<br>
+- MI or stroke within 6 months<br>
+- Stage 4 CKD (eGFR <30)<br>
+- Current pregnancy<br>
+<br>
+Output format:<br>
+1. Eligible count<br>
+2. Excluded summary (why excluded)<br>
+3. Eligible patient list (ID + age + BP + eGFR)<br>
+4. Borderline cases (for PI review)
+    </div>
+</div>
+
+<div class="card" style="border-left: 6px solid #2563eb;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">📊 ขั้นตอนการทำงาน</h4>
+    <ol style="margin-left: 16px; line-height: 1.8;">
+        <li><strong>Upload:</strong> Export 500 patient records จาก Hospital EMR → CSV format</li>
+        <li><strong>Cowork processes:</strong> ตรวจสอบแต่ละ patient ตาม Inclusion/Exclusion</li>
+        <li><strong>Categorization:</strong> Eligible | Excluded | Borderline (ต้อง PI review)</li>
+        <li><strong>Manual review:</strong> RC + PI ตรวจสอบ Borderline cases</li>
+        <li><strong>Final list:</strong> Eligible patients ส่งสัญญา Sites</li>
+    </ol>
+</div>
+
+<div class="card" style="border-left: 6px solid #2563eb;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">📈 ผลลัพธ์ Before & After</h4>
+    <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
+        <tr style="background: #dbeafe;">
+            <th style="padding: 10px; text-align: left; border: 1px solid #93c5fd;"><strong>ตัวชี้วัด</strong></th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #93c5fd;"><strong>Manual (Old)</strong></th>
+            <th style="padding: 10px; text-align: left; border: 1px solid #93c5fd;"><strong>+ Cowork</strong></th>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #93c5fd;"><strong>⏱️ Time to screen 500</strong></td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">5-7 วัน</td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">4-6 ชั่วโมง</td>
+        </tr>
+        <tr style="background: #eff6ff;">
+            <td style="padding: 10px; border: 1px solid #93c5fd;"><strong>👥 RC man-hours</strong></td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">40-50 hrs</td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">8-10 hrs (verify only)</td>
+        </tr>
+        <tr>
+            <td style="padding: 10px; border: 1px solid #93c5fd;"><strong>✅ Accuracy</strong></td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">~95%</td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">99.5%</td>
+        </tr>
+        <tr style="background: #eff6ff;">
+            <td style="padding: 10px; border: 1px solid #93c5fd;"><strong>🎯 Eligible found</strong></td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">48 patients</td>
+            <td style="padding: 10px; border: 1px solid #93c5fd;">52 patients (missed less)</td>
+        </tr>
+    </table>
+</div>
+
+<div class="card" style="border-left: 6px solid #2563eb;">
+    <h4 style="color: #2563eb; margin-bottom: 12px;">🎓 Key Learnings</h4>
+    <ul style="margin-left: 16px; line-height: 1.8;">
+        <li><strong>✅ Speed boost:</strong> 95% ประหยัดเวลา (5 วัน → 4-6 ชั่วโมง)</li>
+        <li><strong>✅ Consistency:</strong> Cowork ไม่ลืม criteria ระหว่าง 500 patient (Human ลืมได้)</li>
+        <li><strong>✅ Accuracy improvement:</strong> ทำให้เจอ Patient ที่ manual คนพลาดไป</li>
+        <li><strong>⚠️ Borderline review:</strong> ต้อง PI verify ยังเป็นจำเป็น (liability)</li>
+    </ul>
+</div>
+
+<div class="exercise">
+    <h4>🏋️ แบบฝึกหัด 4: Case Study Analysis</h4>
+    <p style="margin-top: 12px;"><strong>เลือก 1 Case Study ข้างบน และวิเคราะห์:</strong></p>
+    <ol style="margin-left: 16px; margin-top: 8px; line-height: 1.8;">
+        <li>สิ่งที่ Cowork ทำให้ดีขึ้น?</li>
+        <li>พวก Risk/limitation ของการใช้ Cowork มีอะไร?</li>
+        <li>ใน Workplace ของคุณ ใครจะ Benefit ที่สุดจาก Use case นี้?</li>
+        <li>คุณจะสั่ง Cowork งานของคุณแบบไหน?</li>
+    </ol>
 </div>

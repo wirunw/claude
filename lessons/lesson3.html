@@ -124,6 +124,156 @@
     </div>
 </div>
 
+<!-- CLAUDE.md Section -->
+<h3 style="color: #0f3a7a; margin: 40px 0 16px; font-size: 22px;">📝 ไฟล์ CLAUDE.md — ให้ Claude "จำ" คุณได้</h3>
+<p>นี่คือ <strong>เคล็ดลับสำคัญที่สุดในคอร์สนี้</strong>ครับ ไฟล์ <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:monospace;">CLAUDE.md</code> คือ "ใบประวัติส่วนตัว" ที่คุณเขียนบอก Claude ว่าคุณเป็นใคร ทำงานอะไร ชอบ Output แบบไหน — <strong>Claude จะอ่านไฟล์นี้ทุกครั้งที่เปิด Folder นั้น</strong> เหมือนกับที่คุณ Brief น้องฝึกงานทุกเช้าครับ</p>
+
+<div style="background: #fffbeb; border: 2px dashed #f59e0b; border-radius: 12px; padding: 20px; margin: 20px 0;">
+    <p style="color: #92400e; font-weight: 700; margin-bottom: 8px;">💡 ทำไม CLAUDE.md ถึงสำคัญ?</p>
+    <p style="color: #78350f; font-size: 14px;">โดยปกติ Claude ไม่มี "ความทรงจำ" ข้ามการสนทนา แต่ <strong>ถ้าคุณเขียนบริบทไว้ใน .md file และวางในโฟลเดอร์งาน — Claude จะอ่านและเข้าใจบริบทนั้นทุกครั้ง</strong> นี่คือวิธีที่ทำให้ Cowork "รู้จัก" คุณโดยไม่ต้อง Brief ซ้ำทุกครั้งครับ</p>
+</div>
+
+<div class="card" style="margin-top: 20px;">
+    <h4 style="color: #0f3a7a; margin-bottom: 16px;">📄 Template: CLAUDE.md สำหรับ Healthcare Professional</h4>
+    <div style="background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 10px; font-family: monospace; font-size: 12.5px; line-height: 1.9; white-space: pre-wrap;">
+<span style="color:#f97316;"># 👤 About Me</span>
+<span style="color:#94a3b8;">**ชื่อ**:</span> ดร. [ชื่อ-นามสกุล]
+<span style="color:#94a3b8;">**ตำแหน่ง**:</span> [เช่น Clinical Pharmacist / Medical Affairs Manager]
+<span style="color:#94a3b8;">**สังกัด**:</span> [บริษัท / โรงพยาบาล / คลินิก]
+<span style="color:#94a3b8;">**ความเชี่ยวชาญ**:</span> [เช่น Oncology Pharmacy / Regulatory Affairs / Medical Device]
+
+<span style="color:#f97316;"># 🎯 วิธีทำงานที่ฉันชอบ</span>
+<span style="color:#94a3b8;">**ภาษา**:</span> ไทยเป็นหลัก ศัพท์เทคนิคเป็นภาษาอังกฤษ
+<span style="color:#94a3b8;">**Tone**:</span> Professional แต่อ่านง่าย ไม่เป็นทางการเกินไป
+<span style="color:#94a3b8;">**Output Format**:</span> ตาราง หรือ Bullet Points พร้อม Headers ชัดเจน
+<span style="color:#94a3b8;">**ความยาว**:</span> กระชับ ถ้าไม่ได้ขอ ไม่ต้องยาวเกิน 1 หน้า A4
+
+<span style="color:#f97316;"># 🏢 บริบทองค์กร</span>
+<span style="color:#94a3b8;">**ประเภทธุรกิจ**:</span> [Pharma / Medical Device / Hospital / Clinic]
+<span style="color:#94a3b8;">**กลุ่มลูกค้า/คนไข้**:</span> [เช่น ผู้สูงอายุ, โรคเรื้อรัง, Specialist]
+<span style="color:#94a3b8;">**มาตรฐานที่ยึด**:</span> [GMP / ISO 13485 / Thai FDA / อย.]
+
+<span style="color:#f97316;"># 📋 งานที่ฉันทำบ่อย (Common Tasks)</span>
+1. สรุปและแปล Clinical Papers (EN→TH)
+2. Draft อีเมลสื่อสารกับ KOL และ HCP
+3. สร้าง Training Material สำหรับทีม Medical
+4. วิเคราะห์และสรุปข้อมูล Market Research
+5. Draft SOP และ Regulatory Documents
+
+<span style="color:#f97316;"># ⚠️ กฎสำคัญ (Important Rules)</span>
+- ห้ามระบุชื่อผู้ป่วยจริง ใช้ "คนไข้ A, B, C" หรือ De-identified ID แทน
+- ข้อมูลยาและ Clinical Data ต้องมีแหล่งอ้างอิงเสมอ
+- Output ทุกอย่างต้องผ่าน Review โดยผู้เชี่ยวชาญก่อนใช้จริง
+- ใช้ Active Voice เสมอ, หลีกเลี่ยงภาษา Passive ที่กำกวม
+
+<span style="color:#f97316;"># 📝 Template ที่ใช้</span>
+- รายงาน: ดูที่ 03_Templates/report_template.md
+- อีเมล: ดูที่ 03_Templates/email_template.md
+- SOP: ดูที่ 03_Templates/sop_template.md
+    </div>
+    <p style="font-size: 13px; color: #64748b; margin-top: 12px;">💾 วิธีสร้าง: เปิด Notepad / TextEdit → พิมพ์เนื้อหาด้านบน → Save as <strong>CLAUDE.md</strong> → วางไว้ใน Root ของ Folder โปรเจกต์</p>
+</div>
+
+<!-- PROJECT_CONTEXT.md -->
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">📋 PROJECT_CONTEXT.md — บริบทเฉพาะโปรเจกต์</h3>
+<p>นอกจาก CLAUDE.md ที่บอก "คุณเป็นใคร" แล้ว ควรมี <code style="background:#f1f5f9;padding:2px 6px;border-radius:4px;font-family:monospace;">PROJECT_CONTEXT.md</code> ในแต่ละโปรเจกต์ เพื่อบอก "โปรเจกต์นี้เกี่ยวกับอะไร" ครับ</p>
+
+<div class="card" style="background: #f8faff; border-left: 6px solid #7c3aed;">
+    <h4 style="color: #7c3aed; margin-bottom: 16px;">📄 Template: PROJECT_CONTEXT.md</h4>
+    <div style="background: #1e293b; color: #e2e8f0; padding: 20px; border-radius: 10px; font-family: monospace; font-size: 12.5px; line-height: 1.9; white-space: pre-wrap;">
+<span style="color:#a78bfa;"># โปรเจกต์: [ชื่อโปรเจกต์]</span>
+
+<span style="color:#a78bfa;">## เป้าหมาย</span>
+[อธิบายสั้นๆ ว่าโปรเจกต์นี้ทำอะไร เช่น:
+"สร้าง Evidence Dossier สำหรับยา X เพื่อเตรียม Launch Q3 2026"]
+
+<span style="color:#a78bfa;">## ขอบเขตงาน (Scope)</span>
+- ✅ ทำ: [สิ่งที่ต้องการ]
+- ❌ ไม่ทำ: [สิ่งที่อยู่นอกขอบเขต]
+
+<span style="color:#a78bfa;">## ผู้รับผลงาน (Audience)</span>
+[เช่น "ทีม Medical Affairs" หรือ "CMO และ Marketing Director"]
+
+<span style="color:#a78bfa;">## Deadline</span>
+[วันที่ต้องส่งงาน]
+
+<span style="color:#a78bfa;">## ไฟล์สำคัญ</span>
+- Input หลัก: 01_Input/papers/clinical_study_X.pdf
+- Template: 03_Templates/report_template.md
+- Output ปลายทาง: 02_Output/final/
+
+<span style="color:#a78bfa;">## บริบทพิเศษ</span>
+[ข้อมูลที่ Claude ต้องรู้สำหรับโปรเจกต์นี้โดยเฉพาะ
+เช่น "ยา X อยู่ในสูตรบัญชียา 1" หรือ "คู่แข่งหลักคือยา Y และ Z"]
+    </div>
+</div>
+
+<!-- Tips for writing good .md files -->
+<h3 style="color: #0f3a7a; margin: 32px 0 16px; font-size: 22px;">🧠 เคล็ดลับเขียน .md ให้ Claude เข้าใจได้ดีที่สุด</h3>
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 16px;">
+    <div style="background: #e8f0fc; padding: 16px; border-radius: 10px; text-align: center;">
+        <div style="font-size: 28px; margin-bottom: 8px;">🎯</div>
+        <h4 style="color: #1a56b0; font-size: 14px; margin-bottom: 8px;">ชัดเจน ไม่คลุมเครือ</h4>
+        <p style="font-size: 13px; color: #475569;">เขียนให้ Claude ตีความได้ทางเดียว — "ความยาว 1 หน้า A4" ดีกว่า "ไม่ยาวเกินไป"</p>
+    </div>
+    <div style="background: #fff3e8; padding: 16px; border-radius: 10px; text-align: center;">
+        <div style="font-size: 28px; margin-bottom: 8px;">🔄</div>
+        <h4 style="color: #f97316; font-size: 14px; margin-bottom: 8px;">อัปเดตสม่ำเสมอ</h4>
+        <p style="font-size: 13px; color: #475569;">เมื่อ Role หรือ Preference เปลี่ยน แก้ไขไฟล์ .md ทันที — ข้อมูลล้าสมัยทำให้ Claude ทำงานผิดครับ</p>
+    </div>
+    <div style="background: #f3eeff; padding: 16px; border-radius: 10px; text-align: center;">
+        <div style="font-size: 28px; margin-bottom: 8px;">✅</div>
+        <h4 style="color: #7c3aed; font-size: 14px; margin-bottom: 8px;">Test ด้วยคำถามนี้</h4>
+        <p style="font-size: 13px; color: #475569;">หลังวาง CLAUDE.md แล้ว ลองถาม Claude: <em>"บอกฉันหน่อยว่าคุณรู้อะไรเกี่ยวกับฉันและโปรเจกต์นี้บ้าง?"</em></p>
+    </div>
+    <div style="background: #f0fdf4; padding: 16px; border-radius: 10px; text-align: center;">
+        <div style="font-size: 28px; margin-bottom: 8px;">📏</div>
+        <h4 style="color: #16a34a; font-size: 14px; margin-bottom: 8px;">ความยาวที่เหมาะสม</h4>
+        <p style="font-size: 13px; color: #475569;">CLAUDE.md ควรยาว 200-400 คำ — สั้นเกินไปไม่มีประโยชน์ ยาวเกินไป Claude อาจสับสน</p>
+    </div>
+    <div style="background: #fef9c3; padding: 16px; border-radius: 10px; text-align: center;">
+        <div style="font-size: 28px; margin-bottom: 8px;">🗂️</div>
+        <h4 style="color: #854d0e; font-size: 14px; margin-bottom: 8px;">ใช้ Markdown Headers</h4>
+        <p style="font-size: 13px; color: #475569;">ใช้ # ## ### เพื่อแบ่ง Section — Claude อ่าน Markdown ได้ดีและจะเข้าใจโครงสร้างได้ชัดขึ้น</p>
+    </div>
+    <div style="background: #fff1f2; padding: 16px; border-radius: 10px; text-align: center;">
+        <div style="font-size: 28px; margin-bottom: 8px;">🔒</div>
+        <h4 style="color: #be123c; font-size: 14px; margin-bottom: 8px;">อย่าใส่ข้อมูลลับ</h4>
+        <p style="font-size: 13px; color: #475569;">CLAUDE.md ไม่ควรมี Password, ข้อมูลคนไข้จริง หรือข้อมูลธุรกิจที่ Sensitive — เก็บไว้ใน Secure folder แยกต่างหาก</p>
+    </div>
+</div>
+
+<!-- Real-world example -->
+<div style="background: #f0fdf4; border-radius: 12px; padding: 20px; margin-top: 28px; border-left: 5px solid #16a34a;">
+    <h4 style="color: #15803d; margin-bottom: 12px;">🏥 ตัวอย่างจริง: การตั้งค่า Cowork สำหรับ Medical Affairs Manager</h4>
+    <p style="font-size: 14px; margin-bottom: 12px;">สมมุติว่าคุณเป็น Medical Affairs Manager บริษัท Pharma ต้องสรุป Clinical Papers ทุกสัปดาห์:</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 13px;">
+        <div style="background: white; padding: 14px; border-radius: 8px;">
+            <p style="font-weight: 700; color: #0f3a7a; margin-bottom: 8px;">📁 Folder Structure</p>
+            <code style="font-size: 11px; line-height: 1.8; display: block; color: #334155;">
+Medical_Affairs_Cowork/<br>
+├── CLAUDE.md<br>
+├── 01_Input/papers/ ← upload PDF ที่นี่<br>
+├── 02_Output/weekly/ ← Claude save ผลที่นี่<br>
+└── 03_Templates/evidence_digest.md
+            </code>
+        </div>
+        <div style="background: white; padding: 14px; border-radius: 8px;">
+            <p style="font-weight: 700; color: #0f3a7a; margin-bottom: 8px;">📝 CLAUDE.md บอกว่า</p>
+            <p style="font-size: 12px; color: #334155; line-height: 1.8;">
+                ฉันเป็น Medical Affairs Manager<br>
+                งานหลัก: สรุป Evidence ทุกสัปดาห์<br>
+                ภาษา: ไทย + อังกฤษ (Term เทคนิค)<br>
+                Format: ดู evidence_digest.md<br>
+                Output: บันทึกใน 02_Output/weekly/
+            </p>
+        </div>
+    </div>
+    <p style="font-size: 13px; margin-top: 12px; color: #166534;">
+        <strong>ผลลัพธ์:</strong> แค่บอก Claude ว่า "อ่าน Papers ใน 01_Input/papers/ แล้วสรุปเหมือนทุกสัปดาห์" — Claude จะทำตาม Template, ใช้ภาษาที่ถูกต้อง และ Save ผลไปยัง Output Folder โดยอัตโนมัติ โดยที่คุณไม่ต้อง Brief ซ้ำทุกครั้งเลยครับ
+    </p>
+</div>
+
 <div class="exercise">
     <h4>🏋️ แบบฝึกหัด 3: ตั้งค่า Connector & ทดลอง</h4>
     <p style="margin-top: 12px;"><strong>ให้ทำ:</strong></p>
